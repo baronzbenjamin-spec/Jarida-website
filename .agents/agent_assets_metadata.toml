@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "qkwVEHTPJbNNfIqxWVb7N"
+uri = "file://artifacts/jarida/public/images/hero-doctor.png"
+type = "image"
+title = "Hero doctor photography"
+
+[[generated]]
+id = "-rTOGpRoWGLz8Pj3KtJ1_"
+uri = "file://artifacts/jarida/public/images/patients.png"
+type = "image"
+title = "Patient using mobile app"
+
+[[generated]]
+id = "lLQ-vJQmFq9AcC1UHUCOs"
+uri = "file://artifacts/jarida/public/images/doctors.png"
+type = "image"
+title = "Doctor using tablet"
+
+[[generated]]
+id = "rQFA360rh81_AeJ7m7GE8"
+uri = "file://artifacts/jarida/public/images/app-mockup.png"
+type = "image"
+title = "Healthcare mobile app mockup"

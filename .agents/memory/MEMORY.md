@@ -1,0 +1,1 @@
+- [react-vite font @import ordering](react-vite-css-imports.md) — Google Fonts @import must be line 1 of index.css, before @import "tailwindcss", or it silently fails.
