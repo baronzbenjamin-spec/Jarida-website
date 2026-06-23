@@ -54,7 +54,7 @@ export const urology: FactCategory = {
         "Use a steroid cream only if advised by a doctor",
       ],
       seekCare: [
-        "The foreskin gets stuck behind the head and cannot be returned",
+        "Seek urgent care if the foreskin becomes stuck behind the head and cannot be pulled forward again, as this is a condition called paraphimosis",
         "You have repeated infections, pain, or bleeding",
         "It is interfering with passing urine or with sex",
       ],

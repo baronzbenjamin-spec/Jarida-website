@@ -46,15 +46,16 @@ export const hormonal: FactCategory = {
         "Marked tiredness and weakness",
         "Unintended weight loss",
         "Feeling sick or having fruity-smelling breath",
+        "Tummy pain, drowsiness, or fast, deep breathing",
       ],
       selfCare: [
         "Take insulin exactly as prescribed",
         "Check blood sugar regularly and keep records",
-        "Eat balanced meals and learn how foods affect your levels",
+        "Eat balanced meals and carry fast-acting sugar to treat low blood sugar quickly",
         "Keep all appointments with your diabetes team",
       ],
       seekCare: [
-        "Blood sugar is very high with vomiting or stomach pain",
+        "Seek urgent care for high blood sugar with vomiting, tummy pain, or fast, deep breathing, as this can be diabetic ketoacidosis",
         "You feel drowsy, confused, or unusually unwell",
         "You have repeated low blood sugar episodes",
       ],

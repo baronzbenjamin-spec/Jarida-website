@@ -131,9 +131,9 @@ const topics: FactTopic[] = [
       "Tell someone you trust how you are feeling",
     ],
     seekCare: [
+      "You have thoughts of harming yourself — seek urgent help straight away",
       "You notice signs of a high or low episode developing",
       "Mood changes are affecting your safety, work, or relationships",
-      "You have thoughts of harming yourself, in which case seek urgent help straight away",
     ],
   },
   {
@@ -158,9 +158,9 @@ const topics: FactTopic[] = [
       "Tell someone you trust how you are feeling",
     ],
     seekCare: [
+      "You have thoughts of harming yourself — seek urgent help straight away",
       "Emotions or relationships feel overwhelming and hard to manage",
       "You would like to start a therapy designed for this condition",
-      "You have thoughts of harming yourself, in which case seek urgent help straight away",
     ],
   },
   {
@@ -212,9 +212,9 @@ const topics: FactTopic[] = [
       "Be patient and kind with yourself as you recover",
     ],
     seekCare: [
+      "You have thoughts of harming yourself — seek urgent help straight away",
       "Low mood lasts more than two weeks or is affecting daily life",
       "You cannot cope, sleep, or function as usual",
-      "You have thoughts of harming yourself, in which case seek urgent help straight away",
     ],
   },
   {
@@ -428,9 +428,9 @@ const topics: FactTopic[] = [
       "Tell someone you trust how you are feeling",
     ],
     seekCare: [
+      "There are thoughts of harming yourself or others — seek urgent help straight away",
       "Symptoms are new, worsening, or affecting daily life",
       "You or a relative is struggling to cope or feels unsafe",
-      "There are thoughts of harming yourself or others, in which case seek urgent help straight away",
     ],
   },
   {
@@ -563,9 +563,9 @@ const topics: FactTopic[] = [
       "Be patient and kind with yourself over time",
     ],
     seekCare: [
+      "You have thoughts of harming yourself — seek urgent help straight away",
       "Grief feels unrelenting or is not easing over a long time",
       "You cannot cope with daily life or feel very low",
-      "You have thoughts of harming yourself, in which case seek urgent help straight away",
     ],
   },
   {
@@ -617,9 +617,9 @@ const topics: FactTopic[] = [
       "Avoid alcohol or drugs to cope, which make things harder",
     ],
     seekCare: [
+      "You have thoughts of harming yourself — seek urgent help straight away",
       "Symptoms last more than a few weeks or are not easing",
       "Distress is affecting your daily life, sleep, or relationships",
-      "You have thoughts of harming yourself, in which case seek urgent help straight away",
     ],
   },
   {

@@ -83,9 +83,9 @@ export const fertilityPregnancy: FactCategory = {
         "Get outside for fresh air and gentle activity when possible",
       ],
       seekCare: [
+        "You have thoughts of harming yourself or your baby — seek urgent help straight away",
         "Low mood lasts more than two weeks or is getting worse",
         "You are struggling to care for yourself or your baby",
-        "You have thoughts of harming yourself or your baby, which need urgent help",
       ],
     },
     {

@@ -52,7 +52,7 @@ const topics: FactTopic[] = [
     seekCare: [
       "A baby under three months has any fever, or a baby aged three to six months has a high fever",
       "Your child is hard to wake, very drowsy, or has a rash that does not fade when pressed",
-      "The fever lasts more than about five days or your child is getting worse",
+      "The fever lasts more than about five days, your child is getting worse, or shows signs of dehydration such as fewer wet nappies, a dry mouth, or no tears when crying",
     ],
   },
   {

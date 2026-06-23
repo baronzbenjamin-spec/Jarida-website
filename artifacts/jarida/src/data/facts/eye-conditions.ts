@@ -79,12 +79,12 @@ export const eyeConditions: FactCategory = {
         "Rest your eyes and take regular breaks from screens",
         "Use lubricating drops for dryness or irritation",
         "Avoid rubbing your eyes and remove eye make-up gently",
-        "Keep the area clean and avoid known irritants",
+        "If a chemical splashes in your eye, rinse it at once with plenty of clean water for at least fifteen minutes, then seek care",
       ],
       seekCare: [
         "Seek prompt eye care for sudden vision loss or a very painful red eye",
         "You have flashing lights, new floaters, or a curtain over your vision",
-        "Symptoms persist, worsen, or follow an injury to the eye",
+        "Symptoms persist, worsen, or follow a chemical splash or injury to the eye",
       ],
     },
     {

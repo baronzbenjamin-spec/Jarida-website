@@ -55,7 +55,7 @@ export const skin: FactCategory = {
         "Keep nails short to limit damage from scratching",
       ],
       seekCare: [
-        "The skin becomes weepy, crusted, or looks infected",
+        "The skin becomes weepy or crusted, looks infected, or develops clusters of painful little blisters or sores, which need prompt review",
         "Itching disturbs sleep or daily life despite moisturising",
         "Flare-ups are frequent or not settling with usual care",
       ],

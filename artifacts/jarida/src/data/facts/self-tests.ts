@@ -28,9 +28,9 @@ export const selfTests: FactCategory = {
         "Be patient and kind with yourself as you take small steps",
       ],
       seekCare: [
+        "You have any thoughts of harming yourself — seek help straight away",
         "Your low mood has lasted more than two weeks or is worsening",
         "It is affecting your work, relationships, or daily life",
-        "You have any thoughts of harming yourself — seek help straight away",
       ],
     },
     {

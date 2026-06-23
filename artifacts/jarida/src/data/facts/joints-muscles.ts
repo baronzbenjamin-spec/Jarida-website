@@ -217,7 +217,7 @@ export const jointsMuscles: FactCategory = {
       ],
       seekCare: [
         "Pain follows a significant injury or fall",
-        "You have fever, severe headache, or a stiff neck with feeling unwell",
+        "You have fever, a severe headache, sensitivity to light, or a rash that does not fade when pressed, which need urgent checking",
         "You notice numbness, tingling, or weakness in the arms",
       ],
     },
