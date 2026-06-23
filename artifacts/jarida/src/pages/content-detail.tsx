@@ -90,12 +90,6 @@ export function FactDetail() {
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-
-        <p className="text-sm text-muted-foreground leading-relaxed mt-10 pt-8 border-t border-border">
-          This information is general guidance and does not replace advice from a
-          qualified professional. In an emergency, call your local emergency
-          number.
-        </p>
       </div>
 
       {related.length > 0 && (
@@ -183,11 +177,6 @@ export function ArticleDetail() {
               </p>
             ))}
           </div>
-
-          <p className="text-sm text-muted-foreground leading-relaxed mt-10 pt-8 border-t border-border">
-            This article is general information and does not replace personal
-            advice from a qualified professional.
-          </p>
         </div>
       </article>
 

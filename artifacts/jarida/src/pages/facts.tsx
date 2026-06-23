@@ -72,13 +72,6 @@ export default function Facts() {
               </div>
             ))}
           </div>
-
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mt-16 pt-8 border-t border-border">
-            This information is general guidance and does not replace advice from
-            a qualified professional. If you are worried about your health, or
-            your symptoms are severe or worsening, speak to a doctor. In an
-            emergency, call your local emergency number.
-          </p>
         </div>
       </section>
 
