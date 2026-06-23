@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useParams } from "wouter";
 import { ArrowLeft, ArrowRight, ChevronRight, AlertCircle, HeartPulse, Stethoscope } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import NotFound from "@/pages/not-found";
+import { useSeo } from "@/lib/seo";
 import {
   findFactBySlug,
   findArticleBySlug,
@@ -17,8 +18,38 @@ export function FactDetail() {
   }, [slug]);
 
   const result = slug ? findFactBySlug(slug) : undefined;
-  if (!result) return <NotFound />;
-  const { topic, category } = result;
+  const topic = result?.topic;
+  const category = result?.category;
+
+  const jsonLd = useMemo(() => {
+    if (!topic || !category) return undefined;
+    return {
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      name: topic.title,
+      description: topic.excerpt,
+      about: {
+        "@type": "MedicalCondition",
+        name: topic.title,
+        signOrSymptom: topic.symptoms.map((s) => ({
+          "@type": "MedicalSignOrSymptom",
+          name: s,
+        })),
+      },
+    };
+  }, [topic, category]);
+
+  useSeo({
+    title: topic
+      ? `${topic.title} — symptoms, self-care and when to see a doctor | Jarida`
+      : "Not found | Jarida",
+    description:
+      topic?.excerpt ??
+      "The page you are looking for could not be found.",
+    jsonLd,
+  });
+
+  if (!result || !topic || !category) return <NotFound />;
 
   const related = category.topics.filter((t) => t.slug !== topic.slug).slice(0, 3);
 
@@ -132,6 +163,35 @@ export function ArticleDetail() {
   }, [slug]);
 
   const article = slug ? findArticleBySlug(slug) : undefined;
+
+  const jsonLd = useMemo(() => {
+    if (!article) return undefined;
+    const image =
+      typeof window !== "undefined"
+        ? new URL(article.image, window.location.origin).href
+        : article.image;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.title,
+      description: article.excerpt,
+      articleSection: article.category,
+      image,
+      author: { "@type": "Organization", name: "Jarida" },
+      publisher: { "@type": "Organization", name: "Jarida" },
+    };
+  }, [article]);
+
+  useSeo({
+    title: article
+      ? `${article.title} | Jarida`
+      : "Not found | Jarida",
+    description:
+      article?.excerpt ??
+      "The page you are looking for could not be found.",
+    jsonLd,
+  });
+
   if (!article) return <NotFound />;
 
   const related = ARTICLES.filter((a) => a.slug !== article.slug).slice(0, 3);

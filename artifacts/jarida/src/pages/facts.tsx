@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ChevronRight, ChevronDown, Search, ShieldCheck } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { useSeo } from "@/lib/seo";
 import {
   FACT_CATEGORIES,
   DOCTOR_HELP,
@@ -14,6 +15,29 @@ import {
 export default function Facts() {
   const [query, setQuery] = useState("");
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
+
+  const faqJsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: PATIENT_QUESTIONS.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    }),
+    [],
+  );
+
+  useSeo({
+    title: "Facts & Advice — Symptoms and conditions A–Z | Jarida",
+    description:
+      "Clear, reassuring guidance on everyday health concerns. Browse common conditions and symptoms to understand what is happening, what you can do at home, and when to see a doctor.",
+    jsonLd: faqJsonLd,
+  });
 
   useEffect(() => {
     const scrollToHash = (smooth: boolean) => {
