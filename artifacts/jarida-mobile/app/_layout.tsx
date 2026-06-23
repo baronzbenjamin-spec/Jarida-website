@@ -1,0 +1,91 @@
+import {
+  PlusJakartaSans_400Regular,
+  PlusJakartaSans_500Medium,
+  PlusJakartaSans_600SemiBold,
+  PlusJakartaSans_700Bold,
+  PlusJakartaSans_800ExtraBold,
+  useFonts,
+} from "@expo-google-fonts/plus-jakarta-sans";
+import {
+  PlayfairDisplay_500Medium,
+  PlayfairDisplay_500Medium_Italic,
+  PlayfairDisplay_600SemiBold,
+} from "@expo-google-fonts/playfair-display";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Stack, useRouter, useSegments } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import React, { useEffect } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { KeyboardProvider } from "react-native-keyboard-controller";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { AppProvider, useApp } from "@/context/AppContext";
+
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
+
+const queryClient = new QueryClient();
+
+function RootLayoutNav() {
+  const { hydrated, onboardingComplete } = useApp();
+  const segments = useSegments();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!hydrated) return;
+    const onOnboarding = segments[0] === "onboarding";
+    if (!onboardingComplete && !onOnboarding) {
+      router.replace("/onboarding");
+    } else if (onboardingComplete && onOnboarding) {
+      router.replace("/(tabs)");
+    }
+  }, [hydrated, onboardingComplete, segments, router]);
+
+  return (
+    <Stack screenOptions={{ headerBackTitle: "Back" }}>
+      <Stack.Screen name="onboarding" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="doctor/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="book/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="chat/[id]" options={{ headerShown: false }} />
+    </Stack>
+  );
+}
+
+export default function RootLayout() {
+  const [fontsLoaded, fontError] = useFonts({
+    PlusJakartaSans_400Regular,
+    PlusJakartaSans_500Medium,
+    PlusJakartaSans_600SemiBold,
+    PlusJakartaSans_700Bold,
+    PlusJakartaSans_800ExtraBold,
+    PlayfairDisplay_500Medium,
+    PlayfairDisplay_500Medium_Italic,
+    PlayfairDisplay_600SemiBold,
+  });
+
+  useEffect(() => {
+    if (fontsLoaded || fontError) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) return null;
+
+  return (
+    <SafeAreaProvider>
+      <ErrorBoundary>
+        <QueryClientProvider client={queryClient}>
+          <GestureHandlerRootView>
+            <KeyboardProvider>
+              <AppProvider>
+                <RootLayoutNav />
+              </AppProvider>
+            </KeyboardProvider>
+          </GestureHandlerRootView>
+        </QueryClientProvider>
+      </ErrorBoundary>
+    </SafeAreaProvider>
+  );
+}

@@ -1,1 +1,2 @@
 - [react-vite font @import ordering](react-vite-css-imports.md) — Google Fonts @import must be line 1 of index.css, before @import "tailwindcss", or it silently fails.
+- [Expo web e2e testing limitation](expo-web-testing-harness.md) — runTest cannot reach Expo dev domains; verify via bundle + tsc + screenshot tool instead.
