@@ -3,9 +3,11 @@ import { Link, useLocation } from "wouter";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
-import { FACT_CATEGORIES, findTopicsBySlugs, MOST_VISITED } from "@/data/content";
+import { findTopicsBySlugs, MOST_VISITED } from "@/data/content";
 
 const MOST_VISITED_KEY = "most-visited";
+const A_Z_KEY = "all-symptoms";
+const QUESTIONS_KEY = "common-questions";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -96,22 +98,6 @@ export function SiteHeader() {
   };
 
   const mostVisitedTopics = findTopicsBySlugs(MOST_VISITED);
-  const activeCategory = FACT_CATEGORIES.find((c) => c.id === activeKey);
-  const panelTopics =
-    activeKey === MOST_VISITED_KEY
-      ? mostVisitedTopics
-      : activeCategory?.topics ?? [];
-  const panelTitle =
-    activeKey === MOST_VISITED_KEY ? "Most visited" : activeCategory?.name;
-
-  const mobileGroups = [
-    { key: MOST_VISITED_KEY, name: "Most visited", topics: mostVisitedTopics },
-    ...FACT_CATEGORIES.map((category) => ({
-      key: category.id,
-      name: category.name,
-      topics: category.topics,
-    })),
-  ];
 
   return (
     <>
@@ -166,12 +152,15 @@ export function SiteHeader() {
                     <div className="bg-white rounded-3xl border border-border/60 shadow-2xl shadow-primary/10 overflow-hidden grid grid-cols-[18rem_1fr]">
                       {/* Left column */}
                       <div className="bg-secondary/40 p-4 border-r border-border/60 max-h-[70vh] overflow-y-auto">
-                        <ul className="flex flex-col">
+                        <ul className="flex flex-col gap-1">
                           <li>
                             <button
                               type="button"
                               onMouseEnter={() => setActiveKey(MOST_VISITED_KEY)}
                               onFocus={() => setActiveKey(MOST_VISITED_KEY)}
+                              aria-current={
+                                activeKey === MOST_VISITED_KEY ? "true" : undefined
+                              }
                               className={`w-full flex items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
                                 activeKey === MOST_VISITED_KEY
                                   ? "bg-white text-primary shadow-sm"
@@ -182,38 +171,36 @@ export function SiteHeader() {
                               <ChevronRight className="w-4 h-4 opacity-60" />
                             </button>
                           </li>
-                          {FACT_CATEGORIES.map((category) => (
-                            <li key={category.id}>
-                              <Link
-                                href={`/facts/category/${category.id}`}
-                                onMouseEnter={() => setActiveKey(category.id)}
-                                onFocus={() => setActiveKey(category.id)}
-                                onClick={() => setMegaOpen(false)}
-                                className={`w-full flex items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
-                                  activeKey === category.id
-                                    ? "bg-white text-primary shadow-sm"
-                                    : "text-foreground/80 hover:text-primary hover:bg-white/60"
-                                }`}
-                              >
-                                {category.name}
-                                <ChevronRight className="w-4 h-4 opacity-60" />
-                              </Link>
-                            </li>
-                          ))}
-                          <li className="mt-2 pt-2 border-t border-border/60 flex flex-col">
-                            <Link
-                              href="/facts"
-                              onClick={() => setMegaOpen(false)}
-                              className="block rounded-xl px-4 py-3 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-white/60 transition-colors"
-                            >
-                              Facts &amp; Advice overview
-                            </Link>
+                          <li>
                             <Link
                               href="/facts#all-symptoms"
+                              onMouseEnter={() => setActiveKey(A_Z_KEY)}
+                              onFocus={() => setActiveKey(A_Z_KEY)}
                               onClick={(e) => goToHash(e, "all-symptoms")}
-                              className="block rounded-xl px-4 py-3 text-sm font-semibold text-primary hover:bg-white/60 transition-colors"
+                              className={`w-full flex items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
+                                activeKey === A_Z_KEY
+                                  ? "bg-white text-primary shadow-sm"
+                                  : "text-foreground/80 hover:text-primary hover:bg-white/60"
+                              }`}
                             >
                               All symptoms A&ndash;Z
+                              <ChevronRight className="w-4 h-4 opacity-60" />
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/common-questions"
+                              onMouseEnter={() => setActiveKey(QUESTIONS_KEY)}
+                              onFocus={() => setActiveKey(QUESTIONS_KEY)}
+                              onClick={() => setMegaOpen(false)}
+                              className={`w-full flex items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
+                                activeKey === QUESTIONS_KEY
+                                  ? "bg-white text-primary shadow-sm"
+                                  : "text-foreground/80 hover:text-primary hover:bg-white/60"
+                              }`}
+                            >
+                              Common patient questions
+                              <ChevronRight className="w-4 h-4 opacity-60" />
                             </Link>
                           </li>
                         </ul>
@@ -221,22 +208,66 @@ export function SiteHeader() {
 
                       {/* Right column */}
                       <div className="p-6 max-h-[70vh] overflow-y-auto">
-                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-5">
-                          {panelTitle}
-                        </p>
-                        <ul className="grid grid-cols-2 gap-x-8 gap-y-1">
-                          {panelTopics.map((topic) => (
-                            <li key={topic.slug}>
-                              <Link
-                                href={`/facts/${topic.slug}`}
-                                onClick={() => setMegaOpen(false)}
-                                className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary/50 transition-colors"
-                              >
-                                {topic.title}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                        {activeKey === MOST_VISITED_KEY && (
+                          <>
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-5">
+                              Most visited
+                            </p>
+                            <ul className="grid grid-cols-2 gap-x-8 gap-y-1">
+                              {mostVisitedTopics.map((topic) => (
+                                <li key={topic.slug}>
+                                  <Link
+                                    href={`/facts/${topic.slug}`}
+                                    onClick={() => setMegaOpen(false)}
+                                    className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary/50 transition-colors"
+                                  >
+                                    {topic.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        )}
+                        {activeKey === A_Z_KEY && (
+                          <div className="max-w-md">
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-5">
+                              All symptoms A&ndash;Z
+                            </p>
+                            <p className="text-sm text-foreground/70 leading-relaxed mb-5">
+                              Browse every condition and symptom in our library,
+                              grouped alphabetically. Open a letter to see the
+                              conditions listed under it.
+                            </p>
+                            <Link
+                              href="/facts#all-symptoms"
+                              onClick={(e) => goToHash(e, "all-symptoms")}
+                              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/70 transition-colors"
+                            >
+                              Browse all symptoms
+                              <ChevronRight className="w-4 h-4" />
+                            </Link>
+                          </div>
+                        )}
+                        {activeKey === QUESTIONS_KEY && (
+                          <div className="max-w-md">
+                            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-5">
+                              Common patient questions
+                            </p>
+                            <p className="text-sm text-foreground/70 leading-relaxed mb-5">
+                              Clear, reference-backed answers to the questions
+                              people ask most often, with the scientific sources
+                              that support them.
+                            </p>
+                            <Link
+                              href="/common-questions"
+                              onClick={() => setMegaOpen(false)}
+                              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/70 transition-colors"
+                            >
+                              View all questions
+                              <ChevronRight className="w-4 h-4" />
+                            </Link>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -328,65 +359,60 @@ export function SiteHeader() {
                 }`}
               >
                 <div className="flex flex-col py-2 pl-1 text-base font-sans">
-                  {mobileGroups.map((group) => {
-                    const sectionOpen = mobileSection === group.key;
-                    return (
-                      <div
-                        key={group.key}
-                        className="border-b border-border/40 last:border-b-0"
-                      >
-                        <button
-                          type="button"
-                          onClick={() =>
-                            setMobileSection(sectionOpen ? null : group.key)
-                          }
-                          aria-expanded={sectionOpen}
-                          className="w-full flex items-center justify-between gap-2 py-3 text-left text-base font-medium text-foreground/90 hover:text-primary transition-colors"
-                        >
-                          {group.name}
-                          <ChevronDown
-                            className={`w-4 h-4 shrink-0 transition-transform duration-300 ${
-                              sectionOpen ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-                        <div
-                          className={`overflow-hidden transition-all duration-300 ${
-                            sectionOpen ? "max-h-[80vh]" : "max-h-0"
-                          }`}
-                        >
-                          <div className="flex flex-col pb-2 pl-3">
-                            {group.topics.map((topic) => (
-                              <Link
-                                key={topic.slug}
-                                href={`/facts/${topic.slug}`}
-                                onClick={() => setMenuOpen(false)}
-                                className="py-2 text-sm text-foreground/70 hover:text-primary transition-colors"
-                              >
-                                {topic.title}
-                              </Link>
-                            ))}
-                            {group.key !== MOST_VISITED_KEY && (
-                              <Link
-                                href={`/facts/category/${group.key}`}
-                                onClick={() => setMenuOpen(false)}
-                                className="inline-flex items-center gap-1 py-2 text-sm font-semibold text-primary hover:text-primary/70 transition-colors"
-                              >
-                                Browse all {group.name.toLowerCase()}
-                                <ChevronRight className="w-4 h-4" />
-                              </Link>
-                            )}
-                          </div>
-                        </div>
+                  <div className="border-b border-border/40">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setMobileSection(
+                          mobileSection === MOST_VISITED_KEY
+                            ? null
+                            : MOST_VISITED_KEY,
+                        )
+                      }
+                      aria-expanded={mobileSection === MOST_VISITED_KEY}
+                      className="w-full flex items-center justify-between gap-2 py-3 text-left text-base font-medium text-foreground/90 hover:text-primary transition-colors"
+                    >
+                      Most visited
+                      <ChevronDown
+                        className={`w-4 h-4 shrink-0 transition-transform duration-300 ${
+                          mobileSection === MOST_VISITED_KEY ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        mobileSection === MOST_VISITED_KEY
+                          ? "max-h-[80vh]"
+                          : "max-h-0"
+                      }`}
+                    >
+                      <div className="flex flex-col pb-2 pl-3">
+                        {mostVisitedTopics.map((topic) => (
+                          <Link
+                            key={topic.slug}
+                            href={`/facts/${topic.slug}`}
+                            onClick={() => setMenuOpen(false)}
+                            className="py-2 text-sm text-foreground/70 hover:text-primary transition-colors"
+                          >
+                            {topic.title}
+                          </Link>
+                        ))}
                       </div>
-                    );
-                  })}
+                    </div>
+                  </div>
                   <Link
                     href="/facts#all-symptoms"
                     onClick={(e) => goToHash(e, "all-symptoms")}
-                    className="py-3 font-semibold text-primary hover:text-primary/70 transition-colors"
+                    className="py-3 font-medium text-foreground/90 hover:text-primary transition-colors border-b border-border/40"
                   >
                     All symptoms A&ndash;Z
+                  </Link>
+                  <Link
+                    href="/common-questions"
+                    onClick={() => setMenuOpen(false)}
+                    className="py-3 font-medium text-foreground/90 hover:text-primary transition-colors"
+                  >
+                    Common patient questions
                   </Link>
                 </div>
               </div>
