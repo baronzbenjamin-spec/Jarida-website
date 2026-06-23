@@ -184,10 +184,11 @@ export function SiteHeader() {
                           </li>
                           {FACT_CATEGORIES.map((category) => (
                             <li key={category.id}>
-                              <button
-                                type="button"
+                              <Link
+                                href={`/facts/category/${category.id}`}
                                 onMouseEnter={() => setActiveKey(category.id)}
                                 onFocus={() => setActiveKey(category.id)}
+                                onClick={() => setMegaOpen(false)}
                                 className={`w-full flex items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
                                   activeKey === category.id
                                     ? "bg-white text-primary shadow-sm"
@@ -196,7 +197,7 @@ export function SiteHeader() {
                               >
                                 {category.name}
                                 <ChevronRight className="w-4 h-4 opacity-60" />
-                              </button>
+                              </Link>
                             </li>
                           ))}
                           <li className="mt-2 pt-2 border-t border-border/60 flex flex-col">
@@ -365,6 +366,16 @@ export function SiteHeader() {
                                 {topic.title}
                               </Link>
                             ))}
+                            {group.key !== MOST_VISITED_KEY && (
+                              <Link
+                                href={`/facts/category/${group.key}`}
+                                onClick={() => setMenuOpen(false)}
+                                className="inline-flex items-center gap-1 py-2 text-sm font-semibold text-primary hover:text-primary/70 transition-colors"
+                              >
+                                Browse all {group.name.toLowerCase()}
+                                <ChevronRight className="w-4 h-4" />
+                              </Link>
+                            )}
                           </div>
                         </div>
                       </div>

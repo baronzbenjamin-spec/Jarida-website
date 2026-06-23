@@ -7,6 +7,7 @@ import Home from "@/pages/home";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
 import Facts from "@/pages/facts";
+import Category from "@/pages/category";
 import Articles from "@/pages/articles";
 import { FactDetail, ArticleDetail } from "@/pages/content-detail";
 
@@ -17,6 +18,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/facts" component={Facts} />
+      <Route path="/facts/category/:id" component={Category} />
       <Route path="/facts/:slug" component={FactDetail} />
       <Route path="/articles" component={Articles} />
       <Route path="/articles/:slug" component={ArticleDetail} />

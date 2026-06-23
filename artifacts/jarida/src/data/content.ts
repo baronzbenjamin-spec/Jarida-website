@@ -870,6 +870,10 @@ export function findFactBySlug(slug: string):
   return undefined;
 }
 
+export function findCategoryById(id: string): FactCategory | undefined {
+  return FACT_CATEGORIES.find((category) => category.id === id);
+}
+
 export function findArticleBySlug(slug: string): Article | undefined {
   return ARTICLES.find((a) => a.slug === slug);
 }
