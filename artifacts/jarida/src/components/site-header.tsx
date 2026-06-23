@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
+import { FACT_CATEGORIES, findTopicsBySlugs, MOST_VISITED } from "@/data/content";
 
-const NAV = [
-  { label: "Facts & Advice", href: "/facts" },
-  { label: "Articles", href: "/articles" },
-];
+const MOST_VISITED_KEY = "most-visited";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [megaOpen, setMegaOpen] = useState(false);
+  const [activeKey, setActiveKey] = useState<string>(MOST_VISITED_KEY);
+  const [mobileFactsOpen, setMobileFactsOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -27,6 +29,46 @@ export function SiteHeader() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!megaOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMegaOpen(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [megaOpen]);
+
+  const openMega = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setMegaOpen(true);
+  };
+
+  const scheduleCloseMega = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setMegaOpen(false), 120);
+  };
+
+  const handleMegaBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+      setMegaOpen(false);
+    }
+  };
+
+  const mostVisitedTopics = findTopicsBySlugs(MOST_VISITED);
+  const activeCategory = FACT_CATEGORIES.find((c) => c.id === activeKey);
+  const panelTopics =
+    activeKey === MOST_VISITED_KEY
+      ? mostVisitedTopics
+      : activeCategory?.topics ?? [];
+  const panelTitle =
+    activeKey === MOST_VISITED_KEY ? "Most visited" : activeCategory?.name;
+
   return (
     <>
       <header
@@ -40,15 +82,33 @@ export function SiteHeader() {
           <Logo className="z-50" />
 
           <nav className="hidden md:flex items-center gap-10">
-            {NAV.map((item) => (
+            <div
+              className="relative"
+              onMouseEnter={openMega}
+              onMouseLeave={scheduleCloseMega}
+              onBlur={handleMegaBlur}
+            >
               <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                href="/facts"
+                className="inline-flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                aria-haspopup="true"
+                aria-expanded={megaOpen}
+                onFocus={openMega}
               >
-                {item.label}
+                Facts &amp; Advice
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    megaOpen ? "rotate-180" : ""
+                  }`}
+                />
               </Link>
-            ))}
+            </div>
+            <Link
+              href="/articles"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+            >
+              Articles
+            </Link>
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
@@ -74,6 +134,92 @@ export function SiteHeader() {
           >
             <Menu className="w-6 h-6" />
           </button>
+        </div>
+
+        {/* MEGA MENU (desktop) */}
+        <div
+          className={`hidden md:block absolute inset-x-0 top-full transition-all duration-300 ${
+            megaOpen
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-2 pointer-events-none"
+          }`}
+          onMouseEnter={openMega}
+          onMouseLeave={scheduleCloseMega}
+          onBlur={handleMegaBlur}
+          aria-hidden={!megaOpen}
+        >
+          {megaOpen && (
+          <div className="container mx-auto px-6 md:px-12 pt-4">
+            <div className="bg-white rounded-3xl border border-border/60 shadow-2xl shadow-primary/10 overflow-hidden grid grid-cols-[18rem_1fr]">
+              {/* Left column */}
+              <div className="bg-secondary/40 p-4 border-r border-border/60">
+                <ul className="flex flex-col">
+                  <li>
+                    <button
+                      type="button"
+                      onMouseEnter={() => setActiveKey(MOST_VISITED_KEY)}
+                      onFocus={() => setActiveKey(MOST_VISITED_KEY)}
+                      className={`w-full flex items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
+                        activeKey === MOST_VISITED_KEY
+                          ? "bg-white text-primary shadow-sm"
+                          : "text-foreground/80 hover:text-primary hover:bg-white/60"
+                      }`}
+                    >
+                      Most visited
+                      <ChevronRight className="w-4 h-4 opacity-60" />
+                    </button>
+                  </li>
+                  {FACT_CATEGORIES.map((category) => (
+                    <li key={category.id}>
+                      <button
+                        type="button"
+                        onMouseEnter={() => setActiveKey(category.id)}
+                        onFocus={() => setActiveKey(category.id)}
+                        className={`w-full flex items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium transition-colors ${
+                          activeKey === category.id
+                            ? "bg-white text-primary shadow-sm"
+                            : "text-foreground/80 hover:text-primary hover:bg-white/60"
+                        }`}
+                      >
+                        {category.name}
+                        <ChevronRight className="w-4 h-4 opacity-60" />
+                      </button>
+                    </li>
+                  ))}
+                  <li className="mt-2 pt-2 border-t border-border/60">
+                    <Link
+                      href="/facts#all-symptoms"
+                      onClick={() => setMegaOpen(false)}
+                      className="block rounded-xl px-4 py-3 text-sm font-semibold text-primary hover:bg-white/60 transition-colors"
+                    >
+                      All symptoms A&ndash;Z
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Right column */}
+              <div className="p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-5">
+                  {panelTitle}
+                </p>
+                <ul className="grid grid-cols-2 gap-x-8 gap-y-1">
+                  {panelTopics.map((topic) => (
+                    <li key={topic.slug}>
+                      <Link
+                        href={`/facts/${topic.slug}`}
+                        onClick={() => setMegaOpen(false)}
+                        className="block rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-secondary/50 transition-colors"
+                      >
+                        {topic.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          )}
         </div>
       </header>
 
@@ -107,19 +253,63 @@ export function SiteHeader() {
               <X className="w-6 h-6" />
             </button>
           </div>
-          <div className="flex flex-col gap-6 text-xl font-serif text-primary">
-            {NAV.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-primary/70 transition-colors"
+          <div className="flex flex-col gap-2 text-primary overflow-y-auto -mx-2 px-2">
+            <div>
+              <button
+                type="button"
+                onClick={() => setMobileFactsOpen((v) => !v)}
+                aria-expanded={mobileFactsOpen}
+                className="w-full flex items-center justify-between gap-2 py-2 text-xl font-serif hover:text-primary/70 transition-colors"
               >
-                {item.label}
-              </Link>
-            ))}
+                Facts &amp; Advice
+                <ChevronDown
+                  className={`w-5 h-5 transition-transform duration-300 ${
+                    mobileFactsOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  mobileFactsOpen ? "max-h-[60vh]" : "max-h-0"
+                }`}
+              >
+                <div className="flex flex-col gap-1 py-2 pl-1 text-base font-sans">
+                  <Link
+                    href="/facts"
+                    onClick={() => setMenuOpen(false)}
+                    className="py-2 text-foreground/80 hover:text-primary transition-colors"
+                  >
+                    Browse all categories
+                  </Link>
+                  {FACT_CATEGORIES.map((category) => (
+                    <Link
+                      key={category.id}
+                      href={`/facts#${category.id}`}
+                      onClick={() => setMenuOpen(false)}
+                      className="py-2 text-foreground/80 hover:text-primary transition-colors"
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/facts#all-symptoms"
+                    onClick={() => setMenuOpen(false)}
+                    className="py-2 font-semibold text-primary hover:text-primary/70 transition-colors"
+                  >
+                    All symptoms A&ndash;Z
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <Link
+              href="/articles"
+              onClick={() => setMenuOpen(false)}
+              className="py-2 text-xl font-serif hover:text-primary/70 transition-colors"
+            >
+              Articles
+            </Link>
           </div>
-          <div className="mt-auto flex flex-col gap-4">
+          <div className="mt-auto flex flex-col gap-4 pt-6">
             <Button
               variant="outline"
               className="w-full rounded-full h-14 text-lg border-primary/20 text-primary"

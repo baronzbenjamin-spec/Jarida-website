@@ -35,6 +35,11 @@ export type Article = {
   body: string[];
 };
 
+export type PatientQuestion = {
+  question: string;
+  answer: string;
+};
+
 export const FACT_CATEGORIES: FactCategory[] = [
   {
     id: "colds-airways",
@@ -769,6 +774,91 @@ export const ARTICLES: Article[] = [
     ],
   },
 ];
+
+export const MOST_VISITED: string[] = [
+  "common-cold",
+  "urinary-tract-infection",
+  "hay-fever",
+  "sore-throat",
+  "eczema",
+  "headache",
+  "fever-in-children",
+  "heartburn-reflux",
+];
+
+export const DOCTOR_HELP: string[] = [
+  "sinus-infection",
+  "urinary-tract-infection",
+  "hay-fever",
+  "sore-throat",
+  "acne",
+  "hives",
+  "allergic-rhinitis",
+  "ear-infection",
+  "cold-sores",
+  "eczema",
+  "food-allergy",
+  "seasonal-flu",
+];
+
+export const PATIENT_QUESTIONS: PatientQuestion[] = [
+  {
+    question: "When should I see a doctor about a cold?",
+    answer:
+      "Most colds clear on their own within a week or two. Speak to a doctor if symptoms last beyond about ten days, keep getting worse, or come with a high fever, chest pain, or trouble breathing.",
+  },
+  {
+    question: "Do I really need antibiotics for a sore throat?",
+    answer:
+      "Usually not. Most sore throats are caused by viruses, which antibiotics do not help. They are only useful for certain bacterial infections, so soothing remedies and pain relief are normally all that is needed.",
+  },
+  {
+    question: "How long is a stomach bug contagious?",
+    answer:
+      "You can usually pass on a stomach bug while you have symptoms and for a couple of days after they settle. Careful hand washing and staying home until you feel better helps protect those around you.",
+  },
+  {
+    question: "When is a fever in my child something to worry about?",
+    answer:
+      "How your child behaves matters more than the exact temperature. Seek advice if a baby under three months has any fever, if your child is very drowsy, has a rash that does not fade, struggles to breathe, or you are simply worried.",
+  },
+  {
+    question: "What can I do at home for a urinary tract infection?",
+    answer:
+      "Drink plenty of water, use over-the-counter pain relief, and avoid holding urine for long periods. If symptoms are severe, do not improve within a day or two, or you notice fever or blood in the urine, speak to a doctor.",
+  },
+  {
+    question: "How do I know if my symptoms are an emergency?",
+    answer:
+      "Treat sudden difficulty breathing, severe chest pain, swelling of the lips or throat, fainting, or a rash that does not fade under pressure as emergencies and call your local emergency number straight away.",
+  },
+  {
+    question: "Is it normal to feel tired for weeks after the flu?",
+    answer:
+      "Yes. The flu can leave you feeling drained for a week or more, and tiredness can linger as you recover. Rest, fluids, and a gradual return to activity usually help. See a doctor if symptoms return worse or do not ease.",
+  },
+  {
+    question: "Can I look after most symptoms myself first?",
+    answer:
+      "Many everyday complaints can be eased at home with rest, fluids, and simple pain relief. Each topic here explains what you can do yourself and the signs that mean it is worth speaking to a doctor.",
+  },
+];
+
+export function getAllTopics(): Array<{
+  topic: FactTopic;
+  category: FactCategory;
+}> {
+  return FACT_CATEGORIES.flatMap((category) =>
+    category.topics.map((topic) => ({ topic, category })),
+  );
+}
+
+export function findTopicsBySlugs(slugs: string[]): FactTopic[] {
+  const all = getAllTopics();
+  return slugs
+    .map((slug) => all.find((entry) => entry.topic.slug === slug)?.topic)
+    .filter((topic): topic is FactTopic => Boolean(topic));
+}
 
 export function findFactBySlug(slug: string):
   | { topic: FactTopic; category: FactCategory }
