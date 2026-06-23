@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { 
   ArrowRight, Star, CheckCircle2, Shield, Clock, HeartPulse, 
-  ChevronRight, Users, Activity, Globe, Menu, X 
+  ChevronRight, Globe, Menu, X 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -86,7 +86,7 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-8">
             <a href="#solutions" onClick={() => setAudience("patient")} className="text-sm font-medium hover:text-primary transition-colors">For Patients</a>
             <a href="#solutions" onClick={() => setAudience("doctor")} className="text-sm font-medium hover:text-primary transition-colors">For Doctors</a>
-            <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">About Us</a>
+            <a href="#download" className="text-sm font-medium hover:text-primary transition-colors">Download</a>
             <div className="flex items-center gap-1 text-sm font-medium text-muted-foreground ml-4 border-l border-border pl-4">
               <Globe className="w-4 h-4" />
               <span>EN</span>
@@ -130,7 +130,7 @@ export default function Home() {
           </div>
           <a href="#solutions" onClick={() => { setAudience("patient"); setMenuOpen(false); }} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">For Patients</a>
           <a href="#solutions" onClick={() => { setAudience("doctor"); setMenuOpen(false); }} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">For Doctors</a>
-          <a href="#about" onClick={() => setMenuOpen(false)} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">About Us</a>
+          <a href="#download" onClick={() => setMenuOpen(false)} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">Download</a>
           <Button asChild className="mt-6 rounded-full px-6 bg-primary hover:bg-primary/90 text-white">
             <a href="#download" onClick={() => setMenuOpen(false)}>{current.login}</a>
           </Button>
@@ -272,63 +272,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT US */}
-      <section id="about" className="py-20 bg-primary text-white relative overflow-hidden scroll-mt-24">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
-            Connecting Patients and Doctors Seamlessly
-          </h2>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-14">
-            Jarida connects patients and doctors in one seamless space — making healthcare accessible, simple, and fast. We build technology that saves time, improves efficiency, and makes care more convenient for everyone.
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20 border-t border-white/20 pt-12">
-            <StatItem value="50K+" label="Consultations" icon={<Activity className="w-6 h-6 text-secondary" />} />
-            <StatItem value="500+" label="Doctors" icon={<Users className="w-6 h-6 text-secondary" />} />
-            <StatItem value="10K+" label="Patients" icon={<HeartPulse className="w-6 h-6 text-secondary" />} />
-          </div>
-        </div>
-      </section>
-
       {/* DOWNLOAD */}
       <section id="download" className="py-24 bg-secondary/50 scroll-mt-24">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl shadow-primary/5 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden relative">
+          <div className="bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl shadow-primary/5 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 opacity-50" />
-            
-            <div className="max-w-xl relative z-10">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Available now on App Store and Google Play</h2>
-              <p className="text-lg text-muted-foreground mb-8">Get the Jarida app today and carry your healthcare with you.</p>
-              
-              <div className="flex flex-wrap gap-4 mb-10">
-                <AppStoreButton type="ios" />
-                <AppStoreButton type="android" />
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+              <div className="max-w-xl relative z-10">
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Available now on App Store and Google Play</h2>
+                <p className="text-lg text-muted-foreground mb-8">Get the Jarida app today and carry your healthcare with you.</p>
+                
+                <div className="flex flex-wrap gap-4 mb-10">
+                  <AppStoreButton type="ios" />
+                  <AppStoreButton type="android" />
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="flex -space-x-3">
+                    {[1,2,3,4].map((i) => (
+                      <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-secondary flex items-center justify-center overflow-hidden">
+                        <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i}&backgroundColor=e2e8f0`} alt="Avatar" className="w-full h-full object-cover" />
+                      </div>
+                    ))}
+                  </div>
+                  <div>
+                    <div className="flex text-yellow-400">
+                      {[1,2,3,4,5].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                    </div>
+                    <p className="text-sm font-medium mt-1">5/5 rating from users</p>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-3">
-                  {[1,2,3,4].map((i) => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-secondary flex items-center justify-center overflow-hidden">
-                      <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i}&backgroundColor=e2e8f0`} alt="Avatar" className="w-full h-full object-cover" />
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <div className="flex text-yellow-400">
-                    {[1,2,3,4,5].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
-                  </div>
-                  <p className="text-sm font-medium mt-1">5/5 rating from users</p>
-                </div>
+              <div className="relative z-10 w-full max-w-sm flex justify-center">
+                <img 
+                  src="/images/app-mockup.png" 
+                  alt="Jarida App Mockup" 
+                  className="w-full h-auto drop-shadow-2xl max-h-[600px] object-contain"
+                />
               </div>
             </div>
 
-            <div className="relative z-10 w-full max-w-sm flex justify-center translate-y-20 md:translate-y-0">
-              <img 
-                src="/images/app-mockup.png" 
-                alt="Jarida App Mockup" 
-                className="w-full h-auto drop-shadow-2xl max-h-[600px] object-contain"
-              />
+            <div className="relative z-10 mt-12 md:mt-16 pt-10 border-t border-border grid grid-cols-3 gap-4 md:gap-8 text-center">
+              <div>
+                <div className="text-3xl md:text-5xl font-black text-primary mb-1">50K+</div>
+                <div className="text-muted-foreground font-medium uppercase tracking-wider text-xs md:text-sm">Consultations</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-5xl font-black text-primary mb-1">500+</div>
+                <div className="text-muted-foreground font-medium uppercase tracking-wider text-xs md:text-sm">Doctors</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-5xl font-black text-primary mb-1">10K+</div>
+                <div className="text-muted-foreground font-medium uppercase tracking-wider text-xs md:text-sm">Patients</div>
+              </div>
             </div>
           </div>
         </div>
@@ -356,7 +354,7 @@ export default function Home() {
               <ul className="space-y-4">
                 <li><a href="#solutions" onClick={() => setAudience("patient")} className="text-white/60 hover:text-white transition-colors">For Patients</a></li>
                 <li><a href="#solutions" onClick={() => setAudience("doctor")} className="text-white/60 hover:text-white transition-colors">For Doctors</a></li>
-                <li><a href="#about" className="text-white/60 hover:text-white transition-colors">About Us</a></li>
+                <li><a href="#download" className="text-white/60 hover:text-white transition-colors">Download</a></li>
                 <li><a href="mailto:support@jarida.org" className="text-white/60 hover:text-white transition-colors">Contact Support</a></li>
               </ul>
             </div>
@@ -415,18 +413,6 @@ function FeatureItem({ title, desc }: { title: string, desc: string }) {
         <p className="text-muted-foreground">{desc}</p>
       </div>
     </li>
-  );
-}
-
-function StatItem({ value, label, icon }: { value: string, label: string, icon: React.ReactNode }) {
-  return (
-    <div className="flex flex-col items-center justify-center py-6 md:py-0">
-      <div className="mb-4 bg-white/10 p-3 rounded-2xl backdrop-blur-sm">
-        {icon}
-      </div>
-      <div className="text-4xl md:text-5xl font-black mb-2">{value}</div>
-      <div className="text-white/70 font-medium uppercase tracking-wider text-sm">{label}</div>
-    </div>
   );
 }
 
