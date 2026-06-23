@@ -17,6 +17,17 @@ const content = (await import("../src/data/content.ts")) as {
 
 const { MOST_VISITED, DOCTOR_HELP, ARTICLES, getAllTopics } = content;
 
+type PatientAnswer = { num: number; slug: string; references: number[] };
+
+const patientAnswersModule = (await import(
+  "../src/data/patient-answers.ts"
+)) as {
+  PATIENT_ANSWERS: PatientAnswer[];
+  PATIENT_ANSWER_REFERENCES: string[];
+};
+
+const { PATIENT_ANSWERS, PATIENT_ANSWER_REFERENCES } = patientAnswersModule;
+
 const errors: string[] = [];
 
 const entries = getAllTopics();
@@ -139,6 +150,66 @@ if (missingAssets.length > 0) {
   );
 }
 
+// --- Patient answer checks ------------------------------------------------
+// Each patient answer renders its own page at /common-questions/:slug. A
+// duplicate or empty slug would silently break a page, and a reference number
+// that does not resolve to an entry in PATIENT_ANSWER_REFERENCES would render
+// a citation pointing at nothing.
+
+const patientSlugCounts = new Map<string, number>();
+const emptyPatientSlugs: number[] = [];
+for (const answer of PATIENT_ANSWERS) {
+  const slug = (answer.slug ?? "").trim();
+  if (slug.length === 0) {
+    emptyPatientSlugs.push(answer.num);
+    continue;
+  }
+  patientSlugCounts.set(slug, (patientSlugCounts.get(slug) ?? 0) + 1);
+}
+
+if (emptyPatientSlugs.length > 0) {
+  errors.push(
+    `Patient answers with an empty slug (each needs a unique, non-empty slug):\n${emptyPatientSlugs
+      .map((num) => `  - answer num ${num}`)
+      .join("\n")}`,
+  );
+}
+
+const patientDuplicates = [...patientSlugCounts.entries()]
+  .filter(([, count]) => count > 1)
+  .map(([slug, count]) => `  - "${slug}" appears ${count} times`);
+
+if (patientDuplicates.length > 0) {
+  errors.push(
+    `Duplicate patient answer slugs found (slugs must be unique):\n${patientDuplicates.join(
+      "\n",
+    )}`,
+  );
+}
+
+const unresolvedReferences: string[] = [];
+for (const answer of PATIENT_ANSWERS) {
+  for (const ref of answer.references) {
+    if (
+      !Number.isInteger(ref) ||
+      ref < 1 ||
+      ref > PATIENT_ANSWER_REFERENCES.length
+    ) {
+      unresolvedReferences.push(
+        `  - answer "${answer.slug}" (num ${answer.num}) cites reference ${ref}, but only 1-${PATIENT_ANSWER_REFERENCES.length} exist`,
+      );
+    }
+  }
+}
+
+if (unresolvedReferences.length > 0) {
+  errors.push(
+    `Patient answer references that do not resolve to an entry in PATIENT_ANSWER_REFERENCES:\n${unresolvedReferences.join(
+      "\n",
+    )}`,
+  );
+}
+
 if (errors.length > 0) {
   console.error("Navigation link check FAILED:\n");
   console.error(errors.join("\n\n"));
@@ -151,5 +222,6 @@ if (errors.length > 0) {
 console.log(
   `Navigation link check passed: ${knownSlugs.size} unique topic slugs; ` +
     `${MOST_VISITED.length} MOST_VISITED and ${DOCTOR_HELP.length} DOCTOR_HELP links all resolve; ` +
-    `${articleSlugCounts.size} unique article slugs with hero images all resolving.`,
+    `${articleSlugCounts.size} unique article slugs with hero images all resolving; ` +
+    `${patientSlugCounts.size} unique patient answer slugs with all references resolving.`,
 );
