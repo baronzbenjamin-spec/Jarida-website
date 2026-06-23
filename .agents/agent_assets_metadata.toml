@@ -1,5 +1,4 @@
 uploads = []
-outputs = []
 
 [[generated]]
 id = "qkwVEHTPJbNNfIqxWVb7N"
@@ -24,3 +23,9 @@ id = "rQFA360rh81_AeJ7m7GE8"
 uri = "file://artifacts/jarida/public/images/app-mockup.png"
 type = "image"
 title = "Healthcare mobile app mockup"
+
+[[outputs]]
+id = "C_dTSbhcR6S0eBs6s7lmG"
+uri = "file://artifacts/jarida/public/images/parent-baby.jpg"
+type = "image"
+title = "parent holding baby softly lit home interior calm scandinavian style photography"
