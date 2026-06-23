@@ -1414,3 +1414,15 @@ export const PATIENT_ANSWER_REFERENCES: string[] = [
   "Horne GO, Mole RH. Miliaria. Transactions of the Royal Society of Tropical Medicine and Hygiene. 1951;44(4):465-471.",
   "Guerra KC, Toncar A, Krishnamurthy K. Miliaria. StatPearls. 2024.",
 ];
+
+/**
+ * Resolves a patient answer (and its position in the list) by URL slug.
+ * Returns undefined when no answer matches, so callers can render a 404.
+ */
+export function findPatientAnswerBySlug(slug: string):
+  | { answer: PatientAnswer; index: number }
+  | undefined {
+  const index = PATIENT_ANSWERS.findIndex((item) => item.slug === slug);
+  if (index === -1) return undefined;
+  return { answer: PATIENT_ANSWERS[index], index };
+}

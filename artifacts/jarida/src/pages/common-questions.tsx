@@ -1,5 +1,12 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, Search, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Link } from "wouter";
+import {
+  ChevronDown,
+  ChevronRight,
+  Search,
+  AlertTriangle,
+  ShieldCheck,
+} from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { useSeo } from "@/lib/seo";
@@ -200,6 +207,13 @@ export default function CommonQuestions() {
                               ))}
                             </div>
                           )}
+                          <Link
+                            href={`/common-questions/${item.slug}`}
+                            className="inline-flex items-center gap-1.5 pt-1 text-sm font-medium text-primary hover:gap-2.5 transition-all"
+                          >
+                            Open full page
+                            <ChevronRight className="w-4 h-4" />
+                          </Link>
                         </div>
                       )}
                     </div>
