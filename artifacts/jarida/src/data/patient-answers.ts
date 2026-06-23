@@ -1275,7 +1275,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     num: 140,
     slug: "oral-thrush-in-children",
     title: "Oral thrush in children",
-    meaning: "Oral thrush causes white patches in the mouth that may be sore and can affect feeding. It is common in infants, but.",
+    meaning: "Oral thrush causes white patches in the mouth that may be sore and can affect feeding. It is common in infants.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
     seekCare: "Seek care if feeding is poor, symptoms persist, the child is immunocompromised or recurrent infections occur.",
     references: [72],
