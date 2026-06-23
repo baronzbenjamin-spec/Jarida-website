@@ -44,7 +44,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Diaper rash",
     meaning: "Diaper rash is usually irritant dermatitis from moisture and friction. Change nappies often, clean gently, air the skin and use barrier cream.",
     selfCare: "Change nappies often, cleanse gently with water or mild fragrance-free products, dry the area carefully and use a thick barrier ointment such as zinc-based cream. Let the skin air-dry when possible. Avoid perfumed wipes and tight nappies until the skin has healed.",
-    seekCare: "seek care if there are blisters, pus, fever, spreading redness or no improvement within a few days.",
+    seekCare: "Seek care if there are blisters, pus, fever, spreading redness or no improvement within a few days.",
     references: [5],
   },
   {
@@ -60,9 +60,9 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     num: 5,
     slug: "covid-rash",
     title: "COVID rash",
-    meaning: "COVID-19 can sometimes cause rashes such as urticaria, chilblain-like changes or widespread red spots, but a rash alone is not diagnostic. Test if you have respiratory symptoms or fever, and.",
+    meaning: "COVID-19 can sometimes cause rashes such as urticaria, chilblain-like changes or widespread red spots, but a rash alone is not diagnostic. Test if you have respiratory symptoms or fever.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
-    seekCare: "seek care urgently if the rash is painful, rapidly spreading, purple, blistering or linked with breathing problems.",
+    seekCare: "Seek care urgently if the rash is painful, rapidly spreading, purple, blistering or linked with breathing problems.",
     references: [7, 8],
   },
   {
@@ -89,7 +89,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Intermittent claudication",
     meaning: "Pain or cramping in the calf, thigh or buttock during walking that eases with rest can be intermittent claudication from peripheral artery disease. Medical assessment is important because it is linked with increased cardiovascular risk.",
     selfCare: "Keep warm, avoid smoking and note whether symptoms occur during walking, at rest, or with colour changes. Gradual walking exercise can help circulation-related leg pain, but one-sided swelling, sudden severe pain or a cold pale limb needs urgent assessment.",
-    seekCare: "seek urgent care for sudden cold, pale, painful or numb limb.",
+    seekCare: "Seek urgent care for sudden cold, pale, painful or numb limb.",
     references: [11],
   },
   {
@@ -107,7 +107,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Golfer's elbow",
     meaning: "Golfer's elbow is pain on the inner side of the elbow from tendon overload. Rest from provoking activity, gradual strengthening and load adjustment often help.",
     selfCare: "Use relative rest rather than complete immobilisation, reduce the activity that provokes pain, and restart gradually. Ice or heat can help depending on comfort. Gentle movement, supportive footwear/ergonomics and progressive strengthening are often useful. Avoid repeated heavy loading until pain is improving.",
-    seekCare: "seek care if there is major swelling, weakness, numbness or trauma.",
+    seekCare: "Seek care if there is major swelling, weakness, numbness or trauma.",
     references: [14],
   },
   {
@@ -116,7 +116,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Transient synovitis of the hip",
     meaning: "Transient synovitis is a temporary hip inflammation in children, often after a viral illness, causing limping or hip/groin pain.",
     selfCare: "Observe the symptom pattern, triggers, duration and associated signs such as fever, weight loss, bleeding, swelling, breathing difficulty or neurological symptoms. Start with simple measures such as rest, fluids and avoiding irritants, but seek assessment if symptoms persist or worsen.",
-    seekCare: "seek urgent care if the child has fever, severe pain, cannot bear weight or looks unwell.",
+    seekCare: "Seek urgent care if the child has fever, severe pain, cannot bear weight or looks unwell.",
     references: [15],
   },
   {
@@ -161,7 +161,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Itchy face",
     meaning: "Itchy face is often caused by dry skin, eczema, contact allergy, urticaria or irritation from products. Stop new irritants and moisturise.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
-    seekCare: "seek care if swelling of lips/eyes, breathing problems, spreading rash, infection signs or severe persistent itch occurs.",
+    seekCare: "Seek care if swelling of lips/eyes, breathing problems, spreading rash, infection signs or severe persistent itch occurs.",
     references: [20],
   },
   {
@@ -269,7 +269,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Worms in the stomach / intestinal worms",
     meaning: "Intestinal worms can cause anal itching, abdominal symptoms, visible worms or sometimes no symptoms. Hygiene measures and targeted anti-parasitic treatment are important.",
     selfCare: "Eat smaller meals, drink enough fluids, move daily, and note food triggers, stool pattern, fever, vomiting or weight change. Avoid excessive NSAID use and alcohol if upper abdominal pain is present. Sudden severe or worsening abdominal pain needs prompt assessment.",
-    seekCare: "seek care for persistent symptoms, weight loss, blood in stool or suspected infection in pregnancy or young children.",
+    seekCare: "Seek care for persistent symptoms, weight loss, blood in stool or suspected infection in pregnancy or young children.",
     references: [29],
   },
   {
@@ -296,7 +296,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Mouse arm / repetitive strain injury",
     meaning: "Mouse arm is usually an overuse problem affecting the neck, shoulder, arm, wrist or hand. Adjust workload and ergonomics, take movement breaks and build strength gradually.",
     selfCare: "Use relative rest rather than complete immobilisation, reduce the activity that provokes pain, and restart gradually. Ice or heat can help depending on comfort. Gentle movement, supportive footwear/ergonomics and progressive strengthening are often useful. Avoid repeated heavy loading until pain is improving.",
-    seekCare: "seek care for weakness, numbness, night pain or symptoms after injury.",
+    seekCare: "Seek care for weakness, numbness, night pain or symptoms after injury.",
     references: [32],
   },
   {
@@ -359,7 +359,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Pain in the elbow",
     meaning: "Elbow pain is often tendon irritation, overload or injury. Rest from provoking activity and gradual strengthening can help.",
     selfCare: "Use relative rest rather than complete immobilisation, reduce the activity that provokes pain, and restart gradually. Ice or heat can help depending on comfort. Gentle movement, supportive footwear/ergonomics and progressive strengthening are often useful. Avoid repeated heavy loading until pain is improving.",
-    seekCare: "seek care for deformity, major swelling, fever, numbness, weakness or pain after trauma.",
+    seekCare: "Seek care for deformity, major swelling, fever, numbness, weakness or pain after trauma.",
     references: [14],
   },
   {
@@ -411,9 +411,9 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     num: 44,
     slug: "pain-in-the-shins-shin-splints",
     title: "Pain in the shins / shin splints",
-    meaning: "Shin pain during running or jumping is often medial tibial stress syndrome, but stress fracture must be considered if pain is focal, worsening or present at rest. Reduce load and.",
+    meaning: "Shin pain during running or jumping is often medial tibial stress syndrome, but stress fracture must be considered if pain is focal, worsening or present at rest. Reduce load.",
     selfCare: "Use relative rest rather than complete immobilisation, reduce the activity that provokes pain, and restart gradually. Ice or heat can help depending on comfort. Gentle movement, supportive footwear/ergonomics and progressive strengthening are often useful. Avoid repeated heavy loading until pain is improving.",
-    seekCare: "seek care if pain persists or walking hurts.",
+    seekCare: "Seek care if pain persists or walking hurts.",
     references: [41],
   },
   {
@@ -584,7 +584,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Pain in the arch of the foot",
     meaning: "Heel or arch pain is often plantar fasciitis or overload. Supportive shoes, calf stretching and gradual load reduction can help.",
     selfCare: "Use relative rest rather than complete immobilisation, reduce the activity that provokes pain, and restart gradually. Ice or heat can help depending on comfort. Gentle movement, supportive footwear/ergonomics and progressive strengthening are often useful. Avoid repeated heavy loading until pain is improving.",
-    seekCare: "seek care if pain follows trauma, is severe at rest or does not improve.",
+    seekCare: "Seek care if pain follows trauma, is severe at rest or does not improve.",
     references: [46],
   },
   {
@@ -602,7 +602,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Pain in the heel",
     meaning: "Heel or arch pain is often plantar fasciitis or overload. Supportive shoes, calf stretching and gradual load reduction can help.",
     selfCare: "Use relative rest rather than complete immobilisation, reduce the activity that provokes pain, and restart gradually. Ice or heat can help depending on comfort. Gentle movement, supportive footwear/ergonomics and progressive strengthening are often useful. Avoid repeated heavy loading until pain is improving.",
-    seekCare: "seek care if pain follows trauma, is severe at rest or does not improve.",
+    seekCare: "Seek care if pain follows trauma, is severe at rest or does not improve.",
     references: [46],
   },
   {
@@ -1016,7 +1016,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Pain in the eye or eyes",
     meaning: "Eye pain can be caused by dry eye, inflammation, injury, infection, migraine or high eye pressure. Seek urgent eye care for vision changes, severe pain, light sensitivity, trauma.",
     selfCare: "Avoid rubbing the eyes, remove contact lenses if the eye is irritated, rinse with sterile saline if needed and avoid eye make-up until symptoms settle. Lubricating drops may help dryness or mild irritation. Eye pain, light sensitivity or reduced vision should be assessed urgently.",
-    seekCare: "contact lens-related pain or a very red eye.",
+    seekCare: "Contact lens-related pain or a very red eye.",
     references: [23],
   },
   {
@@ -1124,7 +1124,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Beard problems",
     meaning: "Beard-area bumps are often pseudofolliculitis barbae from ingrown hairs, especially after close shaving. Avoid very close shaving, shave with the grain and consider trimming.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
-    seekCare: "seek care if there is infection, scarring or persistent inflammation.",
+    seekCare: "Seek care if there is infection, scarring or persistent inflammation.",
     references: [63],
   },
   {
@@ -1187,7 +1187,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Sun eczema / polymorphic light eruption",
     meaning: "Polymorphic light eruption causes itchy red bumps or patches after sun exposure, often in spring or early summer. Sun protection helps.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
-    seekCare: "seek care if rash is severe, blistering, infected or associated with fever or systemic symptoms.",
+    seekCare: "Seek care if rash is severe, blistering, infected or associated with fever or systemic symptoms.",
     references: [68],
   },
   {
@@ -1214,7 +1214,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Difficulty winding down / settling",
     meaning: "Difficulty winding down is common with stress, anxiety, sleep disturbance and overstimulation. Regular routines, reduced evening stimulants and relaxation training can help.",
     selfCare: "Use a structured approach: regular sleep and meals, light physical activity, reduced alcohol and stimulants, and a written plan for triggers and coping strategies. Involve a trusted person if symptoms affect safety or daily function. Psychological treatment or medication can help depending on severity and diagnosis.",
-    seekCare: "seek care if worry is uncontrollable or affects work, sleep or relationships.",
+    seekCare: "Seek care if worry is uncontrollable or affects work, sleep or relationships.",
     references: [69, 18],
   },
   {
@@ -1259,7 +1259,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Tennis elbow",
     meaning: "Tennis elbow causes pain on the outer elbow from tendon overload. Activity modification, gradual strengthening and time usually help.",
     selfCare: "Use relative rest rather than complete immobilisation, reduce the activity that provokes pain, and restart gradually. Ice or heat can help depending on comfort. Gentle movement, supportive footwear/ergonomics and progressive strengthening are often useful. Avoid repeated heavy loading until pain is improving.",
-    seekCare: "seek care if there is major swelling, weakness, numbness or trauma.",
+    seekCare: "Seek care if there is major swelling, weakness, numbness or trauma.",
     references: [14],
   },
   {
@@ -1268,7 +1268,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Dry scalp",
     meaning: "Dry, flaky scalp is often dandruff or seborrhoeic dermatitis. Medicated anti-dandruff shampoo may help.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
-    seekCare: "seek care if there is severe redness, hair loss, sores, thick scaling or no improvement.",
+    seekCare: "Seek care if there is severe redness, hair loss, sores, thick scaling or no improvement.",
     references: [71],
   },
   {
@@ -1277,7 +1277,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Oral thrush in children",
     meaning: "Oral thrush causes white patches in the mouth that may be sore and can affect feeding. It is common in infants, but.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
-    seekCare: "seek care if feeding is poor, symptoms persist, the child is immunocompromised or recurrent infections occur.",
+    seekCare: "Seek care if feeding is poor, symptoms persist, the child is immunocompromised or recurrent infections occur.",
     references: [72],
   },
   {
@@ -1304,7 +1304,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Earwax blockage",
     meaning: "Earwax blockage can cause reduced hearing, fullness, tinnitus or discomfort. Avoid cotton buds and objects in the ear.",
     selfCare: "Avoid cotton buds or inserting objects into the ear. Keep the ear dry if the ear canal is irritated. Earwax can sometimes be softened with pharmacy drops if the eardrum is intact, but pain, discharge, dizziness or hearing loss should be assessed.",
-    seekCare: "seek care if there is pain, discharge, dizziness, sudden hearing loss or previous ear surgery.",
+    seekCare: "Seek care if there is pain, discharge, dizziness, sudden hearing loss or previous ear surgery.",
     references: [74],
   },
   {
@@ -1322,7 +1322,7 @@ export const PATIENT_ANSWERS: PatientAnswer[] = [
     title: "Heat rash in children",
     meaning: "Heat rash causes small itchy red bumps when sweat ducts are blocked, often in hot weather. Keep the child cool and dry.",
     selfCare: "Use gentle skin care: avoid fragranced products, use mild cleanser, moisturise regularly and avoid scratching. Photograph changes so you can compare progression. For new products, stop the suspected trigger. Do not use strong steroid creams on the face, genitals or children unless prescribed.",
-    seekCare: "seek care for fever, pus, spreading redness, lethargy or if the child is very young and unwell.",
+    seekCare: "Seek care for fever, pus, spreading redness, lethargy or if the child is very young and unwell.",
     references: [75, 76],
   },
   {
