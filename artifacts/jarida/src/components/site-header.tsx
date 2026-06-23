@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
@@ -13,6 +13,8 @@ export function SiteHeader() {
   const [megaOpen, setMegaOpen] = useState(false);
   const [activeKey, setActiveKey] = useState<string>(MOST_VISITED_KEY);
   const [mobileFactsOpen, setMobileFactsOpen] = useState(false);
+  const [mobileSection, setMobileSection] = useState<string | null>(null);
+  const [location] = useLocation();
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -24,6 +26,10 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    if (!menuOpen) {
+      setMobileFactsOpen(false);
+      setMobileSection(null);
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -60,6 +66,21 @@ export function SiteHeader() {
     }
   };
 
+  const goToHash = (e: React.MouseEvent, hash: string) => {
+    setMegaOpen(false);
+    setMenuOpen(false);
+    if (location === "/facts") {
+      e.preventDefault();
+      if (window.location.hash === `#${hash}`) {
+        document
+          .getElementById(hash)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.location.hash = hash;
+      }
+    }
+  };
+
   const mostVisitedTopics = findTopicsBySlugs(MOST_VISITED);
   const activeCategory = FACT_CATEGORIES.find((c) => c.id === activeKey);
   const panelTopics =
@@ -68,6 +89,15 @@ export function SiteHeader() {
       : activeCategory?.topics ?? [];
   const panelTitle =
     activeKey === MOST_VISITED_KEY ? "Most visited" : activeCategory?.name;
+
+  const mobileGroups = [
+    { key: MOST_VISITED_KEY, name: "Most visited", topics: mostVisitedTopics },
+    ...FACT_CATEGORIES.map((category) => ({
+      key: category.id,
+      name: category.name,
+      topics: category.topics,
+    })),
+  ];
 
   return (
     <>
@@ -189,7 +219,7 @@ export function SiteHeader() {
                   <li className="mt-2 pt-2 border-t border-border/60">
                     <Link
                       href="/facts#all-symptoms"
-                      onClick={() => setMegaOpen(false)}
+                      onClick={(e) => goToHash(e, "all-symptoms")}
                       className="block rounded-xl px-4 py-3 text-sm font-semibold text-primary hover:bg-white/60 transition-colors"
                     >
                       All symptoms A&ndash;Z
@@ -270,31 +300,57 @@ export function SiteHeader() {
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ${
-                  mobileFactsOpen ? "max-h-[60vh]" : "max-h-0"
+                  mobileFactsOpen ? "max-h-[70vh] overflow-y-auto" : "max-h-0"
                 }`}
               >
-                <div className="flex flex-col gap-1 py-2 pl-1 text-base font-sans">
-                  <Link
-                    href="/facts"
-                    onClick={() => setMenuOpen(false)}
-                    className="py-2 text-foreground/80 hover:text-primary transition-colors"
-                  >
-                    Browse all categories
-                  </Link>
-                  {FACT_CATEGORIES.map((category) => (
-                    <Link
-                      key={category.id}
-                      href={`/facts#${category.id}`}
-                      onClick={() => setMenuOpen(false)}
-                      className="py-2 text-foreground/80 hover:text-primary transition-colors"
-                    >
-                      {category.name}
-                    </Link>
-                  ))}
+                <div className="flex flex-col py-2 pl-1 text-base font-sans">
+                  {mobileGroups.map((group) => {
+                    const sectionOpen = mobileSection === group.key;
+                    return (
+                      <div
+                        key={group.key}
+                        className="border-b border-border/40 last:border-b-0"
+                      >
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setMobileSection(sectionOpen ? null : group.key)
+                          }
+                          aria-expanded={sectionOpen}
+                          className="w-full flex items-center justify-between gap-2 py-3 text-left text-base font-medium text-foreground/90 hover:text-primary transition-colors"
+                        >
+                          {group.name}
+                          <ChevronDown
+                            className={`w-4 h-4 shrink-0 transition-transform duration-300 ${
+                              sectionOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ${
+                            sectionOpen ? "max-h-[80vh]" : "max-h-0"
+                          }`}
+                        >
+                          <div className="flex flex-col pb-2 pl-3">
+                            {group.topics.map((topic) => (
+                              <Link
+                                key={topic.slug}
+                                href={`/facts/${topic.slug}`}
+                                onClick={() => setMenuOpen(false)}
+                                className="py-2 text-sm text-foreground/70 hover:text-primary transition-colors"
+                              >
+                                {topic.title}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                   <Link
                     href="/facts#all-symptoms"
-                    onClick={() => setMenuOpen(false)}
-                    className="py-2 font-semibold text-primary hover:text-primary/70 transition-colors"
+                    onClick={(e) => goToHash(e, "all-symptoms")}
+                    className="py-3 font-semibold text-primary hover:text-primary/70 transition-colors"
                   >
                     All symptoms A&ndash;Z
                   </Link>

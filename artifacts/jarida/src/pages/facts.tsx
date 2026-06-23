@@ -16,15 +16,28 @@ export default function Facts() {
   const [openQuestion, setOpenQuestion] = useState<number | null>(null);
 
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
-      const el = document.getElementById(hash);
-      if (el) {
-        el.scrollIntoView({ behavior: "auto", block: "start" });
-        return;
+    const scrollToHash = (smooth: boolean) => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({
+            behavior: smooth ? "smooth" : "auto",
+            block: "start",
+          });
+          return true;
+        }
       }
+      return false;
+    };
+
+    if (!scrollToHash(false)) {
+      window.scrollTo(0, 0);
     }
-    window.scrollTo(0, 0);
+
+    const handleHashChange = () => scrollToHash(true);
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   const allTopics = useMemo(() => getAllTopics(), []);
