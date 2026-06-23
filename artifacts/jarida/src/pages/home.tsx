@@ -1,9 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link } from "wouter";
 import { 
   ArrowRight, 
-  Menu, 
-  X, 
   Calendar, 
   Video, 
   FileText, 
@@ -15,101 +11,14 @@ import {
   Stethoscope
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-import iconLogo from "@assets/jarida_logo_icon.png";
-import fullLogo from "@assets/jarida_logo_lockup.png";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { AppStoreButton } from "@/components/app-store-buttons";
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
-
   return (
     <div className="min-h-screen bg-white font-sans text-foreground selection:bg-primary/20">
-      {/* HEADER */}
-      <header 
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white/90 backdrop-blur-lg border-b border-border/50 py-4 shadow-sm" : "bg-transparent py-6"
-        }`}
-      >
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group z-50">
-            <img src={iconLogo} alt="Jarida Logo" className="h-8 w-auto group-hover:scale-105 transition-transform duration-500" />
-            <span className="font-serif text-2xl font-semibold tracking-tight text-primary">Jarida</span>
-          </Link>
-          
-          <nav className="hidden md:flex items-center gap-10">
-            <a href="#services" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">Services</a>
-            <a href="#patients" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">For Patients</a>
-            <a href="#doctors" className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors">For Doctors</a>
-          </nav>
-
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="outline" className="rounded-full px-6 border-primary/20 text-primary hover:bg-secondary hover:text-primary transition-all">
-              Log in
-            </Button>
-            <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5">
-              Get care now
-            </Button>
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-            className="md:hidden z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary/50 text-primary hover:bg-secondary transition-colors"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-        </div>
-      </header>
-
-      {/* MOBILE MENU */}
-      <div
-        className={`fixed inset-0 z-[60] md:hidden transition-all duration-500 ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="absolute inset-0 bg-primary/20 backdrop-blur-sm" onClick={() => setMenuOpen(false)} />
-        <nav className={`absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl p-8 flex flex-col transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1) ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
-          <div className="flex items-center justify-between mb-12">
-            <div className="flex items-center gap-2">
-              <img src={iconLogo} alt="Jarida Logo" className="h-8 w-auto" />
-              <span className="font-serif text-2xl font-semibold text-primary">Jarida</span>
-            </div>
-            <button
-              type="button"
-              onClick={() => setMenuOpen(false)}
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary/50 text-primary hover:bg-secondary transition-colors"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-          <div className="flex flex-col gap-6 text-xl font-serif text-primary">
-            <a href="#services" onClick={() => setMenuOpen(false)} className="hover:text-primary/70 transition-colors">Services</a>
-            <a href="#patients" onClick={() => setMenuOpen(false)} className="hover:text-primary/70 transition-colors">For Patients</a>
-            <a href="#doctors" onClick={() => setMenuOpen(false)} className="hover:text-primary/70 transition-colors">For Doctors</a>
-          </div>
-          <div className="mt-auto flex flex-col gap-4">
-            <Button variant="outline" className="w-full rounded-full h-14 text-lg border-primary/20 text-primary">
-              Log in
-            </Button>
-            <Button className="w-full rounded-full h-14 text-lg bg-primary hover:bg-primary/90 text-white">
-              Get care now
-            </Button>
-          </div>
-        </nav>
-      </div>
+      <SiteHeader />
 
       {/* HERO SECTION */}
       <section className="relative pt-40 pb-32 md:pt-48 md:pb-40 overflow-hidden bg-white">
@@ -370,55 +279,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-[#0A0D17] text-white pt-24 pb-12">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-            <div className="lg:col-span-2">
-              <Link href="/" className="inline-block mb-6">
-                <img 
-                  src={fullLogo} 
-                  alt="Jarida" 
-                  className="h-10 w-auto brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
-                />
-              </Link>
-              <p className="text-white/60 max-w-sm leading-relaxed mb-8">
-                The calm, reassuring presence of a trusted doctor, now available wherever you are. Connecting patients with verified professionals 24/7.
-              </p>
-              <div className="flex items-center gap-4">
-                <AppStoreButton type="ios" theme="dark" />
-                <AppStoreButton type="android" theme="dark" />
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-serif text-lg font-medium mb-6 text-white/90">Platform</h4>
-              <ul className="space-y-4">
-                <li><a href="#services" className="text-white/50 hover:text-white transition-colors">How it works</a></li>
-                <li><a href="#patients" className="text-white/50 hover:text-white transition-colors">For Patients</a></li>
-                <li><a href="#doctors" className="text-white/50 hover:text-white transition-colors">For Doctors</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-serif text-lg font-medium mb-6 text-white/90">Support</h4>
-              <ul className="space-y-4">
-                <li><a href="mailto:support@jarida.org" className="text-white/50 hover:text-white transition-colors flex items-center gap-2">Contact Us</a></li>
-                <li><Link href="/privacy" className="text-white/50 hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-white/50 hover:text-white transition-colors">Terms of Service</Link></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-white/40 text-sm">
-            <p>&copy; {new Date().getFullYear()} Jarida Healthcare. All rights reserved.</p>
-            <div className="flex gap-2">
-              <span className="w-2 h-2 rounded-full bg-green-500 mt-1"></span>
-              <span>All systems operational</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
@@ -439,28 +300,3 @@ function ServiceCard({ icon, title, desc, delay }: { icon: React.ReactNode, titl
   );
 }
 
-function AppStoreButton({ type, theme = "light" }: { type: "ios" | "android", theme?: "light" | "dark" }) {
-  const isIos = type === "ios";
-  const bg = theme === "light" 
-    ? "bg-black text-white hover:bg-black/80" 
-    : "bg-white/10 text-white hover:bg-white/20 backdrop-blur-md";
-  
-  return (
-    <button className={`flex items-center gap-3 px-6 py-3 rounded-2xl transition-colors ${bg} w-full sm:w-auto justify-center`}>
-      {isIos ? (
-        <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
-          <path d="M16.365 14.502c-.015-3.056 2.502-4.526 2.616-4.6-1.421-2.073-3.626-2.355-4.42-2.39-1.897-.19-3.702 1.118-4.665 1.118-.962 0-2.45-1.096-4.004-1.066-2.016.03-3.876 1.171-4.908 2.973-2.091 3.621-.534 8.975 1.503 11.916.994 1.439 2.164 3.045 3.731 2.986 1.498-.06 2.07-.968 3.864-.968 1.78 0 2.304.968 3.894.938 1.627-.03 2.62-1.468 3.6-2.905 1.134-1.657 1.6-3.262 1.624-3.344-.038-.016-3.007-1.15-3.023-4.228zm-2.45-7.395c.829-1 1.385-2.394 1.233-3.782-1.189.048-2.648.791-3.477 1.791-.741.888-1.411 2.309-1.229 3.676 1.328.102 2.643-.684 3.473-1.685z"/>
-        </svg>
-      ) : (
-        <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
-          <path d="M17.523 15.341l-4.624-4.624 4.624-4.624c.321.144.624.314.907.509l4.57 3.199c.928.65.928 1.706 0 2.356l-4.57 3.199c-.283.195-.586.365-.907.509l-4.624-4.624zM2.875 3.393L11.8 12.318 2.875 21.243c-.495-.297-.875-.769-.875-1.341V4.734c0-.572.38-1.044.875-1.341z"/>
-          <path d="M12.918 13.436L3.993 22.361c.404.242.878.361 1.383.361 1.055 0 2.012-.497 2.616-1.282l4.926-7.004zM12.918 11.202L3.993 2.277c.404-.242.878-.361 1.383-.361 1.055 0 2.012.497 2.616 1.282l4.926 7.004z"/>
-        </svg>
-      )}
-      <div className="text-left">
-        <div className="text-[11px] leading-none mb-1 opacity-80">{isIos ? "Download on the" : "GET IT ON"}</div>
-        <div className="text-base font-semibold leading-none tracking-wide">{isIos ? "App Store" : "Google Play"}</div>
-      </div>
-    </button>
-  );
-}

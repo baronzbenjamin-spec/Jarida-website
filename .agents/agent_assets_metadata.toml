@@ -24,14 +24,50 @@ uri = "file://artifacts/jarida/public/images/app-mockup.png"
 type = "image"
 title = "Healthcare mobile app mockup"
 
+[[generated]]
+id = "aZ_vj_PvBNd3LotDhPSK8"
+uri = "file://artifacts/jarida-mobile/assets/images/icon.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "C_dTSbhcR6S0eBs6s7lmG"
 uri = "file://artifacts/jarida/public/images/parent-baby.jpg"
 type = "image"
 title = "parent holding baby softly lit home interior calm scandinavian style photography"
 
-[[generated]]
-id = "aZ_vj_PvBNd3LotDhPSK8"
-uri = "file://artifacts/jarida-mobile/assets/images/icon.png"
+[[outputs]]
+id = "lFYDEivtAQHegHYM6yCh7"
+uri = "file://attached_assets/stock_images/healthy_food_bowl.jpg"
 type = "image"
-title = "generated_image"
+title = "fresh healthy colorful food bowl with vegetables, bright clean kitchen, wholesome"
+
+[[outputs]]
+id = "Rl3aBKoaZ8xsNjzOeORM5"
+uri = "file://attached_assets/stock_images/outdoor_walking.jpg"
+type = "image"
+title = "person walking outdoors in nature on a sunny day, active lifestyle, green park"
+
+[[outputs]]
+id = "cQiMpzrgiQWadM_aR_Rbv"
+uri = "file://attached_assets/stock_images/parent_caring_child.jpg"
+type = "image"
+title = "parent caring for child at home, warm tender family moment, soft light"
+
+[[outputs]]
+id = "gdCsBl_hQMcO9AKq0o0Dj"
+uri = "file://attached_assets/stock_images/doctor_health_check.jpg"
+type = "image"
+title = "friendly doctor with patient during a health check, modern bright clinic, reassuring"
+
+[[outputs]]
+id = "yAkS33iz-z-dKucVLyLC7"
+uri = "file://attached_assets/stock_images/cozy_tea_season.jpg"
+type = "image"
+title = "cozy warm cup of tea with blanket by window, staying well in cold season, comforting"
+
+[[outputs]]
+id = "fmcF5D9-UAJ3S5uA5Wq0C"
+uri = "file://attached_assets/stock_images/heart_health_exercise.jpg"
+type = "image"
+title = "person exercising outdoors at sunrise, healthy active heart, motion, fresh air"
