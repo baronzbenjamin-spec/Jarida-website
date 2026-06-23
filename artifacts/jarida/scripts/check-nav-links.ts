@@ -210,6 +210,36 @@ if (unresolvedReferences.length > 0) {
   );
 }
 
+// Reverse guard: every entry in PATIENT_ANSWER_REFERENCES should be cited by at
+// least one answer. An orphaned entry is dead data that drifts out of sync as
+// answers are regenerated, bloating the citation list with sources nothing
+// points at. Decision: orphans HARD-FAIL the build (same severity as the other
+// patient-answer checks above) so the reference list stays lean and every entry
+// is traceable to a real citation. Remove the orphaned entry (and renumber the
+// references it pushed) rather than leaving it. If the team ever needs to retain
+// an uncited reference intentionally, downgrade this to a console.warn instead.
+const citedReferenceNumbers = new Set<number>();
+for (const answer of PATIENT_ANSWERS) {
+  for (const ref of answer.references) {
+    citedReferenceNumbers.add(ref);
+  }
+}
+
+const orphanedReferences: string[] = [];
+for (let i = 1; i <= PATIENT_ANSWER_REFERENCES.length; i += 1) {
+  if (!citedReferenceNumbers.has(i)) {
+    orphanedReferences.push(`  - reference ${i}: "${PATIENT_ANSWER_REFERENCES[i - 1]}"`);
+  }
+}
+
+if (orphanedReferences.length > 0) {
+  errors.push(
+    `PATIENT_ANSWER_REFERENCES entries that no patient answer cites (orphaned/dead references — remove them or cite them):\n${orphanedReferences.join(
+      "\n",
+    )}`,
+  );
+}
+
 if (errors.length > 0) {
   console.error("Navigation link check FAILED:\n");
   console.error(errors.join("\n\n"));
@@ -223,5 +253,6 @@ console.log(
   `Navigation link check passed: ${knownSlugs.size} unique topic slugs; ` +
     `${MOST_VISITED.length} MOST_VISITED and ${DOCTOR_HELP.length} DOCTOR_HELP links all resolve; ` +
     `${articleSlugCounts.size} unique article slugs with hero images all resolving; ` +
-    `${patientSlugCounts.size} unique patient answer slugs with all references resolving.`,
+    `${patientSlugCounts.size} unique patient answer slugs with all references resolving; ` +
+    `all ${PATIENT_ANSWER_REFERENCES.length} reference entries are cited (no orphans).`,
 );
