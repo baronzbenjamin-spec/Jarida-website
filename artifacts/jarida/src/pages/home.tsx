@@ -9,9 +9,54 @@ import { Button } from "@/components/ui/button";
 import iconLogo from "@assets/jarida_logo_icon.png";
 import fullLogo from "@assets/jarida_logo_lockup.png";
 
+type Audience = "patient" | "doctor";
+
+const AUDIENCE_CONTENT: Record<Audience, {
+  nav: string;
+  login: string;
+  heading: string;
+  intro: string;
+  features: { title: string; desc: string }[];
+  image: string;
+  imageAlt: string;
+  cta: string;
+}> = {
+  patient: {
+    nav: "For Patients",
+    login: "Patient Login",
+    heading: "For Patients",
+    intro: "Experience healthcare that revolves around you. Everything you need, right in your pocket.",
+    features: [
+      { title: "Quick appointment booking", desc: "Find a doctor and book in seconds." },
+      { title: "24/7 online consultations", desc: "Get medical help anytime: ask questions, share symptoms, and receive professional advice online." },
+      { title: "Access to medical records", desc: "Keep your full medical history and test results in one place with quick and easy access." },
+      { title: "Reminders for visits and treatment", desc: "Never miss appointments or meds." },
+    ],
+    image: "/images/patients.png",
+    imageAlt: "Patient using app",
+    cta: "Get started as a patient",
+  },
+  doctor: {
+    nav: "For Doctors",
+    login: "Doctor Login",
+    heading: "For Doctors",
+    intro: "Grow your practice and work with patients online. Manage your schedule, handle patient records, and issue prescriptions in one convenient platform.",
+    features: [
+      { title: "Easy patient management", desc: "Maintain patient records, track medical history, and access all essential information in one place." },
+      { title: "Online consultations", desc: "Provide remote consultations, answer patient questions, and expand your practice without location limits." },
+      { title: "E-prescriptions", desc: "Issue prescriptions digitally — quickly, efficiently, and without paperwork." },
+    ],
+    image: "/images/doctors.png",
+    imageAlt: "Doctor working",
+    cta: "Register as a doctor",
+  },
+};
+
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [audience, setAudience] = useState<Audience>("patient");
+  const current = AUDIENCE_CONTENT[audience];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -39,8 +84,8 @@ export default function Home() {
           </Link>
           
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#patients" className="text-sm font-medium hover:text-primary transition-colors">For Patients</a>
-            <a href="#doctors" className="text-sm font-medium hover:text-primary transition-colors">For Doctors</a>
+            <a href="#solutions" onClick={() => setAudience("patient")} className="text-sm font-medium hover:text-primary transition-colors">For Patients</a>
+            <a href="#solutions" onClick={() => setAudience("doctor")} className="text-sm font-medium hover:text-primary transition-colors">For Doctors</a>
             <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">About Us</a>
             <div className="flex items-center gap-1 text-sm font-medium text-muted-foreground ml-4 border-l border-border pl-4">
               <Globe className="w-4 h-4" />
@@ -50,7 +95,7 @@ export default function Home() {
 
           <div className="flex items-center gap-3">
             <Button asChild className="hidden sm:inline-flex rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5">
-              <a href="#download">Consult Now</a>
+              <a href="#download">{current.login}</a>
             </Button>
             <button
               type="button"
@@ -83,11 +128,11 @@ export default function Home() {
               <X className="w-6 h-6" />
             </button>
           </div>
-          <a href="#patients" onClick={() => setMenuOpen(false)} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">For Patients</a>
-          <a href="#doctors" onClick={() => setMenuOpen(false)} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">For Doctors</a>
+          <a href="#solutions" onClick={() => { setAudience("patient"); setMenuOpen(false); }} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">For Patients</a>
+          <a href="#solutions" onClick={() => { setAudience("doctor"); setMenuOpen(false); }} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">For Doctors</a>
           <a href="#about" onClick={() => setMenuOpen(false)} className="py-3 text-lg font-medium border-b border-border hover:text-primary transition-colors">About Us</a>
           <Button asChild className="mt-6 rounded-full px-6 bg-primary hover:bg-primary/90 text-white">
-            <a href="#download" onClick={() => setMenuOpen(false)}>Consult Now</a>
+            <a href="#download" onClick={() => setMenuOpen(false)}>{current.login}</a>
           </Button>
         </nav>
       </div>
@@ -149,118 +194,93 @@ export default function Home() {
       </section>
 
       {/* VALUES SECTION */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             <ValueCard 
               number="01"
               title="Fast & Convenient"
-              desc="Book doctor appointments in just a few clicks — no calls, no waiting. Choose a convenient time, receive reminders, and manage all your bookings directly in the app."
+              desc="Book appointments in a few clicks — no calls, no waiting."
               icon={<Clock className="w-6 h-6" />}
             />
             <ValueCard 
               number="02"
               title="Secure & Private"
-              desc="Your data is protected with modern encryption technologies. We ensure full privacy of your medical information and comply with high security standards."
+              desc="Your medical data stays protected with modern encryption and strict privacy standards."
               icon={<Shield className="w-6 h-6" />}
             />
             <ValueCard 
               number="03"
               title="High-Quality Care"
-              desc="Get consultations from verified doctors with proven qualifications. Online or offline — choose the format that suits you and receive professional care."
+              desc="Consultations from verified, qualified doctors — online or in person."
               icon={<HeartPulse className="w-6 h-6" />}
             />
           </div>
         </div>
       </section>
 
-      {/* FOR PATIENTS */}
-      <section id="patients" className="py-24 bg-secondary/30 relative scroll-mt-24">
-        <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative order-2 lg:order-1">
-             <div className="absolute inset-0 bg-primary/5 rounded-[2rem] transform -rotate-3 scale-105 -z-10" />
-             <img 
-              src="/images/patients.png" 
-              alt="Patient using app" 
-              className="rounded-[2rem] object-cover w-full h-[500px] shadow-xl"
-            />
+      {/* SOLUTIONS (audience-aware) */}
+      <section id="solutions" className="py-24 bg-secondary/30 relative scroll-mt-24">
+        <div className="container mx-auto px-6 md:px-12">
+          {/* Audience toggle */}
+          <div className="flex justify-center mb-16">
+            <div className="inline-flex items-center p-1.5 rounded-full bg-white border border-border shadow-sm">
+              {(["patient", "doctor"] as const).map((key) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setAudience(key)}
+                  aria-pressed={audience === key}
+                  className={`px-6 md:px-8 py-2.5 rounded-full text-sm md:text-base font-semibold transition-all ${
+                    audience === key
+                      ? "bg-primary text-white shadow-md shadow-primary/20"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  {AUDIENCE_CONTENT[key].nav}
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="order-1 lg:order-2">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">For Patients</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Experience healthcare that revolves around you. Everything you need, right in your pocket.
-            </p>
-            <ul className="space-y-6 mb-10">
-              <FeatureItem 
-                title="Quick appointment booking" 
-                desc="Find a doctor and book in seconds." 
-              />
-              <FeatureItem 
-                title="24/7 online consultations" 
-                desc="Get medical help anytime: ask questions, share symptoms, and receive professional advice online." 
-              />
-              <FeatureItem 
-                title="Access to medical records" 
-                desc="Keep your full medical history and test results in one place with quick and easy access." 
-              />
-              <FeatureItem 
-                title="Reminders for visits and treatment" 
-                desc="Never miss appointments or meds." 
-              />
-            </ul>
-            <Button asChild size="lg" className="rounded-full px-8 bg-primary hover:bg-primary/90 text-white">
-              <a href="#download">Get started as a patient <ChevronRight className="ml-2 w-4 h-4" /></a>
-            </Button>
-          </div>
-        </div>
-      </section>
 
-      {/* FOR DOCTORS */}
-      <section id="doctors" className="py-24 bg-white scroll-mt-24">
-        <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">For Doctors</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Grow your practice and work with patients online. Manage your schedule, handle patient records, and issue prescriptions in one convenient platform.
-            </p>
-            <ul className="space-y-6 mb-10">
-              <FeatureItem 
-                title="Easy patient management" 
-                desc="Maintain patient records, track medical history, and access all essential information in one place." 
+          {/* Audience content */}
+          <div
+            key={audience}
+            className="grid lg:grid-cols-2 gap-16 items-center animate-in fade-in slide-in-from-bottom-4 duration-500"
+          >
+            <div className="relative order-2 lg:order-1">
+              <div className="absolute inset-0 bg-primary/5 rounded-[2rem] transform -rotate-3 scale-105 -z-10" />
+              <img
+                src={current.image}
+                alt={current.imageAlt}
+                className="rounded-[2rem] object-cover w-full h-[500px] shadow-xl"
               />
-              <FeatureItem 
-                title="Online consultations" 
-                desc="Provide remote consultations, answer patient questions, and expand your practice without location limits." 
-              />
-              <FeatureItem 
-                title="E-prescriptions" 
-                desc="Issue prescriptions digitally — quickly, efficiently, and without paperwork." 
-              />
-            </ul>
-            <Button asChild size="lg" variant="outline" className="rounded-full px-8 border-primary text-primary hover:bg-primary/5">
-              <a href="#download">Register as a doctor <ChevronRight className="ml-2 w-4 h-4" /></a>
-            </Button>
-          </div>
-          <div className="relative">
-             <div className="absolute inset-0 bg-primary/5 rounded-[2rem] transform rotate-3 scale-105 -z-10" />
-             <img 
-              src="/images/doctors.png" 
-              alt="Doctor working" 
-              className="rounded-[2rem] object-cover w-full h-[500px] shadow-xl"
-            />
+            </div>
+            <div className="order-1 lg:order-2">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{current.heading}</h2>
+              <p className="text-lg text-muted-foreground mb-8">{current.intro}</p>
+              <ul className="space-y-6 mb-10">
+                {current.features.map((f) => (
+                  <FeatureItem key={f.title} title={f.title} desc={f.desc} />
+                ))}
+              </ul>
+              <Button asChild size="lg" className="rounded-full px-8 bg-primary hover:bg-primary/90 text-white">
+                <a href="#download">{current.cta} <ChevronRight className="ml-2 w-4 h-4" /></a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ABOUT US */}
-      <section id="about" className="py-24 bg-primary text-white relative overflow-hidden scroll-mt-24">
+      <section id="about" className="py-20 bg-primary text-white relative overflow-hidden scroll-mt-24">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center max-w-4xl">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-serif">
-            About Jarida: Connecting Patients and Doctors Seamlessly
+        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center max-w-3xl">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 font-serif">
+            Connecting Patients and Doctors Seamlessly
           </h2>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-16">
-            We are building a digital platform that connects patients and doctors in one seamless space. Our goal is to make healthcare accessible, simple, and fast for everyone. We believe technology can improve how people interact and enhance the quality of medical services. That's why we create solutions that save time, increase efficiency, and make healthcare more convenient.
+          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-14">
+            Jarida connects patients and doctors in one seamless space — making healthcare accessible, simple, and fast. We build technology that saves time, improves efficiency, and makes care more convenient for everyone.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/20 border-t border-white/20 pt-12">
@@ -334,8 +354,8 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-6 font-serif">Quick Links</h4>
               <ul className="space-y-4">
-                <li><a href="#patients" className="text-white/60 hover:text-white transition-colors">For Patients</a></li>
-                <li><a href="#doctors" className="text-white/60 hover:text-white transition-colors">For Doctors</a></li>
+                <li><a href="#solutions" onClick={() => setAudience("patient")} className="text-white/60 hover:text-white transition-colors">For Patients</a></li>
+                <li><a href="#solutions" onClick={() => setAudience("doctor")} className="text-white/60 hover:text-white transition-colors">For Doctors</a></li>
                 <li><a href="#about" className="text-white/60 hover:text-white transition-colors">About Us</a></li>
                 <li><a href="mailto:support@jarida.org" className="text-white/60 hover:text-white transition-colors">Contact Support</a></li>
               </ul>
@@ -367,8 +387,8 @@ export default function Home() {
 
 function ValueCard({ number, title, desc, icon }: { number: string, title: string, desc: string, icon: React.ReactNode }) {
   return (
-    <div className="bg-secondary/20 rounded-3xl p-8 hover:bg-secondary/40 transition-colors border border-border/50 hover:border-primary/20 group">
-      <div className="flex justify-between items-start mb-6">
+    <div className="bg-secondary/20 rounded-3xl p-7 hover:bg-secondary/40 transition-colors border border-border/50 hover:border-primary/20 group">
+      <div className="flex justify-between items-start mb-5">
         <div className="h-14 w-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
           {icon}
         </div>
