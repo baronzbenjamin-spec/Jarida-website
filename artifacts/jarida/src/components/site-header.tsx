@@ -165,7 +165,7 @@ export function SiteHeader() {
                   <div className="container mx-auto px-6 md:px-12 pt-4">
                     <div className="bg-white rounded-3xl border border-border/60 shadow-2xl shadow-primary/10 overflow-hidden grid grid-cols-[18rem_1fr]">
                       {/* Left column */}
-                      <div className="bg-secondary/40 p-4 border-r border-border/60">
+                      <div className="bg-secondary/40 p-4 border-r border-border/60 max-h-[70vh] overflow-y-auto">
                         <ul className="flex flex-col">
                           <li>
                             <button
@@ -220,7 +220,7 @@ export function SiteHeader() {
                       </div>
 
                       {/* Right column */}
-                      <div className="p-6">
+                      <div className="p-6 max-h-[70vh] overflow-y-auto">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-5">
                           {panelTitle}
                         </p>
