@@ -18,7 +18,7 @@ export default function Category() {
   const otherCategories = FACT_CATEGORIES.filter((c) => c.id !== category.id);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-foreground">
+    <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
       {/* HERO */}

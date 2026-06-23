@@ -4,7 +4,7 @@ uploads = []
 id = "qkwVEHTPJbNNfIqxWVb7N"
 uri = "file://artifacts/jarida/public/images/hero-doctor.png"
 type = "image"
-title = "Hero doctor photography"
+title = "ugandan doctor hero"
 
 [[generated]]
 id = "-rTOGpRoWGLz8Pj3KtJ1_"
@@ -16,7 +16,7 @@ title = "Patient using mobile app"
 id = "lLQ-vJQmFq9AcC1UHUCOs"
 uri = "file://artifacts/jarida/public/images/doctors.png"
 type = "image"
-title = "Doctor using tablet"
+title = "ugandan doctor records"
 
 [[generated]]
 id = "rQFA360rh81_AeJ7m7GE8"
@@ -29,6 +29,18 @@ id = "aZ_vj_PvBNd3LotDhPSK8"
 uri = "file://artifacts/jarida-mobile/assets/images/icon.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "QY0rVe0d-1-SO7GRofiWC"
+uri = "file://artifacts/jarida/public/images/parent-baby.png"
+type = "image"
+title = "ugandan mother baby"
+
+[[generated]]
+id = "hQt_tFwJxFm8g9ChMRaJu"
+uri = "file://artifacts/jarida/public/images/app-usage.png"
+type = "image"
+title = "ugandan phone telehealth"
 
 [[outputs]]
 id = "C_dTSbhcR6S0eBs6s7lmG"

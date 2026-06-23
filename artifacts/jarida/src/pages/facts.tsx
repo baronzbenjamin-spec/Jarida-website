@@ -82,7 +82,7 @@ export default function Facts() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-foreground">
+    <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
       {/* HERO */}

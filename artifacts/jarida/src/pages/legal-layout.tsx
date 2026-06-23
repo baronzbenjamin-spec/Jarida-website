@@ -26,7 +26,7 @@ export function LegalLayout({
   }, []);
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground">
+    <div className="min-h-screen bg-background font-serif text-foreground">
       {/* HEADER */}
       <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-border py-3 shadow-sm">
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">

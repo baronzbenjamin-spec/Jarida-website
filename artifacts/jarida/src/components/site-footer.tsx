@@ -4,7 +4,7 @@ import { LogoMark } from "@/components/logo";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-[#0A0D17] text-white pt-24 pb-12">
+    <footer className="bg-[#0A0D17] text-white pt-24 pb-12 font-sans text-base">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-2">

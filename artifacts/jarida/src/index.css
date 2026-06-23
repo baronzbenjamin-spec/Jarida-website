@@ -105,6 +105,18 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-serif antialiased bg-background text-foreground;
+    font-size: 0.875rem;
   }
+}
+
+/* Logo serif typeface everywhere; headings bold, body text normal weight. */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+/* Footer keeps its original lighter heading weight (font-family/size handled
+   on the footer element via utility classes). */
+footer :is(h1, h2, h3, h4, h5, h6) {
+  font-weight: 500;
 }

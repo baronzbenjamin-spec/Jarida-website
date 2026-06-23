@@ -127,7 +127,7 @@ export function SiteHeader() {
                 aria-label="Facts & Advice menu"
                 onClick={() => setMegaOpen((v) => !v)}
                 onFocus={openMega}
-                className="inline-flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                className="inline-flex items-center gap-1 text-sm font-bold text-foreground/80 hover:text-primary transition-colors"
               >
                 Facts &amp; Advice
                 <ChevronDown
@@ -276,21 +276,21 @@ export function SiteHeader() {
             </div>
             <Link
               href="/articles"
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className="text-sm font-bold text-foreground/80 hover:text-primary transition-colors"
             >
               Articles
             </Link>
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <Button
               variant="outline"
-              className="rounded-full px-6 border-primary/20 text-primary hover:bg-secondary hover:text-primary transition-all"
+              className="rounded-full px-6 border-primary/30 text-primary hover:bg-secondary hover:text-primary hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200"
             >
               Log in
             </Button>
-            <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5">
-              Book an Appointment
+            <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200">
+              Sign up
             </Button>
           </div>
 
@@ -344,7 +344,7 @@ export function SiteHeader() {
                 type="button"
                 onClick={() => setMobileFactsOpen((v) => !v)}
                 aria-expanded={mobileFactsOpen}
-                className="w-full flex items-center justify-between gap-2 py-2 text-xl font-serif hover:text-primary/70 transition-colors"
+                className="w-full flex items-center justify-between gap-2 py-2 text-xl font-serif font-bold hover:text-primary/70 transition-colors"
               >
                 Facts &amp; Advice
                 <ChevronDown
@@ -358,7 +358,7 @@ export function SiteHeader() {
                   mobileFactsOpen ? "max-h-[70vh] overflow-y-auto" : "max-h-0"
                 }`}
               >
-                <div className="flex flex-col py-2 pl-1 text-base font-sans">
+                <div className="flex flex-col py-2 pl-1 text-base font-serif">
                   <div className="border-b border-border/40">
                     <button
                       type="button"
@@ -420,7 +420,7 @@ export function SiteHeader() {
             <Link
               href="/articles"
               onClick={() => setMenuOpen(false)}
-              className="py-2 text-xl font-serif hover:text-primary/70 transition-colors"
+              className="py-2 text-xl font-serif font-bold hover:text-primary/70 transition-colors"
             >
               Articles
             </Link>
@@ -428,12 +428,12 @@ export function SiteHeader() {
           <div className="mt-auto flex flex-col gap-4 pt-6">
             <Button
               variant="outline"
-              className="w-full rounded-full h-14 text-lg border-primary/20 text-primary"
+              className="w-full rounded-full h-14 text-lg border-primary/30 text-primary hover:bg-secondary active:scale-[0.98] transition-all duration-200"
             >
               Log in
             </Button>
-            <Button className="w-full rounded-full h-14 text-lg bg-primary hover:bg-primary/90 text-white">
-              Book an Appointment
+            <Button className="w-full rounded-full h-14 text-lg bg-primary hover:bg-primary/90 text-white active:scale-[0.98] transition-all duration-200">
+              Sign up
             </Button>
           </div>
         </nav>

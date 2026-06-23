@@ -68,7 +68,7 @@ export default function PatientAnswerDetail() {
   );
 
   return (
-    <div className="min-h-screen bg-white font-sans text-foreground">
+    <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
       <article className="relative pt-36 md:pt-44 pb-8 overflow-hidden">

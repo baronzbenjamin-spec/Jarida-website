@@ -54,7 +54,7 @@ export function FactDetail() {
   const related = category.topics.filter((t) => t.slug !== topic.slug).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-foreground">
+    <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
       <article className="relative pt-36 md:pt-44 pb-8 overflow-hidden">
@@ -197,7 +197,7 @@ export function ArticleDetail() {
   const related = ARTICLES.filter((a) => a.slug !== article.slug).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-foreground">
+    <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
       <article className="pt-36 md:pt-44 pb-8">

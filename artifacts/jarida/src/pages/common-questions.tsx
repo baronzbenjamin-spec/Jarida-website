@@ -76,7 +76,7 @@ export default function CommonQuestions() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-foreground">
+    <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
       {/* HERO */}
