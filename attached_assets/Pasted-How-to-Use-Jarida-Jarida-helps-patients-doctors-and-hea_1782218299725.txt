@@ -1,0 +1,111 @@
+How to Use Jarida
+
+Jarida helps patients, doctors, and healthcare facilities manage medical records, appointments, consultations, prescriptions, lab results, and health documents in one secure digital platform.
+
+Use Jarida to access care, organise health information, and improve communication between patients and healthcare providers.
+
+Buttons:
+For Patients | For Doctors | For Facilities
+
+Section 1: Getting Started
+Get Started with Jarida
+
+Jarida is designed to be simple, secure, and easy to use. Create an account, complete your profile, and start managing your healthcare information from your phone or computer.
+
+Create Your Account
+
+Register using your phone number, email address, or approved identification details. Your account gives you secure access to your health profile and medical information.
+
+Complete Your Profile
+
+Add your personal details, contact information, emergency contact, blood group, allergies, and relevant medical history. This helps healthcare providers identify you correctly and provide safer care.
+
+Access Your Dashboard
+
+Your dashboard gives you a clear overview of your appointments, medical records, prescriptions, lab results, documents, messages, and payments.
+
+Section 2: For Patients
+How Patients Use Jarida
+
+Jarida gives patients secure access to their health information and makes it easier to connect with healthcare providers.
+
+Book an Appointment
+
+Search for a doctor, clinic, hospital, or service. Choose the appointment type, select an available time, and confirm your booking directly in the app.
+
+Talk to a Doctor
+
+Start a consultation by video, phone, or message depending on the service offered by the healthcare provider. Appointment details are available in your dashboard.
+
+View Medical Records
+
+Access your visit history, diagnoses, treatment plans, prescriptions, lab results, uploaded documents, and clinical notes in one place.
+
+Upload Health Documents
+
+Upload referral letters, previous test results, discharge summaries, prescriptions, or other medical files so your doctor can review them before or during a consultation.
+
+View Prescriptions
+
+See your current and previous medications, including dose, instructions, duration, and prescribing doctor.
+
+Check Lab Results
+
+View laboratory results when they are available. Results are organised by date, test name, and clinical details.
+
+Track Your Vitals
+
+Record or review health measurements such as blood pressure, pulse, weight, temperature, oxygen level, and blood sugar.
+
+Manage Consent
+
+Control which healthcare providers can access your medical information. You can allow, limit, or remove access depending on your care needs.
+
+Make Payments
+
+View service fees, consultation charges, pending bills, and receipts. Payments are linked to your appointment or service.
+
+Section 3: For Doctors and Clinicians
+How Doctors Use Jarida
+
+Jarida supports healthcare professionals with digital tools for patient care, documentation, follow-up, and clinical decision-making.
+
+Create a Clinician Profile
+
+Register with your professional details, specialty, workplace, licence number, and contact information.
+
+Verify Your Licence
+
+Upload your professional licence and registration details. Jarida verifies clinicians through the relevant professional council before full clinical access is activated.
+
+Manage Your Schedule
+
+View upcoming appointments, consultation type, patient details, appointment status, and visit history from your clinician dashboard.
+
+Open Patient Records
+
+Access approved patient information, including medical history, allergies, medications, documents, lab results, prescriptions, and previous visits.
+
+Document a Consultation
+
+Write visit notes including symptoms, examination findings, assessment, diagnosis, treatment plan, and follow-up instructions.
+
+Add Diagnosis and ICD-10 Codes
+
+Record clinical diagnoses and, where available, select ICD-10 codes to support structured medical documentation.
+
+Prescribe Medication
+
+Create prescriptions with medicine name, dose, frequency, duration, and patient instructions. Prescriptions are saved in the patient record.
+
+Order Lab Tests
+
+Request laboratory investigations directly from the patient visit. Lab orders are stored in the patient’s medical record.
+
+Review Lab Results
+
+View completed lab results, add comments, update the treatment plan, and communicate findings to the patient.
+
+Sign Clinical Notes
+
+When documentation is complete, sign the visit note. Signed records are protected to maintain clinical integrity and accountability.
