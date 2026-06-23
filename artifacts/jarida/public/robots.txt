@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://jarida.app/sitemap.xml
