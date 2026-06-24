@@ -1,85 +1,131 @@
 import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
 import { AppStoreButton } from "@/components/app-store-buttons";
 import { LogoMark } from "@/components/logo";
 
+type FooterLink = { label: string; href: string; external?: boolean };
+
+const LINK_COLUMNS: { heading: string; links: FooterLink[] }[] = [
+  {
+    heading: "Explore",
+    links: [
+      { label: "Facts & Advice", href: "/facts" },
+      { label: "Articles", href: "/articles" },
+      { label: "How to Use Jarida", href: "/how-it-works" },
+    ],
+  },
+  {
+    heading: "Support",
+    links: [
+      { label: "Contact Us", href: "mailto:support@jarida.org", external: true },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+    ],
+  },
+];
+
+const LEGAL_LINKS: FooterLink[] = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Cookie Preferences", href: "/privacy" },
+];
+
+function FooterLinkItem({ link }: { link: FooterLink }) {
+  const className =
+    "group inline-flex items-center gap-2 text-primary/80 hover:text-primary transition-colors";
+  const content = (
+    <>
+      <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
+      <span>{link.label}</span>
+    </>
+  );
+
+  if (link.external) {
+    return (
+      <a href={link.href} className={className}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={link.href} className={className}>
+      {content}
+    </Link>
+  );
+}
+
 export function SiteFooter() {
   return (
-    <footer className="bg-[#0A0D17] text-white pt-24 pb-12 font-sans text-base">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2.5 mb-6 text-white">
-              <LogoMark className="h-9 w-9" />
-              <span className="font-serif text-2xl font-semibold tracking-tight">Jarida</span>
-            </Link>
-            <p className="text-white/60 max-w-sm leading-relaxed mb-8">
-              The calm, reassuring presence of a trusted doctor, now available
-              wherever you are. Connecting patients with verified professionals
-              24/7.
-            </p>
-            <div className="flex items-center gap-4">
-              <AppStoreButton type="ios" theme="dark" />
-              <AppStoreButton type="android" theme="dark" />
+    <footer className="font-sans text-base">
+      {/* Main area */}
+      <div className="bg-secondary">
+        <div className="container mx-auto px-6 md:px-12 py-16 md:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Intro */}
+            <div className="max-w-md">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2.5 mb-5 text-primary"
+              >
+                <LogoMark className="h-9 w-9" />
+                <span className="font-serif text-2xl font-bold tracking-tight">
+                  Jarida
+                </span>
+              </Link>
+              <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-4 leading-snug">
+                Jarida &ndash; trusted in your health and care.
+              </h2>
+              <p className="text-primary/70 leading-relaxed mb-8 text-sm">
+                Connect with verified doctors 24/7, manage your records, and get
+                the calm, reassuring presence of a trusted professional wherever
+                you are. Jarida helps you feel better, day or night.
+              </p>
+              <div className="flex flex-wrap items-center gap-4">
+                <AppStoreButton type="ios" />
+                <AppStoreButton type="android" />
+              </div>
+            </div>
+
+            {/* Link columns */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8 lg:justify-items-end">
+              {LINK_COLUMNS.map((col) => (
+                <div key={col.heading} className="w-full sm:w-auto">
+                  <h3 className="font-serif text-lg font-bold text-primary mb-5">
+                    {col.heading}
+                  </h3>
+                  <ul className="space-y-3 text-sm">
+                    {col.links.map((link) => (
+                      <li key={link.label}>
+                        <FooterLinkItem link={link} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
-
-          <div>
-            <h4 className="font-serif text-lg font-medium mb-6 text-white/90">Explore</h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/facts" className="text-white/50 hover:text-white transition-colors">
-                  Facts &amp; Advice
-                </Link>
-              </li>
-              <li>
-                <Link href="/articles" className="text-white/50 hover:text-white transition-colors">
-                  Articles
-                </Link>
-              </li>
-              <li>
-                <Link href="/how-it-works" className="text-white/50 hover:text-white transition-colors">
-                  How to Use Jarida
-                </Link>
-              </li>
-              <li>
-                <Link href="/" className="text-white/50 hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-serif text-lg font-medium mb-6 text-white/90">Support</h4>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="mailto:support@jarida.org"
-                  className="text-white/50 hover:text-white transition-colors flex items-center gap-2"
-                >
-                  Contact Us
-                </a>
-              </li>
-              <li>
-                <Link href="/privacy" className="text-white/50 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-white/50 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
+      </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-white/40 text-sm">
-          <p>&copy; {new Date().getFullYear()} Jarida Healthcare. All rights reserved.</p>
-          <div className="flex gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500 mt-1"></span>
-            <span>All systems operational</span>
-          </div>
+      {/* Bottom bar */}
+      <div className="bg-primary text-white">
+        <div className="container mx-auto px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-white/80">
+            &copy; {new Date().getFullYear()} Jarida &mdash; a digital healthcare
+            service.
+          </p>
+          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            {LEGAL_LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-white/80 hover:text-white underline-offset-4 hover:underline transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>
