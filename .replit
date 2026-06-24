@@ -24,6 +24,10 @@ args = "check-links"
 task = "workflow.run"
 args = "check-answers"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "check"
+
 [[workflows.workflow]]
 name = "check-links"
 author = "agent"
@@ -42,6 +46,17 @@ author = "agent"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "pnpm --filter @workspace/jarida run check:answers"
+
+[workflows.workflow.metadata]
+isValidation = true
+
+[[workflows.workflow]]
+name = "check"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "pnpm --filter @workspace/jarida run check"
 
 [workflows.workflow.metadata]
 isValidation = true

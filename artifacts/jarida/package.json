@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts --host 0.0.0.0",
-    "build": "tsx scripts/generate-sitemap.ts && vite build --config vite.config.ts",
+    "build": "pnpm run check:links && pnpm run check:answers && tsx scripts/generate-sitemap.ts && vite build --config vite.config.ts",
     "generate:sitemap": "tsx scripts/generate-sitemap.ts",
     "serve": "vite preview --config vite.config.ts --host 0.0.0.0",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "check:links": "tsx scripts/check-nav-links.ts",
-    "check:answers": "tsx scripts/check-answer-quality.ts"
+    "check:answers": "tsx scripts/check-answer-quality.ts",
+    "check": "pnpm run typecheck && pnpm run check:links && pnpm run check:answers"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.10.0",
