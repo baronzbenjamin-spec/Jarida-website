@@ -1,26 +1,17 @@
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { LogoMark } from "@/components/logo";
+import { Button } from "@/components/ui/button";
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
-const LINK_COLUMNS: { heading: string; links: FooterLink[] }[] = [
-  {
-    heading: "Explore",
-    links: [
-      { label: "Facts & Advice", href: "/facts" },
-      { label: "Articles", href: "/articles" },
-      { label: "How to Use Jarida", href: "/how-it-works" },
-    ],
-  },
-  {
-    heading: "Support",
-    links: [
-      { label: "Contact Us", href: "mailto:support@jarida.org", external: true },
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
-    ],
-  },
+const FOOTER_LINKS: FooterLink[] = [
+  { label: "Facts & Advice", href: "/facts" },
+  { label: "Articles", href: "/articles" },
+  { label: "How to Use Jarida", href: "/how-it-works" },
+  { label: "Contact Us", href: "mailto:support@jarida.org", external: true },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
 ];
 
 function FooterLinkItem({ link }: { link: FooterLink }) {
@@ -53,38 +44,32 @@ export function SiteFooter() {
     <footer className="font-sans text-sm">
       {/* Main area */}
       <div className="bg-secondary">
-        <div className="container mx-auto px-6 md:px-12 py-8 md:py-10">
-          <div className="flex flex-row flex-wrap justify-between gap-x-8 gap-y-6 md:gap-x-16">
-            {/* Intro */}
-            <div className="min-w-0 flex-1 basis-72 max-w-md">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 text-primary"
-              >
-                <LogoMark className="h-5 w-5" />
-                <span className="font-serif text-base font-bold tracking-tight">
-                  Jarida
-                </span>
-              </Link>
-            </div>
+        <div className="container mx-auto px-6 md:px-12 py-4">
+          <div className="flex flex-row flex-wrap items-center justify-between gap-x-6 gap-y-3 text-xs">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 text-primary shrink-0"
+            >
+              <LogoMark className="h-5 w-5" />
+              <span className="font-serif text-base font-bold tracking-tight">
+                Jarida
+              </span>
+            </Link>
 
-            {/* Link columns */}
-            <div className="flex flex-row gap-12 md:gap-16 shrink-0">
-              {LINK_COLUMNS.map((col) => (
-                <div key={col.heading}>
-                  <h3 className="font-serif text-sm font-bold text-primary mb-2.5">
-                    {col.heading}
-                  </h3>
-                  <ul className="space-y-1.5 text-xs">
-                    {col.links.map((link) => (
-                      <li key={link.label}>
-                        <FooterLinkItem link={link} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            {/* Links */}
+            {FOOTER_LINKS.map((link) => (
+              <FooterLinkItem key={link.label} link={link} />
+            ))}
+
+            {/* Download placeholder */}
+            <Button
+              size="sm"
+              className="rounded-full px-4 h-8 text-xs bg-primary text-white hover:bg-primary/90 shrink-0"
+            >
+              <Download className="w-3 h-3 mr-1.5" />
+              Download
+            </Button>
           </div>
         </div>
       </div>
