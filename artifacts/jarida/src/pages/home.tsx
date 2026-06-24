@@ -1,5 +1,6 @@
 import { ArrowRight, Check, ChevronRight, Download, Video } from "lucide-react";
 import { useState } from "react";
+import { Link } from "wouter";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
@@ -99,14 +100,24 @@ export default function Home() {
                 Connect with verified doctors 24/7. Book appointments, manage records, and receive care from anywhere, effortlessly.
               </p>
 
-              <Button
-                size="lg"
-                onClick={handleDownload}
-                className="font-sans font-bold w-full sm:w-auto self-stretch sm:self-start rounded-full bg-primary hover:bg-primary text-white h-14 md:h-16 px-10 md:px-12 text-base md:text-lg shadow-2xl shadow-black/30 ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
-              >
-                Download
-                <Download className="ml-3 w-5 h-5" />
-              </Button>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                <Button
+                  size="lg"
+                  onClick={handleDownload}
+                  className="font-sans font-bold w-full sm:w-auto self-stretch sm:self-start rounded-full bg-primary hover:bg-primary text-white h-14 md:h-16 px-10 md:px-12 text-base md:text-lg shadow-2xl shadow-black/30 ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+                >
+                  Download
+                  <Download className="ml-3 w-5 h-5" />
+                </Button>
+
+                <Link
+                  href="/how-it-works"
+                  className="group font-sans font-semibold inline-flex items-center justify-center sm:justify-start gap-1.5 text-white/90 hover:text-white text-sm md:text-base underline-offset-4 hover:underline transition-colors"
+                >
+                  How it works
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+              </div>
             </motion.div>
 
             {/* Desktop-only floating chat cards (decorative) */}
