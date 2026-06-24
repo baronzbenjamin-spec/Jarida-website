@@ -4,7 +4,6 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { AppStoreButton } from "@/components/app-store-buttons";
 
 const SERVICES = [
   { title: "Quick Booking", desc: "Find the right doctor and book your appointment in seconds." },
@@ -154,39 +153,6 @@ export default function Home() {
             <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "clinicians" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
               Apply as a clinician <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* DOWNLOAD APP */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="bg-primary rounded-[3rem] p-8 md:p-12 lg:p-16 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10">
-            {/* Background decorative elements */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/3" />
-
-            <div className="max-w-xl relative z-10 text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4 leading-tight">
-                Healthcare that travels with you.
-              </h2>
-              <p className="text-sm text-white/80 mb-7 leading-relaxed">
-                Download the Jarida app today. Available now on the App Store and Google Play for a seamless, 24/7 care experience.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <AppStoreButton type="ios" />
-                <AppStoreButton type="android" />
-              </div>
-            </div>
-
-            <div className="relative z-10 w-full max-w-sm mt-6 md:mt-0">
-              <img 
-                src="/images/app-usage.png" 
-                alt="A person in Uganda using the Jarida app for a video consultation" 
-                className="rounded-[32px] object-cover w-full h-[360px] md:h-[440px] shadow-2xl transform hover:-translate-y-1 transition-transform duration-700"
-              />
-            </div>
           </div>
         </div>
       </section>

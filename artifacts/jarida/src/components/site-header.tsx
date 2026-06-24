@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { findTopicsBySlugs, MOST_VISITED } from "@/data/content";
+import { detectPlatform, getStoreUrl } from "@/lib/app-store";
 
 const MOST_VISITED_KEY = "most-visited";
 const A_Z_KEY = "all-symptoms";
@@ -95,6 +96,11 @@ export function SiteHeader() {
         window.location.hash = hash;
       }
     }
+  };
+
+  const handleDownload = () => {
+    const url = getStoreUrl(detectPlatform());
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const mostVisitedTopics = findTopicsBySlugs(MOST_VISITED);
@@ -292,6 +298,12 @@ export function SiteHeader() {
             <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200">
               Sign up
             </Button>
+            <Button
+              onClick={handleDownload}
+              className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200"
+            >
+              Download
+            </Button>
           </div>
 
           <button
@@ -434,6 +446,15 @@ export function SiteHeader() {
             </Button>
             <Button className="w-full rounded-full h-14 text-lg bg-primary hover:bg-primary/90 text-white active:scale-[0.98] transition-all duration-200">
               Sign up
+            </Button>
+            <Button
+              onClick={() => {
+                setMenuOpen(false);
+                handleDownload();
+              }}
+              className="w-full rounded-full h-14 text-lg bg-primary hover:bg-primary/90 text-white active:scale-[0.98] transition-all duration-200"
+            >
+              Download
             </Button>
           </div>
         </nav>
