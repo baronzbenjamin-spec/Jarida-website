@@ -1,3 +1,5 @@
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/lib/app-store";
+
 export function AppStoreButton({
   type,
   theme = "light",
@@ -6,13 +8,18 @@ export function AppStoreButton({
   theme?: "light" | "dark";
 }) {
   const isIos = type === "ios";
+  const href = isIos ? APP_STORE_URL : GOOGLE_PLAY_URL;
   const bg =
     theme === "light"
       ? "bg-black text-white hover:bg-black/80"
       : "bg-white/10 text-white hover:bg-white/20 backdrop-blur-md";
 
   return (
-    <button
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={isIos ? "Download on the App Store" : "Get it on Google Play"}
       className={`flex items-center gap-3 px-6 py-3 rounded-2xl transition-colors ${bg} w-full sm:w-auto justify-center`}
     >
       {isIos ? (
@@ -33,6 +40,6 @@ export function AppStoreButton({
           {isIos ? "App Store" : "Google Play"}
         </div>
       </div>
-    </button>
+    </a>
   );
 }
