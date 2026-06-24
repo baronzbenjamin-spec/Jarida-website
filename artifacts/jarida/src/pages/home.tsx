@@ -225,26 +225,9 @@ export default function Home() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="overflow-hidden rounded-[28px] md:rounded-[40px] border border-border/60 bg-secondary/40 shadow-xl shadow-primary/5"
             >
-              <div className="grid md:grid-cols-2">
-                {/* Image card — swaps with the selected audience */}
-                <div className="relative min-h-[260px] sm:min-h-[340px] md:min-h-[520px] overflow-hidden">
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.img
-                      key={audience}
-                      src={content.image}
-                      alt={content.imageAlt}
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                      initial={reduce ? undefined : { opacity: 0, scale: 1.04 }}
-                      animate={reduce ? undefined : { opacity: 1, scale: 1 }}
-                      exit={reduce ? undefined : { opacity: 0, scale: 1.02 }}
-                      transition={{ duration: 0.4, ease: EASE }}
-                    />
-                  </AnimatePresence>
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent" />
-                </div>
-
+              <div>
                 {/* Content panel */}
-                <div className="flex flex-col justify-center p-8 sm:p-10 md:p-12">
+                <div className="flex flex-col justify-center p-8 sm:p-10 md:p-12 md:px-16">
                   <AnimatePresence mode="popLayout" initial={false}>
                     <motion.div key={audience} {...swap}>
                       <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
