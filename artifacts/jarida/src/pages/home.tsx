@@ -12,6 +12,8 @@ const AUDIENCE_CONTENT = {
   patients: {
     heading: "Care that revolves around your life.",
     desc: "We believe seeing a doctor should be as comfortable as being at home. Skip the waiting rooms and confusing paperwork.",
+    image: "/images/patients-care.png",
+    imageAlt: "A Ugandan woman smiling during a telehealth video call at home",
     bullets: [
       "Book appointments in seconds",
       "Talk to verified doctors anytime you need",
@@ -22,6 +24,8 @@ const AUDIENCE_CONTENT = {
   clinicians: {
     heading: "Empowering modern medical practice.",
     desc: "Focus on what matters most\u2014your patients. We provide the tools to manage your schedule, consult remotely, and grow your practice seamlessly.",
+    image: "/images/clinicians-practice.png",
+    imageAlt: "A Ugandan doctor in navy scrubs holding a tablet in a modern clinic",
     bullets: [
       "Easy patient and records management",
       "Run online consultations from anywhere",
@@ -170,7 +174,7 @@ export default function Home() {
 
       {/* FOR PATIENTS & CLINICIANS */}
       <section id="patients" className="py-12 md:py-20 scroll-mt-20 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
           <Reveal className="flex justify-center mb-8">
             <div className="inline-flex p-1 rounded-full bg-secondary/60 border border-border/50">
               <button
@@ -193,40 +197,64 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={0.05}>
-            <motion.div layout={!reduce} transition={{ duration: 0.3, ease: "easeOut" }}>
-              <AnimatePresence mode="popLayout" initial={false}>
-                <motion.div key={audience} {...swap}>
-                  <div className="text-center max-w-2xl mx-auto mb-7">
-                  <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
-                    {content.heading}
-                  </h2>
-                  <p className="text-sm text-foreground/70 leading-relaxed">
-                    {content.desc}
-                  </p>
+            <motion.div
+              layout={!reduce}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="overflow-hidden rounded-[28px] md:rounded-[40px] border border-border/60 bg-secondary/40 shadow-xl shadow-primary/5"
+            >
+              <div className="grid md:grid-cols-2">
+                {/* Image card — swaps with the selected audience */}
+                <div className="relative min-h-[260px] sm:min-h-[340px] md:min-h-[520px] overflow-hidden">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.img
+                      key={audience}
+                      src={content.image}
+                      alt={content.imageAlt}
+                      className="absolute inset-0 w-full h-full object-cover object-center"
+                      initial={reduce ? undefined : { opacity: 0, scale: 1.04 }}
+                      animate={reduce ? undefined : { opacity: 1, scale: 1 }}
+                      exit={reduce ? undefined : { opacity: 0, scale: 1.02 }}
+                      transition={{ duration: 0.4, ease: EASE }}
+                    />
+                  </AnimatePresence>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/25 via-transparent to-transparent" />
                 </div>
 
-                <ul className="space-y-3 mb-8 max-w-md mx-auto">
-                  {content.bullets.map((text, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-secondary flex items-center justify-center text-primary">
-                        <Check className="w-3 h-3" />
-                      </div>
-                      <span className="text-foreground/80 text-sm">{text}</span>
-                    </li>
-                  ))}
-                </ul>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
-          </Reveal>
+                {/* Content panel */}
+                <div className="flex flex-col justify-center p-8 sm:p-10 md:p-12">
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    <motion.div key={audience} {...swap}>
+                      <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
+                        {content.heading}
+                      </h2>
+                      <p className="text-sm text-foreground/70 leading-relaxed mb-7">
+                        {content.desc}
+                      </p>
 
-          <Reveal delay={0.1} className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
-            <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "patients" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
-              Join as a patient <ChevronRight className="ml-2 w-4 h-4" />
-            </Button>
-            <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "clinicians" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
-              Apply as a clinician <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+                      <ul className="space-y-3">
+                        {content.bullets.map((text, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <div className="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-white shadow-sm flex items-center justify-center text-primary">
+                              <Check className="w-3 h-3" />
+                            </div>
+                            <span className="text-foreground/80 text-sm">{text}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  </AnimatePresence>
+
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-9">
+                    <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "patients" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
+                      Join as a patient <ChevronRight className="ml-2 w-4 h-4" />
+                    </Button>
+                    <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "clinicians" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
+                      Apply as a clinician <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </Reveal>
         </div>
       </section>

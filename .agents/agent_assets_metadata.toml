@@ -48,6 +48,18 @@ uri = "file://artifacts/jarida/public/images/hero-parent-child.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "5NhvnAeh0myvKS-pqDAzk"
+uri = "file://artifacts/jarida/public/images/patients-care.png"
+type = "image"
+title = "patient telehealth"
+
+[[generated]]
+id = "uLugvoSnjTTplR7_w6_Pj"
+uri = "file://artifacts/jarida/public/images/clinicians-practice.png"
+type = "image"
+title = "clinician doctor"
+
 [[outputs]]
 id = "C_dTSbhcR6S0eBs6s7lmG"
 uri = "file://artifacts/jarida/public/images/parent-baby.jpg"
