@@ -53,6 +53,7 @@ paths.add("/");
 paths.add("/facts");
 paths.add("/common-questions");
 paths.add("/articles");
+paths.add("/how-it-works");
 paths.add("/privacy");
 paths.add("/terms");
 
