@@ -92,9 +92,12 @@ export function SiteFooter() {
       {/* Bottom bar */}
       <div className="bg-primary text-white">
         <div className="container mx-auto px-6 md:px-12 py-3 flex flex-row items-center justify-between gap-4 flex-wrap">
-          <p className="text-xs text-white/80">
-            &copy; {new Date().getFullYear()} Jarida &mdash; a digital healthcare
-            service. A product of Baronz AB.
+          <p className="text-xs text-white/80 flex flex-wrap items-center gap-x-6 gap-y-1">
+            <span>
+              &copy; {new Date().getFullYear()} Jarida &mdash; a digital
+              healthcare service.
+            </span>
+            <span>A product of Baronz AB.</span>
           </p>
         </div>
       </div>
