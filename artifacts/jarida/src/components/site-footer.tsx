@@ -23,12 +23,6 @@ const LINK_COLUMNS: { heading: string; links: FooterLink[] }[] = [
   },
 ];
 
-const LEGAL_LINKS: FooterLink[] = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
-  { label: "Cookie Preferences", href: "/privacy" },
-];
-
 function FooterLinkItem({ link }: { link: FooterLink }) {
   const className =
     "group inline-flex items-center gap-2 text-primary/80 hover:text-primary transition-colors";
@@ -72,14 +66,6 @@ export function SiteFooter() {
                   Jarida
                 </span>
               </Link>
-              <h2 className="font-serif text-xl md:text-2xl font-bold text-primary mb-4 leading-snug">
-                Jarida &ndash; trusted in your health and care.
-              </h2>
-              <p className="text-primary/70 leading-relaxed mb-8 text-sm">
-                Connect with verified doctors 24/7, manage your records, and get
-                the calm, reassuring presence of a trusted professional wherever
-                you are. Jarida helps you feel better, day or night.
-              </p>
             </div>
 
             {/* Link columns */}
@@ -110,17 +96,6 @@ export function SiteFooter() {
             &copy; {new Date().getFullYear()} Jarida &mdash; a digital healthcare
             service.
           </p>
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
-            {LEGAL_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-white/80 hover:text-white underline-offset-4 hover:underline transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
         </div>
       </div>
     </footer>

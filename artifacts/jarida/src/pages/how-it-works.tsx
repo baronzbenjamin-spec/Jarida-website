@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Link } from "wouter";
-import { Sparkles, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -160,10 +158,6 @@ export default function HowItWorks() {
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-medium mb-8 border border-primary/5">
-              <Sparkles className="w-4 h-4 text-primary" />
-              A simple orientation guide
-            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-[1.1] mb-6">
               How to Use Jarida
             </h1>
@@ -309,31 +303,6 @@ export default function HowItWorks() {
           )}
         </AnimatePresence>
       </motion.div>
-
-      {/* CTA */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="rounded-[2.5rem] bg-primary p-8 md:p-12 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-            <div className="relative z-10 max-w-2xl mx-auto">
-              <h2 className="text-2xl md:text-4xl font-serif font-bold text-white mb-4">
-                Ready to get started?
-              </h2>
-              <p className="text-sm text-white/80 leading-relaxed mb-7">
-                Create your account, complete your profile, and start managing
-                your healthcare information from your phone or computer.
-              </p>
-              <Link
-                href="/"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white px-8 py-3 text-sm font-bold text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
-              >
-                Back to home
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <SiteFooter />
     </div>
