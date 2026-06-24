@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
+import { ARTICLES } from "@/data/content";
 import { detectPlatform, getStoreUrl } from "@/lib/app-store";
 
 const AUDIENCE_CONTENT = {
@@ -297,6 +298,71 @@ export default function Home() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* LATEST ARTICLES — horizontal belt */}
+      <section className="pb-20 md:pb-28 bg-white">
+        <div className="container mx-auto px-6 md:px-12">
+          <Reveal className="flex items-end justify-between gap-6 mb-8 md:mb-10">
+            <div>
+              <h2 className="text-2xl md:text-4xl font-serif text-primary mb-3 leading-tight">
+                Latest articles
+              </h2>
+              <p className="font-sans text-sm md:text-base text-foreground/70 leading-relaxed max-w-xl">
+                Practical, down-to-earth reading on health and wellbeing.
+              </p>
+            </div>
+            <Link
+              href="/articles"
+              className="hidden sm:inline-flex items-center gap-1.5 flex-shrink-0 text-sm font-semibold text-primary hover:text-primary/70 transition-colors"
+            >
+              See all articles
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Reveal>
+        </div>
+
+        <Reveal>
+          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-px-6 md:scroll-px-12 px-6 md:px-12 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {ARTICLES.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/articles/${article.slug}`}
+                className="group flex flex-col flex-shrink-0 w-[280px] sm:w-[320px] snap-start rounded-3xl overflow-hidden bg-white border border-border/60 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+              >
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-primary/70 mb-3">
+                    {article.category}
+                  </span>
+                  <h3 className="text-lg font-serif font-medium text-primary leading-snug mb-3">
+                    {article.title}
+                  </h3>
+                  <div className="flex items-center justify-between text-sm mt-auto pt-2">
+                    <span className="text-muted-foreground">{article.readTime}</span>
+                    <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Reveal>
+
+        <div className="container mx-auto px-6 md:px-12 sm:hidden">
+          <Link
+            href="/articles"
+            className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-primary hover:text-primary/70 transition-colors"
+          >
+            See all articles
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 
