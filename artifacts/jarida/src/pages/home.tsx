@@ -67,15 +67,15 @@ export default function Home() {
       <SiteHeader />
 
       {/* HERO SECTION */}
-      <section className="relative flex items-center min-h-[80vh] pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-white">
+      <section className="relative flex items-center pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-white">
         {/* Full-bleed watermark image */}
         <motion.div className="absolute inset-0 pointer-events-none" {...heroImage}>
           <img
             src="/images/hero-parent-child.png"
             alt="A Ugandan mother tenderly embracing her child"
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-[0.18]"
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/20" />
         </motion.div>
 
         <div className="container mx-auto px-6 md:px-12 relative z-10">
