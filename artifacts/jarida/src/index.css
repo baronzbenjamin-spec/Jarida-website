@@ -104,6 +104,11 @@
     @apply border-border;
   }
 
+  /* Global scale: halve all rem-based typography, spacing, and pills site-wide. */
+  html {
+    font-size: 50%;
+  }
+
   body {
     @apply font-serif antialiased bg-background text-foreground;
     font-size: 0.875rem;
