@@ -24,21 +24,21 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/80 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 opacity-50 pointer-events-none" />
         
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12 items-center">
             <div className="max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-primary leading-[1.1] mb-5">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-primary leading-[1.1] mb-3 sm:mb-5">
                 Your health,<br />
                 safely in your hands.
               </h1>
-              <p className="text-sm text-foreground/70 mb-7 leading-relaxed max-w-md">
+              <p className="text-xs sm:text-sm text-foreground/70 mb-5 sm:mb-7 leading-relaxed max-w-md">
                 Connect with verified doctors 24/7. Book appointments, manage records, and receive care from anywhere, effortlessly.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-6 sm:px-8 h-11 sm:h-12 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
                   Get care now
                 </Button>
-                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-6 sm:px-8 h-11 sm:h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
                   <Link href="/how-it-works">How it works</Link>
                 </Button>
               </div>
