@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
-import { AppStoreButton } from "@/components/app-store-buttons";
 import { LogoMark } from "@/components/logo";
 
 type FooterLink = { label: string; href: string; external?: boolean };
@@ -81,10 +80,6 @@ export function SiteFooter() {
                 the calm, reassuring presence of a trusted professional wherever
                 you are. Jarida helps you feel better, day or night.
               </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <AppStoreButton type="ios" />
-                <AppStoreButton type="android" />
-              </div>
             </div>
 
             {/* Link columns */}
