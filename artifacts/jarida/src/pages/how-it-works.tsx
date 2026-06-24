@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Reveal } from "@/components/reveal";
 import { useSeo } from "@/lib/seo";
 
 type Step = {
@@ -157,7 +158,7 @@ export default function HowItWorks() {
       <section className="relative pt-40 pb-12 md:pt-48 md:pb-16 overflow-hidden">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="max-w-3xl">
+          <Reveal className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-[1.1] mb-6">
               How to Use Jarida
             </h1>
@@ -170,7 +171,7 @@ export default function HowItWorks() {
               Use Jarida to access care, organise health information, and improve
               communication between patients and healthcare providers.
             </p>
-          </div>
+          </Reveal>
 
           {/* AUDIENCE SWITCHER */}
           <div className="mt-10 flex flex-wrap gap-3">
@@ -210,7 +211,7 @@ export default function HowItWorks() {
               {/* GETTING STARTED */}
               <section className="py-12 md:py-16">
                 <div className="container mx-auto px-6 md:px-12">
-                  <div className="max-w-3xl">
+                  <Reveal className="max-w-3xl">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
                       Getting Started
                     </p>
@@ -223,35 +224,37 @@ export default function HowItWorks() {
                       managing your healthcare information from your phone or
                       computer.
                     </p>
-                  </div>
+                  </Reveal>
 
-                  <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {GETTING_STARTED.map((step, index) => (
-                      <li
-                        key={step.title}
-                        className="flex h-full items-start gap-4 rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
-                      >
-                        <div className="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-secondary text-sm font-bold text-primary">
-                          {index + 1}
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-primary mb-1.5 leading-snug">
-                            {step.title}
-                          </h3>
-                          <p className="text-sm text-foreground/70 leading-relaxed">
-                            {step.description}
-                          </p>
-                        </div>
-                      </li>
-                    ))}
-                  </ol>
+                  <Reveal>
+                    <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                      {GETTING_STARTED.map((step, index) => (
+                        <li
+                          key={step.title}
+                          className="flex h-full items-start gap-4 rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                        >
+                          <div className="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-secondary text-sm font-bold text-primary">
+                            {index + 1}
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-bold text-primary mb-1.5 leading-snug">
+                              {step.title}
+                            </h3>
+                            <p className="text-sm text-foreground/70 leading-relaxed">
+                              {step.description}
+                            </p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </Reveal>
                 </div>
               </section>
 
               {/* FOR PATIENTS */}
               <section className="py-12 md:py-16 bg-secondary/30">
                 <div className="container mx-auto px-6 md:px-12">
-                  <div className="max-w-3xl">
+                  <Reveal className="max-w-3xl">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
                       For Patients
                     </p>
@@ -263,11 +266,17 @@ export default function HowItWorks() {
                       information and makes it easier to connect with healthcare
                       providers.
                     </p>
-                  </div>
+                  </Reveal>
 
                   <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {PATIENT_STEPS.map((step, index) => (
-                      <StepCard key={step.title} number={index + 1} step={step} />
+                      <Reveal
+                        key={step.title}
+                        delay={(index % 3) * 0.08}
+                        className="h-full"
+                      >
+                        <StepCard number={index + 1} step={step} />
+                      </Reveal>
                     ))}
                   </div>
                 </div>
@@ -278,7 +287,7 @@ export default function HowItWorks() {
               {/* FOR DOCTORS */}
               <section className="py-12 md:py-16">
                 <div className="container mx-auto px-6 md:px-12">
-                  <div className="max-w-3xl">
+                  <Reveal className="max-w-3xl">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
                       For Doctors
                     </p>
@@ -290,11 +299,17 @@ export default function HowItWorks() {
                       for patient care, documentation, follow-up, and clinical
                       decision-making.
                     </p>
-                  </div>
+                  </Reveal>
 
                   <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {DOCTOR_STEPS.map((step, index) => (
-                      <StepCard key={step.title} number={index + 1} step={step} />
+                      <Reveal
+                        key={step.title}
+                        delay={(index % 3) * 0.08}
+                        className="h-full"
+                      >
+                        <StepCard number={index + 1} step={step} />
+                      </Reveal>
                     ))}
                   </div>
                 </div>
