@@ -7,6 +7,7 @@ import {
   Check,
   ChevronRight
 } from "lucide-react";
+import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -37,8 +38,8 @@ export default function Home() {
                 <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
                   Get care now
                 </Button>
-                <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
-                  How it works
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
+                  <Link href="/how-it-works">How it works</Link>
                 </Button>
               </div>
             </div>

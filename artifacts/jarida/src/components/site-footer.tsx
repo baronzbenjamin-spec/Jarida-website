@@ -37,6 +37,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/how-it-works" className="text-white/50 hover:text-white transition-colors">
+                  How to Use Jarida
+                </Link>
+              </li>
+              <li>
                 <Link href="/" className="text-white/50 hover:text-white transition-colors">
                   Home
                 </Link>

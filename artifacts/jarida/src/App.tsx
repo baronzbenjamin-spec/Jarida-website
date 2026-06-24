@@ -8,6 +8,7 @@ import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
 import Facts from "@/pages/facts";
 import CommonQuestions from "@/pages/common-questions";
+import HowItWorks from "@/pages/how-it-works";
 import PatientAnswerDetail from "@/pages/patient-answer";
 import Category from "@/pages/category";
 import Articles from "@/pages/articles";
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/facts" component={Facts} />
       <Route path="/common-questions" component={CommonQuestions} />
       <Route path="/common-questions/:slug" component={PatientAnswerDetail} />
+      <Route path="/how-it-works" component={HowItWorks} />
       <Route path="/facts/category/:id" component={Category} />
       <Route path="/facts/:slug" component={FactDetail} />
       <Route path="/articles" component={Articles} />
