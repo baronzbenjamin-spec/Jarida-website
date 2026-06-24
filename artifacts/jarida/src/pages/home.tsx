@@ -35,9 +35,6 @@ export default function Home() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-6 sm:px-8 h-11 sm:h-12 bg-primary hover:bg-primary/90 text-white shadow-xl shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
-                  Get care now
-                </Button>
                 <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-6 sm:px-8 h-11 sm:h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
                   <Link href="/how-it-works">How it works</Link>
                 </Button>
