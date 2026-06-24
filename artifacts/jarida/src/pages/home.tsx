@@ -1,4 +1,4 @@
-import { ArrowRight, Check, ChevronRight, Download } from "lucide-react";
+import { ArrowRight, Check, ChevronRight, Download, Video } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -75,7 +75,7 @@ export default function Home() {
       <section className="pt-24 pb-10 md:pt-28 md:pb-14 bg-white">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div
-            className="relative overflow-hidden rounded-[28px] md:rounded-[40px] min-h-[480px] md:min-h-[600px] flex"
+            className="relative overflow-hidden rounded-[28px] md:rounded-[40px] min-h-[480px] md:min-h-[520px] flex"
             {...heroImage}
           >
             <img
@@ -84,14 +84,14 @@ export default function Home() {
               className="absolute inset-0 w-full h-full object-cover object-center"
             />
             {/* Legibility overlay — darkens the left for white text */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
             <motion.div
-              className="relative z-10 flex flex-col justify-center w-full max-w-xl p-8 sm:p-12 md:p-16"
+              className="relative z-10 flex flex-col justify-center w-full lg:max-w-[52%] p-8 sm:p-12 md:p-14 lg:p-16"
               {...heroText}
             >
-              <h1 className="font-sans font-extrabold text-white text-4xl sm:text-6xl lg:text-7xl leading-[1.04] tracking-tight mb-5 md:mb-6">
+              <h1 className="font-sans font-extrabold text-white text-4xl sm:text-6xl lg:text-6xl xl:text-7xl leading-[1.04] tracking-tight mb-5 md:mb-6">
                 Your health,<br />
                 safely in your hands.
               </h1>
@@ -108,9 +108,50 @@ export default function Home() {
                 <Download className="ml-3 w-5 h-5" />
               </Button>
             </motion.div>
+
+            {/* Desktop-only floating chat cards (decorative) */}
+            <motion.div
+              className="hidden lg:block absolute right-8 xl:right-14 top-1/2 -translate-y-1/2 w-[40%] max-w-md z-10 font-sans pointer-events-none"
+              {...heroImage}
+            >
+              <div className="flex items-center gap-3 bg-white rounded-2xl shadow-2xl shadow-black/20 px-4 py-3 mb-5 ml-auto max-w-sm">
+                <div className="flex -space-x-2">
+                  {["AN", "JM", "KO"].map((c) => (
+                    <div
+                      key={c}
+                      className="h-9 w-9 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center ring-2 ring-white"
+                    >
+                      {c}
+                    </div>
+                  ))}
+                </div>
+                <div className="min-w-0">
+                  <p className="font-bold text-primary text-sm leading-none">Care Team</p>
+                  <p className="text-muted-foreground text-xs mt-1.5 leading-none">&amp; 4 others</p>
+                </div>
+                <span className="ml-auto inline-flex items-center gap-1.5 bg-primary text-white rounded-full px-4 py-2 text-xs font-bold">
+                  <Video className="w-3.5 h-3.5" /> Join
+                </span>
+              </div>
+
+              <div className="flex justify-end mb-5">
+                <div className="bg-secondary text-primary rounded-2xl rounded-tr-sm px-4 py-2.5 shadow-lg text-sm max-w-[78%]">
+                  Are we still on for the visit?
+                  <span className="text-[0.7em] text-primary/50 ml-2 align-baseline">11:53</span>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-2xl rounded-tl-sm shadow-2xl shadow-black/20 px-4 py-3 max-w-[80%]">
+                <p className="text-primary font-bold text-xs mb-1">Natalie</p>
+                <p className="text-foreground text-sm leading-snug">
+                  Ready when you are!
+                  <span className="text-[0.7em] text-foreground/40 ml-2 align-baseline">11:59</span>
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
 
-          <p className="font-sans text-xs text-foreground/50 leading-relaxed max-w-xl mt-4">
+          <p className="font-sans text-xs text-foreground/50 leading-relaxed max-w-xl mt-4 md:text-right md:max-w-none md:ml-auto">
             Available on Android and iOS. Standard data charges may apply.
           </p>
         </div>
