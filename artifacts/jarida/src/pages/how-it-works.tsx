@@ -231,21 +231,23 @@ export default function HowItWorks() {
                     </p>
                   </div>
 
-                  <ol className="mt-10 grid gap-5 md:grid-cols-3">
+                  <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {GETTING_STARTED.map((step, index) => (
                       <li
                         key={step.title}
-                        className="rounded-3xl border border-border/60 bg-white p-6 shadow-sm"
+                        className="flex h-full items-start gap-4 rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
                       >
-                        <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-base font-bold text-primary">
+                        <div className="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-secondary text-sm font-bold text-primary">
                           {index + 1}
                         </div>
-                        <h3 className="text-lg font-bold text-primary mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-sm text-foreground/70 leading-relaxed">
-                          {step.description}
-                        </p>
+                        <div>
+                          <h3 className="text-lg font-bold text-primary mb-1.5 leading-snug">
+                            {step.title}
+                          </h3>
+                          <p className="text-sm text-foreground/70 leading-relaxed">
+                            {step.description}
+                          </p>
+                        </div>
                       </li>
                     ))}
                   </ol>
@@ -340,14 +342,18 @@ export default function HowItWorks() {
 
 function StepCard({ number, step }: { number: number; step: Step }) {
   return (
-    <div className="rounded-3xl border border-border/60 bg-white p-6 shadow-sm h-full">
-      <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-sm font-bold text-primary">
+    <div className="flex h-full items-start gap-4 rounded-2xl border border-border/60 bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <div className="flex-shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-secondary text-sm font-bold text-primary">
         {number}
       </div>
-      <h3 className="text-lg font-bold text-primary mb-2">{step.title}</h3>
-      <p className="text-sm text-foreground/70 leading-relaxed">
-        {step.description}
-      </p>
+      <div>
+        <h3 className="text-lg font-bold text-primary mb-1.5 leading-snug">
+          {step.title}
+        </h3>
+        <p className="text-sm text-foreground/70 leading-relaxed">
+          {step.description}
+        </p>
+      </div>
     </div>
   );
 }

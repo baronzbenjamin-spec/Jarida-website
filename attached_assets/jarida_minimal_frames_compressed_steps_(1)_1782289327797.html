@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jarida Minimal Redesign Frames</title>
+<style>
+  :root {
+    --bg: #f7f8f6;
+    --paper: #ffffff;
+    --ink: #111827;
+    --muted: #6b7280;
+    --soft: #f3f4f6;
+    --line: #e5e7eb;
+    --accent: #0f766e;
+    --accent-soft: #e6f4f1;
+    --radius: 26px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+  }
+  .page-shell {
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 44px 28px 80px;
+  }
+  .document-header {
+    margin-bottom: 34px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-end;
+  }
+  .document-header h1 {
+    margin: 0 0 8px;
+    font-size: 36px;
+    letter-spacing: -0.04em;
+  }
+  .document-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 680px;
+    line-height: 1.55;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+    background: rgba(255,255,255,0.7);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .frames {
+    display: grid;
+    gap: 34px;
+  }
+  .frame-wrap {
+    background: #eef0ed;
+    border: 1px solid #dcdfd9;
+    border-radius: 34px;
+    padding: 18px;
+    overflow: auto;
+    box-shadow: 0 16px 50px rgba(17,24,39,0.08);
+  }
+  .frame-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 0 2px 14px;
+    color: #4b5563;
+    font-size: 14px;
+  }
+  .frame-label strong {
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .frame {
+    width: 1440px;
+    min-height: 1120px;
+    background: var(--paper);
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(17,24,39,0.08);
+  }
+  .nav {
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-weight: 760;
+    font-size: 22px;
+    letter-spacing: -0.03em;
+  }
+  .mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 11px;
+    background: var(--accent);
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 17px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .nav-cta, .button-primary, .button-secondary {
+    border-radius: 999px;
+    padding: 12px 20px;
+    font-weight: 650;
+    font-size: 14px;
+  }
+  .nav-cta, .button-primary {
+    background: var(--ink);
+    color: white;
+  }
+  .button-secondary {
+    border: 1px solid var(--line);
+    color: var(--ink);
+    background: white;
+  }
+  .eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-weight: 760;
+  }
+  .hero-centered {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 96px 0 60px;
+  }
+  .hero-centered h2, .hero-split h2 {
+    font-size: 66px;
+    line-height: 0.98;
+    letter-spacing: -0.065em;
+    margin: 18px 0 24px;
+  }
+  .hero-centered p, .hero-split p {
+    color: var(--muted);
+    font-size: 19px;
+    line-height: 1.65;
+    margin: 0 auto;
+  }
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 34px;
+  }
+  .timeline-area {
+    width: 860px;
+    margin: 0 auto;
+    padding: 0 0 74px;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 28px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .step-no {
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: var(--accent-soft);
+    font-weight: 760;
+  }
+  .timeline-item h3, .card h3, .detail-block h3, .step-row h3 {
+    margin: 0 0 10px;
+    font-size: 25px;
+    letter-spacing: -0.04em;
+  }
+  .timeline-item p, .card p, .detail-block p, .step-row p, .accordion p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.62;
+    font-size: 15px;
+  }
+  .accordions {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .accordion {
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px 20px;
+    background: #fff;
+  }
+  .accordion b {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .plus { color: var(--muted); }
+  .final-cta {
+    margin: 0 72px 72px;
+    border-radius: 32px;
+    background: var(--soft);
+    padding: 42px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+  .final-cta h3 {
+    margin: 0 0 8px;
+    font-size: 34px;
+    letter-spacing: -0.05em;
+  }
+  .final-cta p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .hero-grid {
+    padding: 86px 72px 54px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: center;
+    gap: 64px;
+  }
+  .hero-grid h2 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    margin: 18px 0 24px;
+  }
+  .hero-grid p {
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 28px;
+    background: white;
+  }
+  .tiny-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 15px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: grid;
+    place-items: center;
+    margin-bottom: 22px;
+    font-weight: 800;
+  }
+  .support-strip {
+    margin: 20px 72px 34px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .detail-block {
+    background: var(--soft);
+    border-radius: 24px;
+    padding: 28px;
+  }
+  .faq-section {
+    margin: 0 72px 42px;
+    display: grid;
+    grid-template-columns: 0.55fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .faq-section h2 {
+    margin: 0;
+    font-size: 44px;
+    letter-spacing: -0.055em;
+  }
+  .hero-split {
+    padding: 86px 72px 74px;
+    display: grid;
+    grid-template-columns: 0.95fr 0.9fr;
+    gap: 84px;
+    align-items: center;
+  }
+  .hero-split .hero-actions { justify-content: flex-start; }
+  .phone-wrap {
+    height: 540px;
+    border-radius: 44px;
+    background: linear-gradient(180deg, #f8fafc, #eef2f7);
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+  }
+  .phone {
+    width: 310px;
+    height: 462px;
+    border: 10px solid #111827;
+    border-radius: 42px;
+    background: #fff;
+    padding: 28px 22px;
+    box-shadow: 0 24px 80px rgba(17,24,39,0.16);
+  }
+  .phone-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .pill { width: 72px; height: 9px; border-radius: 99px; background: var(--line); }
+  .health-card { border: 1px solid var(--line); border-radius: 22px; padding: 18px; margin-bottom: 14px; }
+  .bar { height: 10px; border-radius: 99px; background: var(--line); margin: 12px 0; }
+  .bar.short { width: 58%; }
+  .bar.med { width: 76%; }
+  .check-list { display: grid; gap: 12px; margin-top: 18px; }
+  .check { height: 44px; border: 1px solid var(--line); border-radius: 15px; background: var(--soft); }
+  .steps-wide {
+    margin: 0 72px 58px;
+    border-top: 1px solid var(--line);
+  }
+  .step-row {
+    display: grid;
+    grid-template-columns: 160px 1fr 0.8fr;
+    gap: 34px;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+  }
+  .step-row .step-no {
+    width: 62px;
+    height: 62px;
+  }
+  .mini-details {
+    margin: 0 72px 38px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .mini-details .detail-block { padding: 22px; border-radius: 20px; }
+  .mini-details h3 { font-size: 18px; }
+  .note {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .placeholder {
+    color: #8a93a3;
+    font-style: italic;
+  }
+
+
+  /* Compressed list-style steps update */
+  .timeline-area {
+    width: 760px;
+    padding-bottom: 42px;
+  }
+  .timeline-item {
+    grid-template-columns: 42px 1fr;
+    gap: 14px;
+    padding: 13px 0;
+  }
+  .step-no {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  .timeline-item h3, .card h3, .detail-block h3, .step-row h3 {
+    margin-bottom: 4px;
+    font-size: 18px;
+  }
+  .timeline-item p, .card p, .detail-block p, .step-row p, .accordion p {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .accordions {
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .accordion {
+    border-radius: 14px;
+    padding: 13px 16px;
+  }
+  .accordion b {
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .card {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 16px;
+    border-radius: 18px;
+  }
+  .tiny-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 0;
+    font-size: 13px;
+  }
+  .card h3 {
+    font-size: 18px;
+  }
+  .support-strip {
+    margin-top: 8px;
+    margin-bottom: 26px;
+  }
+  .detail-block {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .faq-section {
+    margin-bottom: 30px;
+  }
+  .steps-wide {
+    margin-bottom: 34px;
+  }
+  .step-row {
+    grid-template-columns: 46px 1fr 0.8fr;
+    gap: 18px;
+    padding: 14px 0;
+    align-items: start;
+  }
+  .step-row .step-no {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+  }
+  .mini-details {
+    margin-bottom: 26px;
+  }
+
+  @media print {
+    body { background: white; }
+    .frame-wrap { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="document-header">
+      <div>
+        <h1>Jarida “How it works” — Minimal Frames</h1>
+        <p>Three redesign directions with compressed list-style steps to reduce vertical spacing while keeping the same information architecture. Replace placeholder text with the exact copy from the current page.</p>
+      </div>
+      <div class="badge">Frame size: 1440px desktop</div>
+    </header>
+
+    <section class="frames">
+      <div class="frame-wrap">
+        <div class="frame-label"><strong>Option 1 — Compressed step list</strong><span>Most compact / best for clarity</span></div>
+        <div class="frame">
+          <nav class="nav">
+            <div class="logo"><span class="mark">J</span> Jarida</div>
+            <div class="nav-links"><span>Home</span><span>How it works</span><span>Features</span><span>FAQ</span></div>
+            <div class="nav-cta">Get started</div>
+          </nav>
+
+          <section class="hero-centered">
+            <div class="eyebrow">How it works</div>
+            <h2>Take control of your health, anytime, anywhere.</h2>
+            <p>Use this space for the existing short intro from your page. Keep it to one calm, direct paragraph and move longer details into the sections below.</p>
+            <div class="hero-actions">
+              <div class="button-primary">Get started</div>
+              <div class="button-secondary">Learn more</div>
+            </div>
+          </section>
+
+          <section class="timeline-area">
+            <div class="timeline-item">
+              <div class="step-no">01</div>
+              <div><h3>Create your profile</h3><p class="placeholder">Existing Step 1 text goes here. Keep all information, but use one compact paragraph.</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="step-no">02</div>
+              <div><h3>Track your health</h3><p class="placeholder">Existing Step 2 text goes here. Avoid extra decoration; let spacing separate the ideas.</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="step-no">03</div>
+              <div><h3>Get insights</h3><p class="placeholder">Existing Step 3 text goes here. Use the exact details from the current page.</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="step-no">04</div>
+              <div><h3>Stay in control</h3><p class="placeholder">Existing Step 4 text goes here. Keep the final benefit clear and patient-focused.</p></div>
+            </div>
+            <div class="accordions">
+              <div class="accordion"><b>Security and privacy <span class="plus">+</span></b><p class="placeholder">Move any longer trust, privacy, or data information here so the page stays minimal.</p></div>
+              <div class="accordion"><b>Frequently asked questions <span class="plus">+</span></b><p class="placeholder">Keep all FAQ items, but collapse them by default.</p></div>
+            </div>
+          </section>
+
+          <section class="final-cta">
+            <div><h3>Ready to start with Jarida?</h3><p class="placeholder">Existing final CTA/supporting sentence goes here.</p></div>
+            <div class="button-primary">Get started</div>
+          </section>
+        </div>
+      </div>
+
+      <div class="frame-wrap">
+        <div class="frame-label"><strong>Option 2 — Compact card list</strong><span>Best for scanning steps quickly</span></div>
+        <div class="frame">
+          <nav class="nav">
+            <div class="logo"><span class="mark">J</span> Jarida</div>
+            <div class="nav-links"><span>Home</span><span>How it works</span><span>Features</span><span>FAQ</span></div>
+            <div class="nav-cta">Get started</div>
+          </nav>
+
+          <section class="hero-grid">
+            <div>
+              <div class="eyebrow">How it works</div>
+              <h2>A simpler way to manage your health journey.</h2>
+              <p>Keep the current page intro here. This version uses cards to preserve every item while making the page easier to scan.</p>
+              <div class="hero-actions" style="justify-content:flex-start"><div class="button-primary">Get started</div><div class="button-secondary">See steps</div></div>
+            </div>
+            <div class="cards-grid">
+              <div class="card"><div class="tiny-icon">1</div><div><h3>Create your profile</h3><p class="placeholder">Existing Step 1 copy.</p></div></div>
+              <div class="card"><div class="tiny-icon">2</div><div><h3>Track your health</h3><p class="placeholder">Existing Step 2 copy.</p></div></div>
+              <div class="card"><div class="tiny-icon">3</div><div><h3>Get insights</h3><p class="placeholder">Existing Step 3 copy.</p></div></div>
+              <div class="card"><div class="tiny-icon">4</div><div><h3>Stay in control</h3><p class="placeholder">Existing Step 4 copy.</p></div></div>
+            </div>
+          </section>
+
+          <section class="support-strip">
+            <div class="detail-block"><h3>Simple</h3><p class="placeholder">Existing supporting benefit or detail.</p></div>
+            <div class="detail-block"><h3>Secure</h3><p class="placeholder">Existing privacy/security information.</p></div>
+            <div class="detail-block"><h3>Accessible</h3><p class="placeholder">Existing accessibility/availability information.</p></div>
+          </section>
+
+          <section class="faq-section">
+            <div><h2>Questions, answered simply.</h2><p class="note">All secondary information is kept, but collapsed to reduce visual density.</p></div>
+            <div class="accordions">
+              <div class="accordion"><b>Question from current page <span class="plus">+</span></b><p class="placeholder">Existing answer copy.</p></div>
+              <div class="accordion"><b>Question from current page <span class="plus">+</span></b><p class="placeholder">Existing answer copy.</p></div>
+              <div class="accordion"><b>Question from current page <span class="plus">+</span></b><p class="placeholder">Existing answer copy.</p></div>
+            </div>
+          </section>
+
+          <section class="final-cta">
+            <div><h3>Take control of your health.</h3><p class="placeholder">Existing closing text or CTA copy.</p></div>
+            <div class="button-primary">Get started</div>
+          </section>
+        </div>
+      </div>
+
+      <div class="frame-wrap">
+        <div class="frame-label"><strong>Option 3 — Split-screen with compact rows</strong><span>Most premium / startup-style</span></div>
+        <div class="frame">
+          <nav class="nav">
+            <div class="logo"><span class="mark">J</span> Jarida</div>
+            <div class="nav-links"><span>Home</span><span>How it works</span><span>Features</span><span>FAQ</span></div>
+            <div class="nav-cta">Get started</div>
+          </nav>
+
+          <section class="hero-split">
+            <div>
+              <div class="eyebrow">How it works</div>
+              <h2>Your health information, made easier to understand.</h2>
+              <p>Use the existing headline/intro here. The visual stays simple: one product preview, one CTA, and no unnecessary decoration.</p>
+              <div class="hero-actions"><div class="button-primary">Get started</div><div class="button-secondary">How it works</div></div>
+            </div>
+            <div class="phone-wrap">
+              <div class="phone">
+                <div class="phone-top"><strong>Jarida</strong><div class="pill"></div></div>
+                <div class="health-card"><strong>Health overview</strong><div class="bar med"></div><div class="bar short"></div></div>
+                <div class="health-card"><strong>Today</strong><div class="bar"></div><div class="bar med"></div></div>
+                <div class="check-list"><div class="check"></div><div class="check"></div><div class="check"></div></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="steps-wide">
+            <div class="step-row"><div class="step-no">01</div><div><h3>Create your profile</h3><p class="placeholder">Existing Step 1 text.</p></div><p class="placeholder">Optional extra detail from the current page.</p></div>
+            <div class="step-row"><div class="step-no">02</div><div><h3>Track your health</h3><p class="placeholder">Existing Step 2 text.</p></div><p class="placeholder">Optional extra detail from the current page.</p></div>
+            <div class="step-row"><div class="step-no">03</div><div><h3>Get insights</h3><p class="placeholder">Existing Step 3 text.</p></div><p class="placeholder">Optional extra detail from the current page.</p></div>
+            <div class="step-row"><div class="step-no">04</div><div><h3>Stay in control</h3><p class="placeholder">Existing Step 4 text.</p></div><p class="placeholder">Optional extra detail from the current page.</p></div>
+          </section>
+
+          <section class="mini-details">
+            <div class="detail-block"><h3>Privacy</h3><p class="placeholder">Existing details.</p></div>
+            <div class="detail-block"><h3>Access</h3><p class="placeholder">Existing details.</p></div>
+            <div class="detail-block"><h3>Support</h3><p class="placeholder">Existing details.</p></div>
+            <div class="detail-block"><h3>FAQ</h3><p class="placeholder">Existing details.</p></div>
+          </section>
+
+          <section class="final-cta">
+            <div><h3>Start with Jarida today.</h3><p class="placeholder">Existing final information and CTA text.</p></div>
+            <div class="button-primary">Get started</div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
