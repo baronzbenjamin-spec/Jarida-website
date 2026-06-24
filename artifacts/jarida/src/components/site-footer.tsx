@@ -61,9 +61,9 @@ export function SiteFooter() {
       {/* Main area */}
       <div className="bg-secondary">
         <div className="container mx-auto px-6 md:px-12 py-16 md:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="flex flex-row flex-wrap justify-between gap-x-8 gap-y-12 md:gap-x-16">
             {/* Intro */}
-            <div className="max-w-md">
+            <div className="min-w-0 flex-1 basis-72 max-w-md">
               <Link
                 href="/"
                 className="inline-flex items-center gap-2.5 mb-5 text-primary"
@@ -88,9 +88,9 @@ export function SiteFooter() {
             </div>
 
             {/* Link columns */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8 lg:justify-items-end">
+            <div className="flex flex-row gap-12 md:gap-16 shrink-0">
               {LINK_COLUMNS.map((col) => (
-                <div key={col.heading} className="w-full sm:w-auto">
+                <div key={col.heading}>
                   <h3 className="font-serif text-lg font-bold text-primary mb-5">
                     {col.heading}
                   </h3>
@@ -110,7 +110,7 @@ export function SiteFooter() {
 
       {/* Bottom bar */}
       <div className="bg-primary text-white">
-        <div className="container mx-auto px-6 md:px-12 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="container mx-auto px-6 md:px-12 py-5 flex flex-row items-center justify-between gap-4 flex-wrap">
           <p className="text-sm text-white/80">
             &copy; {new Date().getFullYear()} Jarida &mdash; a digital healthcare
             service.
