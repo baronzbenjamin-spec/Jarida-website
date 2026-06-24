@@ -48,8 +48,8 @@ export default function Home() {
               {/* Organic shape image wrapper */}
               <div className="relative rounded-[40px] rounded-tl-[120px] rounded-br-[120px] overflow-hidden shadow-2xl shadow-primary/10 aspect-[4/5] md:aspect-square">
                 <img 
-                  src="/images/hero-doctor.png" 
-                  alt="A reassuring Ugandan doctor in a clinic" 
+                  src="/images/hero-parent-child.png" 
+                  alt="A Ugandan mother tenderly embracing her child" 
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
               </div>

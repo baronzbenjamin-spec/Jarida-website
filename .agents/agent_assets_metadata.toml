@@ -42,6 +42,12 @@ uri = "file://artifacts/jarida/public/images/app-usage.png"
 type = "image"
 title = "ugandan phone telehealth"
 
+[[generated]]
+id = "u_suQKUUylv03M5_Zr6y5"
+uri = "file://artifacts/jarida/public/images/hero-parent-child.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "C_dTSbhcR6S0eBs6s7lmG"
 uri = "file://artifacts/jarida/public/images/parent-baby.jpg"
