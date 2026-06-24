@@ -1,4 +1,4 @@
-import { ArrowRight, Check, ChevronRight, Download, Video } from "lucide-react";
+import { ArrowRight, BadgeCheck, Check, ChevronRight, Clock, Download, ShieldCheck, Stethoscope, Video } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -34,6 +34,29 @@ const AUDIENCE_CONTENT = {
     ],
   },
 } as const;
+
+const TRUST_POINTS = [
+  {
+    icon: BadgeCheck,
+    title: "Verified doctors",
+    desc: "Every clinician is licence-checked and credential-verified before they ever see a patient.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Private & secure",
+    desc: "Your records and conversations are encrypted and never shared without your consent.",
+  },
+  {
+    icon: Clock,
+    title: "Care, around the clock",
+    desc: "Reach a doctor 24/7\u2014no waiting rooms, no queues, wherever you are.",
+  },
+  {
+    icon: Stethoscope,
+    title: "Whole-family care",
+    desc: "From check-ups to follow-ups, manage care for everyone you love in one place.",
+  },
+] as const;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -256,6 +279,41 @@ export default function Home() {
               </div>
             </motion.div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* WHY JARIDA — trust strip */}
+      <section className="pb-16 md:pb-24 bg-white">
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+          <Reveal className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+            <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
+              Care you can trust.
+            </h2>
+            <p className="font-sans text-sm md:text-base text-foreground/70 leading-relaxed">
+              Built around safety, privacy, and people&mdash;so you can focus on feeling better.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            {TRUST_POINTS.map((point, i) => {
+              const Icon = point.icon;
+              return (
+                <Reveal key={point.title} delay={i * 0.08}>
+                  <div className="h-full rounded-[24px] md:rounded-[28px] border border-border/60 bg-secondary/40 p-6 md:p-7 shadow-xl shadow-primary/5 transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/10">
+                    <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/20">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="font-serif text-lg md:text-xl text-primary mb-2 leading-tight">
+                      {point.title}
+                    </h3>
+                    <p className="font-sans text-sm text-foreground/70 leading-relaxed">
+                      {point.desc}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
