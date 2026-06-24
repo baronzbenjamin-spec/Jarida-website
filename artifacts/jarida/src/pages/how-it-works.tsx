@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Sparkles, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { useSeo } from "@/lib/seo";
@@ -133,6 +134,7 @@ type Audience = "patients" | "doctors";
 
 export default function HowItWorks() {
   const [audience, setAudience] = useState<Audience>("patients");
+  const reduce = useReducedMotion();
 
   useSeo({
     title: "How to Use Jarida | Jarida",
@@ -140,14 +142,14 @@ export default function HowItWorks() {
       "A clear walkthrough of how patients, doctors, and healthcare facilities use Jarida to manage medical records, appointments, consultations, prescriptions, lab results, and health documents.",
   });
 
-  const switchAudience = (next: Audience) => {
-    setAudience(next);
-    window.requestAnimationFrame(() => {
-      document
-        .getElementById(next)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  };
+  const swap = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 8 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -8 },
+        transition: { duration: 0.3, ease: "easeOut" as const },
+      };
 
   return (
     <div className="min-h-screen bg-white font-serif text-foreground">
@@ -180,7 +182,7 @@ export default function HowItWorks() {
           <div className="mt-10 flex flex-wrap gap-3">
             <button
               type="button"
-              onClick={() => switchAudience("patients")}
+              onClick={() => setAudience("patients")}
               aria-pressed={audience === "patients"}
               className={`rounded-full px-7 py-3 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${
                 audience === "patients"
@@ -192,7 +194,7 @@ export default function HowItWorks() {
             </button>
             <button
               type="button"
-              onClick={() => switchAudience("doctors")}
+              onClick={() => setAudience("doctors")}
               aria-pressed={audience === "doctors"}
               className={`rounded-full px-7 py-3 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${
                 audience === "doctors"
@@ -206,92 +208,105 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* GETTING STARTED */}
-      <section className="py-12 md:py-16 scroll-mt-24">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
-              Section 1: Getting Started
-            </p>
-            <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
-              Get Started with Jarida
-            </h2>
-            <p className="text-foreground/70 leading-relaxed">
-              Jarida is designed to be simple, secure, and easy to use. Create an
-              account, complete your profile, and start managing your healthcare
-              information from your phone or computer.
-            </p>
-          </div>
+      {/* AUDIENCE CONTENT */}
+      <motion.div layout={!reduce} transition={{ duration: 0.3, ease: "easeOut" }}>
+        <AnimatePresence mode="popLayout" initial={false}>
+          {audience === "patients" ? (
+            <motion.div key="patients" {...swap}>
+              {/* GETTING STARTED */}
+              <section className="py-12 md:py-16">
+                <div className="container mx-auto px-6 md:px-12">
+                  <div className="max-w-3xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
+                      Getting Started
+                    </p>
+                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
+                      Get Started with Jarida
+                    </h2>
+                    <p className="text-foreground/70 leading-relaxed">
+                      Jarida is designed to be simple, secure, and easy to use.
+                      Create an account, complete your profile, and start
+                      managing your healthcare information from your phone or
+                      computer.
+                    </p>
+                  </div>
 
-          <ol className="mt-10 grid gap-5 md:grid-cols-3">
-            {GETTING_STARTED.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-3xl border border-border/60 bg-white p-6 shadow-sm"
-              >
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-base font-bold text-primary">
-                  {index + 1}
+                  <ol className="mt-10 grid gap-5 md:grid-cols-3">
+                    {GETTING_STARTED.map((step, index) => (
+                      <li
+                        key={step.title}
+                        className="rounded-3xl border border-border/60 bg-white p-6 shadow-sm"
+                      >
+                        <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-base font-bold text-primary">
+                          {index + 1}
+                        </div>
+                        <h3 className="text-lg font-bold text-primary mb-2">
+                          {step.title}
+                        </h3>
+                        <p className="text-sm text-foreground/70 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
-                <h3 className="text-lg font-bold text-primary mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">
-                  {step.description}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+              </section>
 
-      {/* FOR PATIENTS */}
-      <section id="patients" className="py-12 md:py-16 bg-secondary/30 scroll-mt-24">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
-              Section 2: For Patients
-            </p>
-            <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
-              How Patients Use Jarida
-            </h2>
-            <p className="text-foreground/70 leading-relaxed">
-              Jarida gives patients secure access to their health information and
-              makes it easier to connect with healthcare providers.
-            </p>
-          </div>
+              {/* FOR PATIENTS */}
+              <section className="py-12 md:py-16 bg-secondary/30">
+                <div className="container mx-auto px-6 md:px-12">
+                  <div className="max-w-3xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
+                      For Patients
+                    </p>
+                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
+                      How Patients Use Jarida
+                    </h2>
+                    <p className="text-foreground/70 leading-relaxed">
+                      Jarida gives patients secure access to their health
+                      information and makes it easier to connect with healthcare
+                      providers.
+                    </p>
+                  </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {PATIENT_STEPS.map((step, index) => (
-              <StepCard key={step.title} number={index + 1} step={step} />
-            ))}
-          </div>
-        </div>
-      </section>
+                  <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                    {PATIENT_STEPS.map((step, index) => (
+                      <StepCard key={step.title} number={index + 1} step={step} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </motion.div>
+          ) : (
+            <motion.div key="doctors" {...swap}>
+              {/* FOR DOCTORS */}
+              <section className="py-12 md:py-16">
+                <div className="container mx-auto px-6 md:px-12">
+                  <div className="max-w-3xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
+                      For Doctors
+                    </p>
+                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
+                      How Doctors Use Jarida
+                    </h2>
+                    <p className="text-foreground/70 leading-relaxed">
+                      Jarida supports healthcare professionals with digital tools
+                      for patient care, documentation, follow-up, and clinical
+                      decision-making.
+                    </p>
+                  </div>
 
-      {/* FOR DOCTORS */}
-      <section id="doctors" className="py-12 md:py-16 scroll-mt-24">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
-              Section 3: For Doctors and Clinicians
-            </p>
-            <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
-              How Doctors Use Jarida
-            </h2>
-            <p className="text-foreground/70 leading-relaxed">
-              Jarida supports healthcare professionals with digital tools for
-              patient care, documentation, follow-up, and clinical
-              decision-making.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {DOCTOR_STEPS.map((step, index) => (
-              <StepCard key={step.title} number={index + 1} step={step} />
-            ))}
-          </div>
-        </div>
-      </section>
+                  <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                    {DOCTOR_STEPS.map((step, index) => (
+                      <StepCard key={step.title} number={index + 1} step={step} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
 
       {/* CTA */}
       <section className="py-12 md:py-20 bg-white">
