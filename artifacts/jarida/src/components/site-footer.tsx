@@ -45,31 +45,35 @@ export function SiteFooter() {
       {/* Main area */}
       <div className="bg-secondary">
         <div className="container mx-auto px-6 md:px-12 py-4">
-          <div className="flex flex-row flex-wrap items-center justify-between gap-x-6 gap-y-3 text-xs">
-            {/* Logo */}
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-primary shrink-0"
-            >
-              <LogoMark className="h-5 w-5" />
-              <span className="font-serif text-base font-bold tracking-tight">
-                Jarida
-              </span>
-            </Link>
+          <div className="flex flex-row flex-wrap items-center justify-between gap-x-8 gap-y-4 text-xs">
+            {/* Logo + download */}
+            <div className="flex items-center gap-4 shrink-0">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 text-primary"
+              >
+                <LogoMark className="h-5 w-5" />
+                <span className="font-serif text-base font-bold tracking-tight">
+                  Jarida
+                </span>
+              </Link>
 
-            {/* Links */}
-            {FOOTER_LINKS.map((link) => (
-              <FooterLinkItem key={link.label} link={link} />
-            ))}
+              {/* Download placeholder */}
+              <Button
+                size="sm"
+                className="rounded-full px-4 h-8 text-xs bg-primary text-white hover:bg-primary/90"
+              >
+                <Download className="w-3 h-3 mr-1.5" />
+                Download
+              </Button>
+            </div>
 
-            {/* Download placeholder */}
-            <Button
-              size="sm"
-              className="rounded-full px-4 h-8 text-xs bg-primary text-white hover:bg-primary/90 shrink-0"
-            >
-              <Download className="w-3 h-3 mr-1.5" />
-              Download
-            </Button>
+            {/* Links: 2 rows x 4 columns */}
+            <div className="grid grid-cols-4 gap-x-8 gap-y-2">
+              {FOOTER_LINKS.map((link) => (
+                <FooterLinkItem key={link.label} link={link} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -82,7 +86,17 @@ export function SiteFooter() {
               &copy; {new Date().getFullYear()} Jarida &mdash; a digital
               healthcare service.
             </span>
-            <span>A product of Baronz AB.</span>
+            <span>
+              A product of{" "}
+              <a
+                href="https://baronz.se"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-white transition-colors"
+              >
+                Baronz AB.
+              </a>
+            </span>
           </p>
         </div>
       </div>
