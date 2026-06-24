@@ -9,7 +9,7 @@ const FOOTER_LINKS: FooterLink[] = [
   { label: "Facts & Advice", href: "/facts" },
   { label: "Articles", href: "/articles" },
   { label: "How to Use Jarida", href: "/how-it-works" },
-  { label: "Contact Us", href: "mailto:support@jarida.org", external: true },
+  { label: "Contact Us", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
 ];

@@ -12,6 +12,7 @@ import HowItWorks from "@/pages/how-it-works";
 import PatientAnswerDetail from "@/pages/patient-answer";
 import Category from "@/pages/category";
 import Articles from "@/pages/articles";
+import Contact from "@/pages/contact";
 import { FactDetail, ArticleDetail } from "@/pages/content-detail";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/facts/:slug" component={FactDetail} />
       <Route path="/articles" component={Articles} />
       <Route path="/articles/:slug" component={ArticleDetail} />
+      <Route path="/contact" component={Contact} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
       <Route component={NotFound} />
