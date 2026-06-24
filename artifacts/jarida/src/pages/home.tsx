@@ -1,11 +1,11 @@
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ArrowRight, Check, ChevronRight, Download } from "lucide-react";
 import { useState } from "react";
-import { Link } from "wouter";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
+import { detectPlatform, getStoreUrl } from "@/lib/app-store";
 
 const AUDIENCE_CONTENT = {
   patients: {
@@ -37,6 +37,11 @@ export default function Home() {
   const content = AUDIENCE_CONTENT[audience];
   const reduce = useReducedMotion();
 
+  const handleDownload = () => {
+    const url = getStoreUrl(detectPlatform());
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   const heroText = reduce
     ? {}
     : {
@@ -66,34 +71,48 @@ export default function Home() {
     <div className="min-h-screen bg-white font-serif text-foreground selection:bg-primary/20">
       <SiteHeader />
 
-      {/* HERO SECTION */}
-      <section className="relative flex items-center pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-white">
-        {/* Full-bleed watermark image */}
-        <motion.div className="absolute inset-0 pointer-events-none" {...heroImage}>
-          <img
-            src="/images/hero-parent-child.png"
-            alt="A Ugandan mother tenderly embracing her child"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-white/20" />
-        </motion.div>
+      {/* HERO SECTION — WhatsApp-style image card */}
+      <section className="pt-24 pb-10 md:pt-28 md:pb-14 bg-white">
+        <div className="container mx-auto px-6 md:px-12">
+          <motion.div
+            className="relative overflow-hidden rounded-[28px] md:rounded-[40px] min-h-[480px] md:min-h-[600px] flex"
+            {...heroImage}
+          >
+            <img
+              src="/images/hero-parent-child.png"
+              alt="A Ugandan mother tenderly embracing her child"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            {/* Legibility overlay — darkens the left for white text */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <motion.div className="max-w-2xl" {...heroText}>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-primary leading-[1.1] mb-4 sm:mb-6">
-              Your health,<br />
-              safely in your hands.
-            </h1>
-            <p className="text-sm sm:text-base text-foreground/70 mb-6 sm:mb-8 leading-relaxed max-w-md">
-              Connect with verified doctors 24/7. Book appointments, manage records, and receive care from anywhere, effortlessly.
-            </p>
+            <motion.div
+              className="relative z-10 flex flex-col justify-center w-full max-w-xl p-8 sm:p-12 md:p-16"
+              {...heroText}
+            >
+              <h1 className="font-sans font-extrabold text-white text-4xl sm:text-6xl lg:text-7xl leading-[1.04] tracking-tight mb-5 md:mb-6">
+                Your health,<br />
+                safely in your hands.
+              </h1>
+              <p className="font-sans text-white/90 text-sm sm:text-base md:text-lg leading-relaxed max-w-md mb-7 md:mb-9">
+                Connect with verified doctors 24/7. Book appointments, manage records, and receive care from anywhere, effortlessly.
+              </p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-6 sm:px-8 h-11 sm:h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
-                <Link href="/how-it-works">How it works</Link>
+              <Button
+                size="lg"
+                onClick={handleDownload}
+                className="font-sans font-bold w-full sm:w-auto self-stretch sm:self-start rounded-full bg-primary hover:bg-primary text-white h-14 md:h-16 px-10 md:px-12 text-base md:text-lg shadow-2xl shadow-black/30 ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+              >
+                Download
+                <Download className="ml-3 w-5 h-5" />
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
+
+          <p className="font-sans text-xs text-foreground/50 leading-relaxed max-w-xl mt-4">
+            Available on Android and iOS. Standard data charges may apply.
+          </p>
         </div>
       </section>
 
