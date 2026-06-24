@@ -67,39 +67,33 @@ export default function Home() {
       <SiteHeader />
 
       {/* HERO SECTION */}
-      <section className="relative pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-white">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/80 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 opacity-50 pointer-events-none" />
+      <section className="relative flex items-center min-h-[80vh] pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden bg-white">
+        {/* Full-bleed watermark image */}
+        <motion.div className="absolute inset-0 pointer-events-none" {...heroImage}>
+          <img
+            src="/images/hero-parent-child.png"
+            alt="A Ugandan mother tenderly embracing her child"
+            className="absolute inset-0 w-full h-full object-cover object-center opacity-[0.18]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/40" />
+        </motion.div>
 
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12 items-stretch">
-            <motion.div className="max-w-xl" {...heroText}>
-              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-primary leading-[1.1] mb-3 sm:mb-5">
-                Your health,<br />
-                safely in your hands.
-              </h1>
-              <p className="text-xs sm:text-sm text-foreground/70 mb-5 sm:mb-7 leading-relaxed max-w-md">
-                Connect with verified doctors 24/7. Book appointments, manage records, and receive care from anywhere, effortlessly.
-              </p>
+          <motion.div className="max-w-2xl" {...heroText}>
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-primary leading-[1.1] mb-4 sm:mb-6">
+              Your health,<br />
+              safely in your hands.
+            </h1>
+            <p className="text-sm sm:text-base text-foreground/70 mb-6 sm:mb-8 leading-relaxed max-w-md">
+              Connect with verified doctors 24/7. Book appointments, manage records, and receive care from anywhere, effortlessly.
+            </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-6 sm:px-8 h-11 sm:h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
-                  <Link href="/how-it-works">How it works</Link>
-                </Button>
-              </div>
-            </motion.div>
-
-            <motion.div className="relative flex" {...heroImage}>
-              {/* Organic shape image wrapper */}
-              <div className="relative w-full h-full min-h-[320px] sm:min-h-[460px] lg:min-h-[560px] rounded-[40px] rounded-tl-[120px] rounded-br-[120px] overflow-hidden shadow-2xl shadow-primary/10">
-                <img
-                  src="/images/hero-parent-child.png"
-                  alt="A Ugandan mother tenderly embracing her child"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                />
-              </div>
-            </motion.div>
-          </div>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-6 sm:px-8 h-11 sm:h-12 border-border hover:bg-secondary text-primary transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
+                <Link href="/how-it-works">How it works</Link>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
