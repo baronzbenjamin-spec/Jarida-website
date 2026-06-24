@@ -1,19 +1,45 @@
-import { 
-  ArrowRight, 
-  Calendar, 
-  Video, 
-  FileText, 
-  Pill, 
-  Check,
-  ChevronRight
-} from "lucide-react";
+import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { useState } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AppStoreButton } from "@/components/app-store-buttons";
 
+const SERVICES = [
+  { title: "Quick Booking", desc: "Find the right doctor and book your appointment in seconds." },
+  { title: "24/7 Consultations", desc: "Connect via secure video or chat anytime, day or night." },
+  { title: "Medical Records", desc: "Access your full medical history and test results securely." },
+  { title: "E-Prescriptions", desc: "Receive and renew your prescriptions digitally, without hassle." },
+];
+
+const AUDIENCE_CONTENT = {
+  patients: {
+    heading: "Care that revolves around your life.",
+    desc: "We believe seeing a doctor should be as comfortable as being at home. Skip the waiting rooms and confusing paperwork.",
+    bullets: [
+      "Book appointments in seconds",
+      "Talk to verified doctors anytime you need",
+      "Keep records & test results in one place",
+      "Get timely reminders for visits and meds",
+    ],
+  },
+  clinicians: {
+    heading: "Empowering modern medical practice.",
+    desc: "Focus on what matters most\u2014your patients. We provide the tools to manage your schedule, consult remotely, and grow your practice seamlessly.",
+    bullets: [
+      "Easy patient and records management",
+      "Run online consultations from anywhere",
+      "Grow your practice beyond location limits",
+      "Issue prescriptions digitally and securely",
+    ],
+  },
+} as const;
+
 export default function Home() {
+  const [audience, setAudience] = useState<"patients" | "clinicians">("patients");
+  const content = AUDIENCE_CONTENT[audience];
+
   return (
     <div className="min-h-screen bg-white font-serif text-foreground selection:bg-primary/20">
       <SiteHeader />
@@ -65,136 +91,69 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <ServiceCard 
-              icon={<Calendar className="w-6 h-6" />}
-              title="Quick Booking"
-              desc="Find the right doctor and book your appointment in seconds."
-              delay="delay-0"
-            />
-            <ServiceCard 
-              icon={<Video className="w-6 h-6" />}
-              title="24/7 Consultations"
-              desc="Connect via secure video or chat anytime, day or night."
-              delay="delay-100"
-            />
-            <ServiceCard 
-              icon={<FileText className="w-6 h-6" />}
-              title="Medical Records"
-              desc="Access your full medical history and test results securely."
-              delay="delay-200"
-            />
-            <ServiceCard 
-              icon={<Pill className="w-6 h-6" />}
-              title="E-Prescriptions"
-              desc="Receive and renew your prescriptions digitally, without hassle."
-              delay="delay-300"
-            />
+          <div className="flex flex-col items-stretch gap-3 max-w-2xl mx-auto">
+            {SERVICES.map((s) => (
+              <div
+                key={s.title}
+                className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 rounded-full bg-white border border-border/50 px-5 py-3 shadow-sm hover:shadow-md transition-shadow duration-200"
+              >
+                <span className="text-xs font-bold text-primary">{s.title}</span>
+                <span className="text-xs text-foreground/70">{s.desc}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FOR PATIENTS */}
-      <section id="patients" className="py-12 md:py-20 scroll-mt-20 bg-white">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-            <div className="relative order-2 lg:order-1">
-              <div className="absolute inset-0 bg-secondary rounded-[40px] transform -rotate-3 scale-105 z-0" />
-              <img
-                src="/images/parent-baby.png"
-                alt="A Ugandan parent holding their baby at home"
-                className="relative z-10 rounded-[40px] object-cover w-full h-[420px] md:h-[520px] shadow-xl shadow-primary/10"
-              />
-              <div className="absolute bottom-8 -right-6 md:-right-10 bg-white p-4 rounded-2xl shadow-xl z-20 hidden md:flex items-center gap-3 border border-border/50">
-                <div className="h-10 w-10 rounded-full bg-secondary flex items-center justify-center text-primary">
-                  <Check className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-primary">Appointment set</p>
-                  <p className="text-xs text-foreground/60">Tomorrow, 10:00 AM</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="order-1 lg:order-2 lg:pl-8">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-secondary text-primary text-sm font-bold mb-5">
+      {/* FOR PATIENTS & CLINICIANS */}
+      <section id="patients" className="py-12 md:py-16 scroll-mt-20 bg-white">
+        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex p-1 rounded-full bg-secondary/60 border border-border/50">
+              <button
+                type="button"
+                onClick={() => setAudience("patients")}
+                className={`rounded-full px-5 py-2 text-xs font-bold transition-all duration-200 ${audience === "patients" ? "bg-primary text-white shadow-sm" : "text-primary/70 hover:text-primary"}`}
+              >
                 For Patients
-              </div>
-              <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
-                Care that revolves around your life.
-              </h2>
-              <p className="text-sm text-foreground/70 mb-6 leading-relaxed">
-                We believe seeing a doctor should be as comfortable as being at home. Skip the waiting rooms and confusing paperwork.
-              </p>
-              
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Book appointments in seconds",
-                  "Talk to verified doctors anytime you need",
-                  "Keep records & test results in one place",
-                  "Get timely reminders for visits and meds"
-                ].map((text, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-secondary flex items-center justify-center text-primary">
-                      <Check className="w-3 h-3" />
-                    </div>
-                    <span className="text-foreground/80 text-sm">{text}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <Button className="rounded-full px-8 h-12 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm">
-                Join as a patient <ChevronRight className="ml-2 w-4 h-4" />
-              </Button>
+              </button>
+              <button
+                type="button"
+                onClick={() => setAudience("clinicians")}
+                className={`rounded-full px-5 py-2 text-xs font-bold transition-all duration-200 ${audience === "clinicians" ? "bg-primary text-white shadow-sm" : "text-primary/70 hover:text-primary"}`}
+              >
+                For Clinicians
+              </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* FOR DOCTORS */}
-      <section id="doctors" className="py-12 md:py-20 bg-secondary/40 scroll-mt-20">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-            <div className="lg:pr-8">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-white text-primary text-sm font-bold mb-5 shadow-sm">
-                For Doctors
-              </div>
-              <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
-                Empowering modern medical practice.
-              </h2>
-              <p className="text-sm text-foreground/70 mb-6 leading-relaxed">
-                Focus on what matters most&mdash;your patients. We provide the tools to manage your schedule, consult remotely, and grow your practice seamlessly.
-              </p>
-              
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Easy patient and records management",
-                  "Run online consultations from anywhere",
-                  "Grow your practice beyond location limits",
-                  "Issue prescriptions digitally and securely"
-                ].map((text, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
-                      <Check className="w-3 h-3" />
-                    </div>
-                    <span className="text-foreground/80 text-sm">{text}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <Button variant="outline" className="rounded-full px-8 h-12 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 text-sm bg-transparent">
-                Register as a doctor <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </div>
+          <div className="text-center max-w-2xl mx-auto mb-7">
+            <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
+              {content.heading}
+            </h2>
+            <p className="text-sm text-foreground/70 leading-relaxed">
+              {content.desc}
+            </p>
+          </div>
 
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/5 rounded-[40px] transform rotate-3 scale-105 z-0" />
-              <img
-                src="/images/doctors.png"
-                alt="A Ugandan doctor reviewing patient records"
-                className="relative z-10 rounded-[40px] object-cover w-full h-[420px] md:h-[520px] shadow-xl shadow-primary/10"
-              />
-            </div>
+          <ul className="space-y-3 mb-8 max-w-md mx-auto">
+            {content.bullets.map((text, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <div className="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-secondary flex items-center justify-center text-primary">
+                  <Check className="w-3 h-3" />
+                </div>
+                <span className="text-foreground/80 text-sm">{text}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
+            <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "patients" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
+              Join as a patient <ChevronRight className="ml-2 w-4 h-4" />
+            </Button>
+            <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "clinicians" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
+              Apply as a clinician <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
           </div>
         </div>
       </section>
@@ -233,22 +192,6 @@ export default function Home() {
       </section>
 
       <SiteFooter />
-    </div>
-  );
-}
-
-// Subcomponents
-
-function ServiceCard({ icon, title, desc, delay }: { icon: React.ReactNode, title: string, desc: string, delay: string }) {
-  return (
-    <div className={`bg-white rounded-3xl p-6 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 border border-border/50 group animate-in fade-in slide-in-from-bottom-8 fill-mode-both ${delay}`}>
-      <div className="h-12 w-12 rounded-2xl bg-secondary text-primary flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-        {icon}
-      </div>
-      <h3 className="text-lg font-bold text-primary mb-2">{title}</h3>
-      <p className="text-sm text-foreground/70 leading-relaxed">
-        {desc}
-      </p>
     </div>
   );
 }
