@@ -91,7 +91,7 @@ export default function Home() {
 
             <motion.div className="relative flex" {...heroImage}>
               {/* Organic shape image wrapper */}
-              <div className="relative w-full h-full min-h-[260px] sm:min-h-[380px] rounded-[40px] rounded-tl-[120px] rounded-br-[120px] overflow-hidden shadow-2xl shadow-primary/10">
+              <div className="relative w-full h-full min-h-[320px] sm:min-h-[460px] lg:min-h-[560px] rounded-[40px] rounded-tl-[120px] rounded-br-[120px] overflow-hidden shadow-2xl shadow-primary/10">
                 <img
                   src="/images/hero-parent-child.png"
                   alt="A Ugandan mother tenderly embracing her child"
