@@ -24,7 +24,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/80 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 opacity-50 pointer-events-none" />
         
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:gap-12 items-stretch">
             <div className="max-w-xl animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
               <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-primary leading-[1.1] mb-3 sm:mb-5">
                 Your health,<br />
@@ -44,13 +44,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative animate-in fade-in slide-in-from-right-12 duration-1000 delay-300 fill-mode-both">
+            <div className="relative flex animate-in fade-in slide-in-from-right-12 duration-1000 delay-300 fill-mode-both">
               {/* Organic shape image wrapper */}
-              <div className="relative rounded-[40px] rounded-tl-[120px] rounded-br-[120px] overflow-hidden shadow-2xl shadow-primary/10 aspect-[4/5] md:aspect-square">
+              <div className="relative w-full h-full min-h-[260px] sm:min-h-[380px] rounded-[40px] rounded-tl-[120px] rounded-br-[120px] overflow-hidden shadow-2xl shadow-primary/10">
                 <img 
                   src="/images/hero-parent-child.png" 
                   alt="A Ugandan mother tenderly embracing her child" 
-                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
             </div>
