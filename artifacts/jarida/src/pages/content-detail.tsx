@@ -3,6 +3,7 @@ import { Link, useParams } from "wouter";
 import { ArrowLeft, ArrowRight, ChevronRight, AlertCircle, HeartPulse, Stethoscope } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Reveal } from "@/components/reveal";
 import NotFound from "@/pages/not-found";
 import { useSeo } from "@/lib/seo";
 import {
@@ -60,6 +61,7 @@ export function FactDetail() {
       <article className="relative pt-36 md:pt-44 pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-3xl">
+          <Reveal>
           <Link
             href="/facts"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-8"
@@ -76,35 +78,42 @@ export function FactDetail() {
           <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
             {topic.excerpt}
           </p>
+          </Reveal>
         </div>
       </article>
 
       <div className="container mx-auto px-6 md:px-12 max-w-3xl pb-20">
-        <div className="space-y-5 mb-12">
+        <Reveal className="space-y-5 mb-12">
           {topic.body.map((p, i) => (
             <p key={i} className="text-foreground/80 leading-relaxed text-lg">
               {p}
             </p>
           ))}
-        </div>
+        </Reveal>
 
-        <DetailList
-          icon={<Stethoscope className="w-5 h-5" />}
-          title="Common symptoms"
-          items={topic.symptoms}
-        />
-        <DetailList
-          icon={<HeartPulse className="w-5 h-5" />}
-          title="What you can do"
-          items={topic.selfCare}
-        />
-        <DetailList
-          icon={<AlertCircle className="w-5 h-5" />}
-          title="When to speak to a doctor"
-          items={topic.seekCare}
-        />
+        <Reveal>
+          <DetailList
+            icon={<Stethoscope className="w-5 h-5" />}
+            title="Common symptoms"
+            items={topic.symptoms}
+          />
+        </Reveal>
+        <Reveal>
+          <DetailList
+            icon={<HeartPulse className="w-5 h-5" />}
+            title="What you can do"
+            items={topic.selfCare}
+          />
+        </Reveal>
+        <Reveal>
+          <DetailList
+            icon={<AlertCircle className="w-5 h-5" />}
+            title="When to speak to a doctor"
+            items={topic.seekCare}
+          />
+        </Reveal>
 
-        <div className="mt-12 rounded-3xl bg-secondary/50 border border-primary/5 p-8">
+        <Reveal className="mt-12 rounded-3xl bg-secondary/50 border border-primary/5 p-8">
           <h3 className="text-xl font-serif font-medium text-primary mb-3">
             Speak to a doctor on Jarida
           </h3>
@@ -120,19 +129,21 @@ export function FactDetail() {
             Book an appointment
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </Reveal>
       </div>
 
       {related.length > 0 && (
         <section className="pb-24">
           <div className="container mx-auto px-6 md:px-12">
-            <h2 className="text-2xl font-serif font-medium text-primary mb-8">
-              More on {category.name.toLowerCase()}
-            </h2>
+            <Reveal>
+              <h2 className="text-2xl font-serif font-medium text-primary mb-8">
+                More on {category.name.toLowerCase()}
+              </h2>
+            </Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {related.map((t) => (
+              {related.map((t, i) => (
+                <Reveal key={t.slug} delay={(i % 3) * 0.08}>
                 <Link
-                  key={t.slug}
                   href={`/facts/${t.slug}`}
                   className="group bg-white rounded-3xl p-7 border border-border/60 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col"
                 >
@@ -145,6 +156,7 @@ export function FactDetail() {
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Link>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -202,6 +214,7 @@ export function ArticleDetail() {
 
       <article className="pt-36 md:pt-44 pb-8">
         <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+          <Reveal>
           <Link
             href="/articles"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-8"
@@ -216,17 +229,19 @@ export function ArticleDetail() {
             {article.title}
           </h1>
           <p className="text-muted-foreground text-sm mb-8">{article.readTime}</p>
+          </Reveal>
         </div>
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-          <div className="aspect-[16/9] rounded-[2rem] overflow-hidden mb-12">
+          <Reveal className="aspect-[16/9] rounded-[2rem] overflow-hidden mb-12">
             <img
               src={article.image}
               alt={article.title}
               className="w-full h-full object-cover"
             />
-          </div>
+          </Reveal>
         </div>
         <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+          <Reveal>
           <p className="text-xl text-foreground/80 leading-relaxed mb-8 font-serif">
             {article.excerpt}
           </p>
@@ -237,19 +252,22 @@ export function ArticleDetail() {
               </p>
             ))}
           </div>
+          </Reveal>
         </div>
       </article>
 
       {related.length > 0 && (
         <section className="pb-24 pt-8">
           <div className="container mx-auto px-6 md:px-12">
-            <h2 className="text-2xl font-serif font-medium text-primary mb-8">
-              Keep reading
-            </h2>
+            <Reveal>
+              <h2 className="text-2xl font-serif font-medium text-primary mb-8">
+                Keep reading
+              </h2>
+            </Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {related.map((a) => (
+              {related.map((a, i) => (
+                <Reveal key={a.slug} delay={(i % 3) * 0.08}>
                 <Link
-                  key={a.slug}
                   href={`/articles/${a.slug}`}
                   className="group flex flex-col rounded-3xl overflow-hidden bg-white border border-border/60 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
                 >
@@ -270,6 +288,7 @@ export function ArticleDetail() {
                     <span className="text-muted-foreground text-sm">{a.readTime}</span>
                   </div>
                 </Link>
+                </Reveal>
               ))}
             </div>
           </div>

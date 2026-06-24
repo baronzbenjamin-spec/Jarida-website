@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Reveal } from "@/components/reveal";
 import { ARTICLES } from "@/data/content";
 
 export default function Articles() {
@@ -20,7 +21,7 @@ export default function Articles() {
       <section className="relative pt-40 pb-16 md:pt-48 md:pb-20 overflow-hidden">
         <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="max-w-3xl">
+          <Reveal className="max-w-3xl">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary/60 mb-5">
               Your health
             </p>
@@ -31,13 +32,14 @@ export default function Articles() {
               Practical, down-to-earth reading on health and wellbeing, written
               to help you feel a little more in control of everyday life.
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* FEATURED */}
       <section className="pb-8">
         <div className="container mx-auto px-6 md:px-12">
+          <Reveal>
           <Link
             href={`/articles/${featured.slug}`}
             className="group grid lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-secondary/40 rounded-[2.5rem] overflow-hidden border border-border/60 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
@@ -68,6 +70,7 @@ export default function Articles() {
               </div>
             </div>
           </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -75,9 +78,9 @@ export default function Articles() {
       <section className="pb-24 pt-8">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {rest.map((article) => (
+            {rest.map((article, i) => (
+              <Reveal key={article.slug} delay={(i % 3) * 0.08}>
               <Link
-                key={article.slug}
                 href={`/articles/${article.slug}`}
                 className="group flex flex-col rounded-3xl overflow-hidden bg-white border border-border/60 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
               >
@@ -104,6 +107,7 @@ export default function Articles() {
                   </div>
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </div>

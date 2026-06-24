@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ChevronRight, ChevronDown, Search, ShieldCheck } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Reveal } from "@/components/reveal";
 import { useSeo } from "@/lib/seo";
 import { DOCTOR_HELP, findTopicsBySlugs, getAllTopics } from "@/data/content";
 
@@ -89,7 +90,7 @@ export default function Facts() {
       <section className="relative pt-40 pb-12 md:pt-48 md:pb-16 overflow-hidden">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="max-w-3xl">
+          <Reveal className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-medium mb-8 border border-primary/5">
               <ShieldCheck className="w-4 h-4 text-green-600" />
               Reviewed, reassuring health information
@@ -102,10 +103,10 @@ export default function Facts() {
               conditions and symptoms to understand what is happening, what you
               can do at home, and when it is worth speaking to a doctor.
             </p>
-          </div>
+          </Reveal>
 
           {/* SEARCH */}
-          <div className="max-w-2xl mt-10 relative">
+          <Reveal delay={0.05} className="max-w-2xl mt-10 relative">
             <div className="relative">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40 pointer-events-none" />
               <input
@@ -149,10 +150,10 @@ export default function Facts() {
                 )}
               </div>
             )}
-          </div>
+          </Reveal>
 
           {/* DOCTOR HELP PILLS */}
-          <div className="mt-12">
+          <Reveal delay={0.1} className="mt-12">
             <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-primary/60 mb-5">
               Our doctors can often help you with
             </h2>
@@ -167,14 +168,14 @@ export default function Facts() {
                 </Link>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ALL SYMPTOMS A-Z */}
       <section id="all-symptoms" className="py-20 bg-secondary/30 scroll-mt-24">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="max-w-2xl mb-12">
+          <Reveal className="max-w-2xl mb-12">
             <h2 className="text-3xl md:text-4xl font-serif font-medium text-primary mb-4">
               All symptoms A&ndash;Z
             </h2>
@@ -182,7 +183,7 @@ export default function Facts() {
               Every condition and symptom in our library, grouped by letter.
               Open a letter to reveal the conditions listed under it.
             </p>
-          </div>
+          </Reveal>
           <div className="max-w-4xl divide-y divide-border/60 border-y border-border/60">
             {azGroups.map(([letter, entries]) => {
               const isOpen = openLetters.has(letter);
