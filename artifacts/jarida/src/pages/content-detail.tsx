@@ -58,13 +58,13 @@ export function FactDetail() {
     <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
-      <article className="relative pt-36 md:pt-44 pb-8 overflow-hidden">
+      <article className="relative pt-24 md:pt-24 pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-3xl">
           <Reveal>
           <Link
             href="/facts"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-5"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Facts &amp; Advice
@@ -72,7 +72,7 @@ export function FactDetail() {
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary/60 mb-4">
             {category.name}
           </p>
-          <h1 className="text-4xl md:text-5xl font-serif font-medium text-primary leading-[1.1] mb-6">
+          <h1 className="text-2xl md:text-3xl font-serif font-medium text-primary leading-[1.1] mb-6">
             {topic.title}
           </h1>
           <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
@@ -82,8 +82,8 @@ export function FactDetail() {
         </div>
       </article>
 
-      <div className="container mx-auto px-6 md:px-12 max-w-3xl pb-20">
-        <Reveal className="space-y-5 mb-12">
+      <div className="container mx-auto px-6 md:px-12 max-w-3xl pb-10">
+        <Reveal className="space-y-5 mb-6">
           {topic.body.map((p, i) => (
             <p key={i} className="text-foreground/80 leading-relaxed text-lg">
               {p}
@@ -113,7 +113,7 @@ export function FactDetail() {
           />
         </Reveal>
 
-        <Reveal className="mt-12 rounded-3xl bg-secondary/50 border border-primary/5 p-8">
+        <Reveal className="mt-6 rounded-3xl bg-secondary/50 border border-primary/5 p-8">
           <h3 className="text-xl font-serif font-medium text-primary mb-3">
             Speak to a doctor on Jarida
           </h3>
@@ -133,10 +133,10 @@ export function FactDetail() {
       </div>
 
       {related.length > 0 && (
-        <section className="pb-24">
+        <section className="pb-10">
           <div className="container mx-auto px-6 md:px-12">
             <Reveal>
-              <h2 className="text-2xl font-serif font-medium text-primary mb-8">
+              <h2 className="text-2xl font-serif font-medium text-primary mb-5">
                 More on {category.name.toLowerCase()}
               </h2>
             </Reveal>
@@ -212,12 +212,12 @@ export function ArticleDetail() {
     <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
-      <article className="pt-36 md:pt-44 pb-8">
+      <article className="pt-24 md:pt-24 pb-8">
         <div className="container mx-auto px-6 md:px-12 max-w-3xl">
           <Reveal>
           <Link
             href="/articles"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-5"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Articles
@@ -225,14 +225,14 @@ export function ArticleDetail() {
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary/60 mb-4">
             {article.category}
           </p>
-          <h1 className="text-4xl md:text-5xl font-serif font-medium text-primary leading-[1.1] mb-5">
+          <h1 className="text-2xl md:text-3xl font-serif font-medium text-primary leading-[1.1] mb-5">
             {article.title}
           </h1>
-          <p className="text-muted-foreground text-sm mb-8">{article.readTime}</p>
+          <p className="text-muted-foreground text-sm mb-5">{article.readTime}</p>
           </Reveal>
         </div>
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-          <Reveal className="aspect-[16/9] rounded-[2rem] overflow-hidden mb-12">
+          <Reveal className="aspect-[16/9] rounded-[2rem] overflow-hidden mb-6">
             <img
               src={article.image}
               alt={article.title}
@@ -242,7 +242,7 @@ export function ArticleDetail() {
         </div>
         <div className="container mx-auto px-6 md:px-12 max-w-3xl">
           <Reveal>
-          <p className="text-xl text-foreground/80 leading-relaxed mb-8 font-serif">
+          <p className="text-xl text-foreground/80 leading-relaxed mb-5 font-serif">
             {article.excerpt}
           </p>
           <div className="space-y-5">
@@ -257,10 +257,10 @@ export function ArticleDetail() {
       </article>
 
       {related.length > 0 && (
-        <section className="pb-24 pt-8">
+        <section className="pb-10 pt-8">
           <div className="container mx-auto px-6 md:px-12">
             <Reveal>
-              <h2 className="text-2xl font-serif font-medium text-primary mb-8">
+              <h2 className="text-2xl font-serif font-medium text-primary mb-5">
                 Keep reading
               </h2>
             </Reveal>
@@ -310,7 +310,7 @@ function DetailList({
   items: string[];
 }) {
   return (
-    <div className="mb-10">
+    <div className="mb-6">
       <div className="flex items-center gap-3 mb-4">
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-primary">
           {icon}

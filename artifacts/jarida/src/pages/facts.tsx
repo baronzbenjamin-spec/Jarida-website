@@ -87,15 +87,15 @@ export default function Facts() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative pt-40 pb-12 md:pt-48 md:pb-16 overflow-hidden">
+      <section className="relative pt-24 pb-8 md:pt-24 md:pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <Reveal className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-medium mb-8 border border-primary/5">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-medium mb-5 border border-primary/5">
               <ShieldCheck className="w-4 h-4 text-green-600" />
               Reviewed, reassuring health information
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-primary leading-[1.1] mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-primary leading-[1.1] mb-6">
               Facts &amp; Advice
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
@@ -106,7 +106,7 @@ export default function Facts() {
           </Reveal>
 
           {/* SEARCH */}
-          <Reveal delay={0.05} className="max-w-2xl mt-10 relative">
+          <Reveal delay={0.05} className="max-w-2xl mt-6 relative">
             <div className="relative">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40 pointer-events-none" />
               <input
@@ -153,7 +153,7 @@ export default function Facts() {
           </Reveal>
 
           {/* DOCTOR HELP PILLS */}
-          <Reveal delay={0.1} className="mt-12">
+          <Reveal delay={0.1} className="mt-6">
             <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-primary/60 mb-5">
               Our doctors can often help you with
             </h2>
@@ -173,10 +173,10 @@ export default function Facts() {
       </section>
 
       {/* ALL SYMPTOMS A-Z */}
-      <section id="all-symptoms" className="py-20 bg-secondary/30 scroll-mt-24">
+      <section id="all-symptoms" className="py-8 bg-secondary/30 scroll-mt-24">
         <div className="container mx-auto px-6 md:px-12">
-          <Reveal className="max-w-2xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-medium text-primary mb-4">
+          <Reveal className="max-w-2xl mb-6">
+            <h2 className="text-xl md:text-2xl font-serif font-medium text-primary mb-4">
               All symptoms A&ndash;Z
             </h2>
             <p className="text-foreground/70 leading-relaxed">

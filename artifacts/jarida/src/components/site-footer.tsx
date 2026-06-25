@@ -15,7 +15,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-primary text-white font-sans">
       <div className="container mx-auto px-6 md:px-12 pt-16 pb-8">
-        <div className="grid gap-10 md:grid-cols-[1.6fr_1fr]">
+        <div className="grid gap-6 md:grid-cols-[1.6fr_1fr]">
           {/* Brand */}
           <div className="max-w-sm">
             <Link
@@ -80,7 +80,7 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-6 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/60">
             &copy; {year} Jarida. All rights reserved.
           </p>

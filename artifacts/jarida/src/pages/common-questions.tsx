@@ -81,15 +81,15 @@ export default function CommonQuestions() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative pt-40 pb-12 md:pt-48 md:pb-16 overflow-hidden">
+      <section className="relative pt-24 pb-8 md:pt-24 md:pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <Reveal className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-medium mb-8 border border-primary/5">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-medium mb-5 border border-primary/5">
               <ShieldCheck className="w-4 h-4 text-green-600" />
               Reference-backed patient answers
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-primary leading-[1.1] mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-primary leading-[1.1] mb-6">
               Common patient questions
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
@@ -101,7 +101,7 @@ export default function CommonQuestions() {
           </Reveal>
 
           {/* EMERGENCY WARNING */}
-          <Reveal delay={0.05} className="max-w-3xl mt-10 rounded-2xl border border-red-200 bg-red-50/70 p-6">
+          <Reveal delay={0.05} className="max-w-3xl mt-6 rounded-2xl border border-red-200 bg-red-50/70 p-6">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 shrink-0 text-red-600 mt-0.5" />
               <div>
@@ -136,11 +136,11 @@ export default function CommonQuestions() {
       </section>
 
       {/* QUESTIONS */}
-      <section className="pb-20 pt-4">
+      <section className="pb-10 pt-4">
         <div className="container mx-auto px-6 md:px-12">
           <Reveal className="max-w-3xl">
             {filtered.length === 0 ? (
-              <p className="py-10 text-foreground/60">
+              <p className="py-8 text-foreground/60">
                 No questions match &ldquo;{query.trim()}&rdquo;.
               </p>
             ) : (
@@ -227,7 +227,7 @@ export default function CommonQuestions() {
       </section>
 
       {/* REFERENCES */}
-      <section id="references" className="py-16 bg-secondary/30 scroll-mt-24">
+      <section id="references" className="py-8 bg-secondary/30 scroll-mt-24">
         <div className="container mx-auto px-6 md:px-12">
           <Reveal className="max-w-3xl">
             <button
@@ -236,7 +236,7 @@ export default function CommonQuestions() {
               aria-expanded={refsOpen}
               className="w-full flex items-center justify-between gap-4 text-left"
             >
-              <h2 className="text-2xl md:text-3xl font-serif font-medium text-primary">
+              <h2 className="text-2xl font-serif font-medium text-primary">
                 References
               </h2>
               <ChevronDown

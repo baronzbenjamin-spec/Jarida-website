@@ -18,14 +18,14 @@ export default function Articles() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative pt-40 pb-16 md:pt-48 md:pb-20 overflow-hidden">
+      <section className="relative pt-24 pb-8 md:pt-24 md:pb-10 overflow-hidden">
         <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <Reveal className="max-w-3xl">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary/60 mb-5">
               Your health
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium text-primary leading-[1.1] mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-primary leading-[1.1] mb-6">
               Articles &amp; ideas for living well
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
@@ -42,7 +42,7 @@ export default function Articles() {
           <Reveal>
           <Link
             href={`/articles/${featured.slug}`}
-            className="group grid lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-secondary/40 rounded-[2.5rem] overflow-hidden border border-border/60 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+            className="group grid lg:grid-cols-2 gap-8 lg:gap-6 items-center bg-secondary/40 rounded-[2.5rem] overflow-hidden border border-border/60 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
           >
             <div className="aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden">
               <img
@@ -51,11 +51,11 @@ export default function Articles() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
             </div>
-            <div className="p-8 md:p-12">
+            <div className="p-8 md:p-6">
               <span className="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-white rounded-full px-3 py-1 mb-5">
                 {featured.category}
               </span>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-medium text-primary leading-tight mb-4">
+              <h2 className="text-2xl font-serif font-medium text-primary leading-tight mb-4">
                 {featured.title}
               </h2>
               <p className="text-foreground/70 leading-relaxed mb-6">
@@ -75,7 +75,7 @@ export default function Articles() {
       </section>
 
       {/* GRID */}
-      <section className="pb-24 pt-8">
+      <section className="pb-10 pt-8">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {rest.map((article, i) => (

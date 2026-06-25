@@ -155,11 +155,11 @@ export default function HowItWorks() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative pt-40 pb-12 md:pt-48 md:pb-16 overflow-hidden">
+      <section className="relative pt-24 pb-8 md:pt-24 md:pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <Reveal className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-[1.1] mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-primary leading-[1.1] mb-6">
               How to Use Jarida
             </h1>
             <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
@@ -174,7 +174,7 @@ export default function HowItWorks() {
           </Reveal>
 
           {/* AUDIENCE SWITCHER */}
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <button
               type="button"
               onClick={() => setAudience("patients")}
@@ -209,13 +209,13 @@ export default function HowItWorks() {
           {audience === "patients" ? (
             <motion.div key="patients" {...swap}>
               {/* GETTING STARTED */}
-              <section className="py-12 md:py-16">
+              <section className="py-8 md:py-8">
                 <div className="container mx-auto px-6 md:px-12">
                   <Reveal className="max-w-3xl">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
                       Getting Started
                     </p>
-                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
+                    <h2 className="text-2xl md:text-2xl font-serif font-bold text-primary mb-4">
                       Get Started with Jarida
                     </h2>
                     <p className="text-foreground/70 leading-relaxed">
@@ -227,7 +227,7 @@ export default function HowItWorks() {
                   </Reveal>
 
                   <Reveal>
-                    <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    <ol className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                       {GETTING_STARTED.map((step, index) => (
                         <li
                           key={step.title}
@@ -252,13 +252,13 @@ export default function HowItWorks() {
               </section>
 
               {/* FOR PATIENTS */}
-              <section className="py-12 md:py-16 bg-secondary/30">
+              <section className="py-8 md:py-8 bg-secondary/30">
                 <div className="container mx-auto px-6 md:px-12">
                   <Reveal className="max-w-3xl">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
                       For Patients
                     </p>
-                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
+                    <h2 className="text-2xl md:text-2xl font-serif font-bold text-primary mb-4">
                       How Patients Use Jarida
                     </h2>
                     <p className="text-foreground/70 leading-relaxed">
@@ -268,7 +268,7 @@ export default function HowItWorks() {
                     </p>
                   </Reveal>
 
-                  <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {PATIENT_STEPS.map((step, index) => (
                       <Reveal
                         key={step.title}
@@ -285,13 +285,13 @@ export default function HowItWorks() {
           ) : (
             <motion.div key="doctors" {...swap}>
               {/* FOR DOCTORS */}
-              <section className="py-12 md:py-16">
+              <section className="py-8 md:py-8">
                 <div className="container mx-auto px-6 md:px-12">
                   <Reveal className="max-w-3xl">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/50 mb-3">
                       For Doctors
                     </p>
-                    <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
+                    <h2 className="text-2xl md:text-2xl font-serif font-bold text-primary mb-4">
                       How Doctors Use Jarida
                     </h2>
                     <p className="text-foreground/70 leading-relaxed">
@@ -301,7 +301,7 @@ export default function HowItWorks() {
                     </p>
                   </Reveal>
 
-                  <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                  <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {DOCTOR_STEPS.map((step, index) => (
                       <Reveal
                         key={step.title}

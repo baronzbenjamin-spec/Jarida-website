@@ -101,7 +101,7 @@ export default function Home() {
       <SiteHeader />
 
       {/* HERO SECTION — WhatsApp-style image card */}
-      <section className="pt-24 pb-10 md:pt-28 md:pb-14 bg-white">
+      <section className="pt-24 pb-10 md:pt-24 md:pb-8 bg-white">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div
             className="relative overflow-hidden rounded-[28px] md:rounded-[40px] min-h-[480px] md:min-h-[520px] flex"
@@ -117,10 +117,10 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
             <motion.div
-              className="relative z-10 flex flex-col justify-center w-full lg:max-w-[52%] p-8 sm:p-12 md:p-14 lg:p-16"
+              className="relative z-10 flex flex-col justify-center w-full lg:max-w-[52%] p-8 sm:p-6 md:p-6 lg:p-6"
               {...heroText}
             >
-              <h1 className="font-sans font-extrabold text-white text-4xl sm:text-6xl lg:text-6xl xl:text-7xl leading-[1.04] tracking-tight mb-5 md:mb-6">
+              <h1 className="font-sans font-extrabold text-white text-2xl sm:text-4xl lg:text-4xl xl:text-4xl leading-[1.04] tracking-tight mb-5 md:mb-6">
                 Your health,<br />
                 safely in your hands.
               </h1>
@@ -197,9 +197,9 @@ export default function Home() {
       </section>
 
       {/* FOR PATIENTS & CLINICIANS */}
-      <section id="patients" className="py-12 md:py-20 scroll-mt-20 bg-white">
+      <section id="patients" className="py-8 md:py-8 scroll-mt-20 bg-white">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-          <Reveal className="flex justify-center mb-8">
+          <Reveal className="flex justify-center mb-5">
             <div className="inline-flex p-1 rounded-full bg-secondary/60 border border-border/50">
               <button
                 type="button"
@@ -228,10 +228,10 @@ export default function Home() {
             >
               <div>
                 {/* Content panel */}
-                <div className="flex flex-col justify-center p-8 sm:p-10 md:p-12 md:px-16">
+                <div className="flex flex-col justify-center p-8 sm:p-10 md:p-6 md:px-16">
                   <AnimatePresence mode="popLayout" initial={false}>
                     <motion.div key={audience} {...swap}>
-                      <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
+                      <h2 className="text-2xl md:text-2xl font-serif text-primary mb-4 leading-tight">
                         {content.heading}
                       </h2>
                       <p className="text-sm text-foreground/70 leading-relaxed mb-7">
@@ -251,7 +251,7 @@ export default function Home() {
                     </motion.div>
                   </AnimatePresence>
 
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-9">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-6">
                     <Button className={`rounded-full px-8 h-12 text-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 ${audience === "patients" ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20" : "bg-transparent border border-primary text-primary hover:bg-primary hover:text-white shadow-none"}`}>
                       Join as a patient <ChevronRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -267,10 +267,10 @@ export default function Home() {
       </section>
 
       {/* WHY JARIDA — trust strip */}
-      <section className="pb-16 md:pb-24 bg-white">
+      <section className="pb-8 md:pb-10 bg-white">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-          <Reveal className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
-            <h2 className="text-2xl md:text-4xl font-serif text-primary mb-4 leading-tight">
+          <Reveal className="text-center max-w-2xl mx-auto mb-6 md:mb-6">
+            <h2 className="text-2xl md:text-2xl font-serif text-primary mb-4 leading-tight">
               Care you can trust.
             </h2>
             <p className="font-sans text-sm md:text-base text-foreground/70 leading-relaxed">
@@ -302,11 +302,11 @@ export default function Home() {
       </section>
 
       {/* LATEST ARTICLES — horizontal belt */}
-      <section className="pb-20 md:pb-28 bg-white">
+      <section className="pb-10 md:pb-10 bg-white">
         <div className="container mx-auto px-6 md:px-12">
-          <Reveal className="flex items-end justify-between gap-6 mb-8 md:mb-10">
+          <Reveal className="flex items-end justify-between gap-6 mb-5 md:mb-6">
             <div>
-              <h2 className="text-2xl md:text-4xl font-serif text-primary mb-3 leading-tight">
+              <h2 className="text-2xl md:text-2xl font-serif text-primary mb-3 leading-tight">
                 Latest articles
               </h2>
               <p className="font-sans text-sm md:text-base text-foreground/70 leading-relaxed max-w-xl">

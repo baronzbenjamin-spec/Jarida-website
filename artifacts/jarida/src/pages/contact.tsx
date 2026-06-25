@@ -126,15 +126,15 @@ export default function Contact() {
       </header>
 
       {/* CONTENT */}
-      <main className="pt-32 pb-24">
+      <main className="pt-24 pb-10">
         <div className="absolute inset-x-0 top-0 h-[40vh] bg-[radial-gradient(ellipse_at_top,var(--color-secondary)_0%,transparent_60%)] -z-10" />
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
           <Reveal>
-            <header className="max-w-2xl mb-12">
+            <header className="max-w-2xl mb-6">
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary/60 mb-5">
                 We're here to help
               </p>
-              <h1 className="text-4xl md:text-5xl font-serif font-medium text-primary leading-[1.1] mb-6">
+              <h1 className="text-2xl md:text-3xl font-serif font-medium text-primary leading-[1.1] mb-6">
                 Contact us
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -145,7 +145,7 @@ export default function Contact() {
             </header>
           </Reveal>
 
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-6 lg:gap-6 items-start">
             {/* FORM */}
             <Reveal>
               <form

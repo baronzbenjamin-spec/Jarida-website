@@ -110,14 +110,14 @@ export function SiteHeader() {
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-lg border-b border-border/50 py-4 shadow-sm"
-            : "bg-transparent py-6"
+            ? "bg-white/90 backdrop-blur-lg border-b border-border/50 py-3 shadow-sm"
+            : "bg-transparent py-4"
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Logo className="z-50" />
 
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-6">
             <div
               ref={megaRef}
               onMouseEnter={openMega}
@@ -339,7 +339,7 @@ export function SiteHeader() {
             menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between mb-12">
+          <div className="flex items-center justify-between mb-6">
             <Logo />
             <button
               type="button"

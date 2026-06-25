@@ -46,13 +46,13 @@ export function LegalLayout({
       </header>
 
       {/* CONTENT */}
-      <main className="pt-32 pb-24">
+      <main className="pt-24 pb-10">
         <div className="container mx-auto px-6 md:px-12 max-w-3xl">
           <div className="absolute inset-x-0 top-0 h-[40vh] bg-[radial-gradient(ellipse_at_top,var(--color-secondary)_0%,transparent_60%)] -z-10" />
 
           <Reveal>
-            <header className="mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+            <header className="mb-6">
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
                 {title}
               </h1>
               <p className="text-sm text-muted-foreground">Last updated: {lastUpdated}</p>
@@ -60,7 +60,7 @@ export function LegalLayout({
             </header>
           </Reveal>
 
-          <div className="space-y-10">
+          <div className="space-y-5">
             {sections.map((section, i) => (
               <Reveal key={i}>
                 <section>

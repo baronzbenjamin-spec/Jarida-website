@@ -72,12 +72,12 @@ export default function PatientAnswerDetail() {
     <div className="min-h-screen bg-white font-serif text-foreground">
       <SiteHeader />
 
-      <article className="relative pt-36 md:pt-44 pb-8 overflow-hidden">
+      <article className="relative pt-24 md:pt-24 pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none" />
         <Reveal className="container mx-auto px-6 md:px-12 relative z-10 max-w-3xl">
           <Link
             href="/common-questions"
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-5"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to common questions
@@ -85,7 +85,7 @@ export default function PatientAnswerDetail() {
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-primary/60 mb-4">
             Common patient question
           </p>
-          <h1 className="text-4xl md:text-5xl font-serif font-medium text-primary leading-[1.1] mb-6">
+          <h1 className="text-2xl md:text-3xl font-serif font-medium text-primary leading-[1.1] mb-6">
             {answer.title}
           </h1>
           <p className="text-lg md:text-xl text-foreground/70 leading-relaxed">
@@ -94,7 +94,7 @@ export default function PatientAnswerDetail() {
         </Reveal>
       </article>
 
-      <div className="container mx-auto px-6 md:px-12 max-w-3xl pb-20">
+      <div className="container mx-auto px-6 md:px-12 max-w-3xl pb-10">
         <Reveal>
           <Section
             icon={<Brain className="w-5 h-5" />}
@@ -118,7 +118,7 @@ export default function PatientAnswerDetail() {
         </Reveal>
 
         {/* EMERGENCY WARNING */}
-        <Reveal className="mt-10 rounded-2xl border border-red-200 bg-red-50/70 p-6">
+        <Reveal className="mt-6 rounded-2xl border border-red-200 bg-red-50/70 p-6">
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 shrink-0 text-red-600 mt-0.5" />
             <div>
@@ -134,7 +134,7 @@ export default function PatientAnswerDetail() {
 
         {/* REFERENCES */}
         {cited.length > 0 && (
-          <Reveal className="mt-10">
+          <Reveal className="mt-6">
             <h2 className="text-2xl font-serif font-medium text-primary mb-5">
               References
             </h2>
@@ -158,7 +158,7 @@ export default function PatientAnswerDetail() {
           {PATIENT_ANSWERS_DISCLAIMER}
         </p>
 
-        <Reveal className="mt-12 rounded-3xl bg-secondary/50 border border-primary/5 p-8">
+        <Reveal className="mt-6 rounded-3xl bg-secondary/50 border border-primary/5 p-8">
           <h3 className="text-xl font-serif font-medium text-primary mb-3">
             Speak to a doctor on Jarida
           </h3>
@@ -178,10 +178,10 @@ export default function PatientAnswerDetail() {
       </div>
 
       {related.length > 0 && (
-        <section className="pb-24">
+        <section className="pb-10">
           <div className="container mx-auto px-6 md:px-12">
             <Reveal>
-              <h2 className="text-2xl font-serif font-medium text-primary mb-8">
+              <h2 className="text-2xl font-serif font-medium text-primary mb-5">
                 More common questions
               </h2>
             </Reveal>
@@ -225,7 +225,7 @@ function Section({
   body: string;
 }) {
   return (
-    <div className="mb-10">
+    <div className="mb-6">
       <div className="flex items-center gap-3 mb-4">
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-primary">
           {icon}
