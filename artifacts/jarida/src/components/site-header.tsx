@@ -114,7 +114,7 @@ export function SiteHeader() {
             : "bg-transparent py-4"
         }`}
       >
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="container mx-auto px-6 md:px-8 flex items-center justify-between">
           <Logo className="z-50" />
 
           <nav className="hidden md:flex items-center gap-6">
@@ -154,7 +154,7 @@ export function SiteHeader() {
                 aria-hidden={!megaOpen}
               >
                 {megaOpen && (
-                  <div className="container mx-auto px-6 md:px-12 pt-4">
+                  <div className="container mx-auto px-6 md:px-8 pt-4">
                     <div className="bg-white rounded-3xl border border-border/60 shadow-2xl shadow-primary/10 overflow-hidden grid grid-cols-[18rem_1fr]">
                       {/* Left column */}
                       <div className="bg-secondary/40 p-4 border-r border-border/60 max-h-[70vh] overflow-y-auto">

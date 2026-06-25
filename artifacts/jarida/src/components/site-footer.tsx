@@ -14,7 +14,7 @@ export function SiteFooter() {
 
   return (
     <footer className="bg-primary text-white font-sans">
-      <div className="container mx-auto px-6 md:px-12 pt-16 pb-8">
+      <div className="container mx-auto px-6 md:px-8 pt-8 pb-8">
         <div className="grid gap-6 md:grid-cols-[1.6fr_1fr]">
           {/* Brand */}
           <div className="max-w-sm">

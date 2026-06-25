@@ -83,7 +83,7 @@ export default function CommonQuestions() {
       {/* HERO */}
       <section className="relative pt-24 pb-8 md:pt-24 md:pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-60 pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="container mx-auto px-6 md:px-8 relative z-10">
           <Reveal className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-primary text-sm font-medium mb-5 border border-primary/5">
               <ShieldCheck className="w-4 h-4 text-green-600" />
@@ -129,15 +129,15 @@ export default function CommonQuestions() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search patient questions"
               aria-label="Search patient questions"
-              className="w-full rounded-2xl border border-border bg-white py-4 pl-14 pr-5 text-base text-foreground shadow-sm placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-secondary transition-all"
+              className="w-full rounded-2xl border border-border bg-white py-4 pl-8 pr-5 text-base text-foreground shadow-sm placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-secondary transition-all"
             />
           </Reveal>
         </div>
       </section>
 
       {/* QUESTIONS */}
-      <section className="pb-10 pt-4">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="pb-8 pt-4">
+        <div className="container mx-auto px-6 md:px-8">
           <Reveal className="max-w-3xl">
             {filtered.length === 0 ? (
               <p className="py-8 text-foreground/60">
@@ -228,7 +228,7 @@ export default function CommonQuestions() {
 
       {/* REFERENCES */}
       <section id="references" className="py-8 bg-secondary/30 scroll-mt-24">
-        <div className="container mx-auto px-6 md:px-12">
+        <div className="container mx-auto px-6 md:px-8">
           <Reveal className="max-w-3xl">
             <button
               type="button"

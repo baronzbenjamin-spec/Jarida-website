@@ -18,9 +18,9 @@ export default function Articles() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative pt-24 pb-8 md:pt-24 md:pb-10 overflow-hidden">
+      <section className="relative pt-24 pb-8 md:pt-24 md:pb-8 overflow-hidden">
         <div className="absolute top-0 left-0 w-[700px] h-[700px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/3 opacity-60 pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="container mx-auto px-6 md:px-8 relative z-10">
           <Reveal className="max-w-3xl">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary/60 mb-5">
               Your health
@@ -38,7 +38,7 @@ export default function Articles() {
 
       {/* FEATURED */}
       <section className="pb-8">
-        <div className="container mx-auto px-6 md:px-12">
+        <div className="container mx-auto px-6 md:px-8">
           <Reveal>
           <Link
             href={`/articles/${featured.slug}`}
@@ -75,8 +75,8 @@ export default function Articles() {
       </section>
 
       {/* GRID */}
-      <section className="pb-10 pt-8">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="pb-8 pt-8">
+        <div className="container mx-auto px-6 md:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {rest.map((article, i) => (
               <Reveal key={article.slug} delay={(i % 3) * 0.08}>

@@ -104,7 +104,7 @@ export default function Contact() {
     <div className="min-h-screen bg-background font-serif text-foreground">
       {/* HEADER */}
       <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-border py-3 shadow-sm">
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="container mx-auto px-6 md:px-8 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <img
               src={iconLogo}
@@ -126,9 +126,9 @@ export default function Contact() {
       </header>
 
       {/* CONTENT */}
-      <main className="pt-24 pb-10">
+      <main className="pt-24 pb-8">
         <div className="absolute inset-x-0 top-0 h-[40vh] bg-[radial-gradient(ellipse_at_top,var(--color-secondary)_0%,transparent_60%)] -z-10" />
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div className="container mx-auto px-6 md:px-8 max-w-5xl">
           <Reveal>
             <header className="max-w-2xl mb-6">
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary/60 mb-5">

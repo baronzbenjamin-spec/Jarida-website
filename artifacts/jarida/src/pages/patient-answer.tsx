@@ -74,7 +74,7 @@ export default function PatientAnswerDetail() {
 
       <article className="relative pt-24 md:pt-24 pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none" />
-        <Reveal className="container mx-auto px-6 md:px-12 relative z-10 max-w-3xl">
+        <Reveal className="container mx-auto px-6 md:px-8 relative z-10 max-w-3xl">
           <Link
             href="/common-questions"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-5"
@@ -94,7 +94,7 @@ export default function PatientAnswerDetail() {
         </Reveal>
       </article>
 
-      <div className="container mx-auto px-6 md:px-12 max-w-3xl pb-10">
+      <div className="container mx-auto px-6 md:px-8 max-w-3xl pb-8">
         <Reveal>
           <Section
             icon={<Brain className="w-5 h-5" />}
@@ -178,8 +178,8 @@ export default function PatientAnswerDetail() {
       </div>
 
       {related.length > 0 && (
-        <section className="pb-10">
-          <div className="container mx-auto px-6 md:px-12">
+        <section className="pb-8">
+          <div className="container mx-auto px-6 md:px-8">
             <Reveal>
               <h2 className="text-2xl font-serif font-medium text-primary mb-5">
                 More common questions

@@ -60,7 +60,7 @@ export function FactDetail() {
 
       <article className="relative pt-24 md:pt-24 pb-8 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 opacity-50 pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-3xl">
+        <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-3xl">
           <Reveal>
           <Link
             href="/facts"
@@ -82,7 +82,7 @@ export function FactDetail() {
         </div>
       </article>
 
-      <div className="container mx-auto px-6 md:px-12 max-w-3xl pb-10">
+      <div className="container mx-auto px-6 md:px-8 max-w-3xl pb-8">
         <Reveal className="space-y-5 mb-6">
           {topic.body.map((p, i) => (
             <p key={i} className="text-foreground/80 leading-relaxed text-lg">
@@ -133,8 +133,8 @@ export function FactDetail() {
       </div>
 
       {related.length > 0 && (
-        <section className="pb-10">
-          <div className="container mx-auto px-6 md:px-12">
+        <section className="pb-8">
+          <div className="container mx-auto px-6 md:px-8">
             <Reveal>
               <h2 className="text-2xl font-serif font-medium text-primary mb-5">
                 More on {category.name.toLowerCase()}
@@ -213,7 +213,7 @@ export function ArticleDetail() {
       <SiteHeader />
 
       <article className="pt-24 md:pt-24 pb-8">
-        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+        <div className="container mx-auto px-6 md:px-8 max-w-3xl">
           <Reveal>
           <Link
             href="/articles"
@@ -231,7 +231,7 @@ export function ArticleDetail() {
           <p className="text-muted-foreground text-sm mb-5">{article.readTime}</p>
           </Reveal>
         </div>
-        <div className="container mx-auto px-6 md:px-12 max-w-4xl">
+        <div className="container mx-auto px-6 md:px-8 max-w-4xl">
           <Reveal className="aspect-[16/9] rounded-[2rem] overflow-hidden mb-6">
             <img
               src={article.image}
@@ -240,7 +240,7 @@ export function ArticleDetail() {
             />
           </Reveal>
         </div>
-        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+        <div className="container mx-auto px-6 md:px-8 max-w-3xl">
           <Reveal>
           <p className="text-xl text-foreground/80 leading-relaxed mb-5 font-serif">
             {article.excerpt}
@@ -257,8 +257,8 @@ export function ArticleDetail() {
       </article>
 
       {related.length > 0 && (
-        <section className="pb-10 pt-8">
-          <div className="container mx-auto px-6 md:px-12">
+        <section className="pb-8 pt-8">
+          <div className="container mx-auto px-6 md:px-8">
             <Reveal>
               <h2 className="text-2xl font-serif font-medium text-primary mb-5">
                 Keep reading

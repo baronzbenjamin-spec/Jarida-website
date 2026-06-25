@@ -101,8 +101,8 @@ export default function Home() {
       <SiteHeader />
 
       {/* HERO SECTION — WhatsApp-style image card */}
-      <section className="pt-24 pb-10 md:pt-24 md:pb-8 bg-white">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="pt-24 pb-8 md:pt-24 md:pb-8 bg-white">
+        <div className="container mx-auto px-6 md:px-8">
           <motion.div
             className="relative overflow-hidden rounded-[28px] md:rounded-[40px] min-h-[480px] md:min-h-[520px] flex"
             {...heroImage}
@@ -132,7 +132,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   onClick={handleDownload}
-                  className="font-sans font-bold w-full sm:w-auto self-stretch sm:self-start rounded-full bg-primary hover:bg-primary text-white h-14 md:h-16 px-10 md:px-12 text-base md:text-lg shadow-2xl shadow-black/30 ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
+                  className="font-sans font-bold w-full sm:w-auto self-stretch sm:self-start rounded-full bg-primary hover:bg-primary text-white h-14 md:h-16 px-8 md:px-8 text-base md:text-lg shadow-2xl shadow-black/30 ring-1 ring-white/10 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98]"
                 >
                   Download
                   <Download className="ml-3 w-5 h-5" />
@@ -198,7 +198,7 @@ export default function Home() {
 
       {/* FOR PATIENTS & CLINICIANS */}
       <section id="patients" className="py-8 md:py-8 scroll-mt-20 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+        <div className="container mx-auto px-6 md:px-8 max-w-5xl">
           <Reveal className="flex justify-center mb-5">
             <div className="inline-flex p-1 rounded-full bg-secondary/60 border border-border/50">
               <button
@@ -228,7 +228,7 @@ export default function Home() {
             >
               <div>
                 {/* Content panel */}
-                <div className="flex flex-col justify-center p-8 sm:p-10 md:p-6 md:px-16">
+                <div className="flex flex-col justify-center p-8 sm:p-8 md:p-6 md:px-8">
                   <AnimatePresence mode="popLayout" initial={false}>
                     <motion.div key={audience} {...swap}>
                       <h2 className="text-2xl md:text-2xl font-serif text-primary mb-4 leading-tight">
@@ -267,8 +267,8 @@ export default function Home() {
       </section>
 
       {/* WHY JARIDA — trust strip */}
-      <section className="pb-8 md:pb-10 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+      <section className="pb-8 md:pb-8 bg-white">
+        <div className="container mx-auto px-6 md:px-8 max-w-5xl">
           <Reveal className="text-center max-w-2xl mx-auto mb-6 md:mb-6">
             <h2 className="text-2xl md:text-2xl font-serif text-primary mb-4 leading-tight">
               Care you can trust.
@@ -302,8 +302,8 @@ export default function Home() {
       </section>
 
       {/* LATEST ARTICLES — horizontal belt */}
-      <section className="pb-10 md:pb-10 bg-white">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="pb-8 md:pb-8 bg-white">
+        <div className="container mx-auto px-6 md:px-8">
           <Reveal className="flex items-end justify-between gap-6 mb-5 md:mb-6">
             <div>
               <h2 className="text-2xl md:text-2xl font-serif text-primary mb-3 leading-tight">
@@ -324,7 +324,7 @@ export default function Home() {
         </div>
 
         <Reveal>
-          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-px-6 md:scroll-px-12 px-6 md:px-12 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-px-6 md:scroll-px-12 px-6 md:px-8 pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {ARTICLES.map((article) => (
               <Link
                 key={article.slug}
@@ -355,7 +355,7 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <div className="container mx-auto px-6 md:px-12 sm:hidden">
+        <div className="container mx-auto px-6 md:px-8 sm:hidden">
           <Link
             href="/articles"
             className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-primary hover:text-primary/70 transition-colors"

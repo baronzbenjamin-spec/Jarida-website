@@ -30,7 +30,7 @@ export function LegalLayout({
     <div className="min-h-screen bg-background font-serif text-foreground">
       {/* HEADER */}
       <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-border py-3 shadow-sm">
-        <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="container mx-auto px-6 md:px-8 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <img src={iconLogo} alt="Jarida Icon" className="h-8 w-auto group-hover:scale-105 transition-transform" />
             <span className="font-serif text-2xl font-medium tracking-tight text-primary">Jarida</span>
@@ -46,8 +46,8 @@ export function LegalLayout({
       </header>
 
       {/* CONTENT */}
-      <main className="pt-24 pb-10">
-        <div className="container mx-auto px-6 md:px-12 max-w-3xl">
+      <main className="pt-24 pb-8">
+        <div className="container mx-auto px-6 md:px-8 max-w-3xl">
           <div className="absolute inset-x-0 top-0 h-[40vh] bg-[radial-gradient(ellipse_at_top,var(--color-secondary)_0%,transparent_60%)] -z-10" />
 
           <Reveal>
@@ -88,7 +88,7 @@ export function LegalLayout({
           </div>
 
           <Reveal>
-            <div className="mt-16 pt-8 border-t border-border">
+            <div className="mt-8 pt-8 border-t border-border">
               <p className="text-muted-foreground">
                 Questions about this page? Reach us at{" "}
                 <a href="mailto:support@jarida.org" className="text-primary font-medium hover:underline">
