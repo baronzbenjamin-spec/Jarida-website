@@ -129,7 +129,7 @@ export default function CommonQuestions() {
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search patient questions"
               aria-label="Search patient questions"
-              className="w-full rounded-2xl border border-border bg-white py-4 pl-8 pr-5 text-base text-foreground shadow-sm placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-secondary transition-all"
+              className="w-full rounded-2xl border border-border bg-white py-4 pl-14 pr-5 text-base text-foreground shadow-sm placeholder:text-foreground/40 focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-secondary transition-all"
             />
           </Reveal>
         </div>
