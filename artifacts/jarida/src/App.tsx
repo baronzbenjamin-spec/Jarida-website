@@ -6,6 +6,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
+import Cookies from "@/pages/cookies";
 import Facts from "@/pages/facts";
 import CommonQuestions from "@/pages/common-questions";
 import HowItWorks from "@/pages/how-it-works";
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
+      <Route path="/cookies" component={Cookies} />
       <Route component={NotFound} />
     </Switch>
   );

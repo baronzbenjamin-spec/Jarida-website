@@ -1,103 +1,100 @@
 import { Link } from "wouter";
-import { ArrowRight, Download } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import { LogoMark } from "@/components/logo";
 import { Button } from "@/components/ui/button";
-
-type FooterLink = { label: string; href: string; external?: boolean };
-
-const FOOTER_LINKS: FooterLink[] = [
-  { label: "Facts & Advice", href: "/facts" },
-  { label: "Articles", href: "/articles" },
-  { label: "How to Use Jarida", href: "/how-it-works" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
-];
-
-function FooterLinkItem({ link }: { link: FooterLink }) {
-  const className =
-    "group inline-flex items-center gap-2 text-primary/80 hover:text-primary transition-colors";
-  const content = (
-    <>
-      <ArrowRight className="w-3 h-3 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
-      <span>{link.label}</span>
-    </>
-  );
-
-  if (link.external) {
-    return (
-      <a href={link.href} className={className}>
-        {content}
-      </a>
-    );
-  }
-
-  return (
-    <Link href={link.href} className={className}>
-      {content}
-    </Link>
-  );
-}
+import { detectPlatform, getStoreUrl } from "@/lib/app-store";
 
 export function SiteFooter() {
+  const year = new Date().getFullYear();
+
+  const handleDownload = () => {
+    const url = getStoreUrl(detectPlatform());
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <footer className="font-sans text-sm">
-      {/* Main area */}
-      <div className="bg-secondary">
-        <div className="container mx-auto px-6 md:px-12 py-4">
-          <div className="flex flex-row flex-wrap items-center justify-between gap-x-8 gap-y-4 text-xs">
-            {/* Logo + download */}
-            <div className="flex items-center gap-4 shrink-0">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 text-primary"
-              >
-                <LogoMark className="h-5 w-5" />
-                <span className="font-serif text-base font-bold tracking-tight">
-                  Jarida
-                </span>
-              </Link>
+    <footer className="bg-primary text-white font-sans">
+      <div className="container mx-auto px-6 md:px-12 pt-16 pb-8">
+        <div className="grid gap-10 md:grid-cols-[1.6fr_1fr]">
+          {/* Brand */}
+          <div className="max-w-sm">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2.5 text-white"
+            >
+              <LogoMark className="h-7 w-7" />
+              <span className="font-serif text-2xl font-semibold tracking-tight">
+                Jarida
+              </span>
+            </Link>
+            <p className="mt-5 text-sm leading-relaxed text-white/70">
+              Jarida is a digital healthcare service connecting you with verified
+              doctors for appointments, online consultations, and medical
+              records &mdash; safe, simple care from anywhere.
+            </p>
+            <Button
+              onClick={handleDownload}
+              className="mt-6 rounded-full px-5 h-10 text-sm bg-white text-primary hover:bg-white/90"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Download the app
+            </Button>
+          </div>
 
-              {/* Download placeholder */}
-              <Button
-                size="sm"
-                className="rounded-full px-4 h-8 text-xs bg-primary text-white hover:bg-primary/90"
-              >
-                <Download className="w-3 h-3 mr-1.5" />
-                Download
-              </Button>
-            </div>
-
-            {/* Links: 2 rows x 4 columns */}
-            <div className="grid grid-cols-4 gap-x-8 gap-y-2">
-              {FOOTER_LINKS.map((link) => (
-                <FooterLinkItem key={link.label} link={link} />
-              ))}
-            </div>
+          {/* Contact */}
+          <div>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50 mb-5">
+              Contact
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="mailto:support@jarida.org"
+                  className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+                >
+                  <Mail className="w-4 h-4 shrink-0 text-white/50" />
+                  support@jarida.org
+                </a>
+              </li>
+              <li className="pt-2 text-white/70">
+                A product of{" "}
+                <a
+                  href="https://baronz.se"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-white transition-colors"
+                >
+                  Baronz AB
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="bg-primary text-white">
-        <div className="container mx-auto px-6 md:px-12 py-3 flex flex-row items-center justify-between gap-4 flex-wrap">
-          <p className="text-xs text-white/80 flex flex-wrap items-center gap-x-6 gap-y-1">
-            <span>
-              &copy; {new Date().getFullYear()} Jarida &mdash; a digital
-              healthcare service.
-            </span>
-            <span>
-              A product of{" "}
-              <a
-                href="https://baronz.se"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-white transition-colors"
-              >
-                Baronz AB.
-              </a>
-            </span>
+        {/* Bottom bar */}
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/60">
+            &copy; {year} Jarida. All rights reserved.
           </p>
+          <nav className="flex items-center gap-6 text-xs text-white/60">
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/cookies" className="hover:text-white transition-colors">
+              Cookies
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
