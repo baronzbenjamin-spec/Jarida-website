@@ -133,7 +133,7 @@ export function SiteHeader() {
                 aria-label="Facts & Advice menu"
                 onClick={() => setMegaOpen((v) => !v)}
                 onFocus={openMega}
-                className="inline-flex items-center gap-1 text-sm font-bold text-foreground/80 hover:text-primary transition-colors"
+                className="inline-flex items-center gap-1 font-sans text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
               >
                 Facts &amp; Advice
                 <ChevronDown
@@ -282,7 +282,7 @@ export function SiteHeader() {
             </div>
             <Link
               href="/articles"
-              className="text-sm font-bold text-foreground/80 hover:text-primary transition-colors"
+              className="font-sans text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
               Articles
             </Link>
@@ -291,16 +291,16 @@ export function SiteHeader() {
           <div className="hidden md:flex items-center gap-3">
             <Button
               variant="outline"
-              className="rounded-full px-6 border-primary/30 text-primary hover:bg-secondary hover:text-primary hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200"
+              className="rounded-full px-6 font-sans border-primary/30 text-primary hover:bg-secondary hover:text-primary hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200"
             >
               Log in
             </Button>
-            <Button className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200">
+            <Button className="rounded-full px-6 font-sans bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200">
               Sign up
             </Button>
             <Button
               onClick={handleDownload}
-              className="rounded-full px-6 bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200"
+              className="rounded-full px-6 font-sans bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 transition-all duration-200"
             >
               Download
             </Button>
@@ -356,7 +356,7 @@ export function SiteHeader() {
                 type="button"
                 onClick={() => setMobileFactsOpen((v) => !v)}
                 aria-expanded={mobileFactsOpen}
-                className="w-full flex items-center justify-between gap-2 py-2 text-xl font-serif font-bold hover:text-primary/70 transition-colors"
+                className="w-full flex items-center justify-between gap-2 py-2 font-sans text-lg font-semibold hover:text-primary/70 transition-colors"
               >
                 Facts &amp; Advice
                 <ChevronDown
@@ -370,7 +370,7 @@ export function SiteHeader() {
                   mobileFactsOpen ? "max-h-[70vh] overflow-y-auto" : "max-h-0"
                 }`}
               >
-                <div className="flex flex-col py-2 pl-1 text-base font-serif">
+                <div className="flex flex-col py-2 pl-1 text-base font-sans">
                   <div className="border-b border-border/40">
                     <button
                       type="button"
@@ -432,7 +432,7 @@ export function SiteHeader() {
             <Link
               href="/articles"
               onClick={() => setMenuOpen(false)}
-              className="py-2 text-xl font-serif font-bold hover:text-primary/70 transition-colors"
+              className="py-2 font-sans text-lg font-semibold hover:text-primary/70 transition-colors"
             >
               Articles
             </Link>
@@ -440,11 +440,11 @@ export function SiteHeader() {
           <div className="mt-auto flex flex-col gap-4 pt-6">
             <Button
               variant="outline"
-              className="w-full rounded-full h-14 text-lg border-primary/30 text-primary hover:bg-secondary active:scale-[0.98] transition-all duration-200"
+              className="w-full rounded-full h-14 font-sans text-base border-primary/30 text-primary hover:bg-secondary active:scale-[0.98] transition-all duration-200"
             >
               Log in
             </Button>
-            <Button className="w-full rounded-full h-14 text-lg bg-primary hover:bg-primary/90 text-white active:scale-[0.98] transition-all duration-200">
+            <Button className="w-full rounded-full h-14 font-sans text-base bg-primary hover:bg-primary/90 text-white active:scale-[0.98] transition-all duration-200">
               Sign up
             </Button>
             <Button
@@ -452,7 +452,7 @@ export function SiteHeader() {
                 setMenuOpen(false);
                 handleDownload();
               }}
-              className="w-full rounded-full h-14 text-lg bg-primary hover:bg-primary/90 text-white active:scale-[0.98] transition-all duration-200"
+              className="w-full rounded-full h-14 font-sans text-base bg-primary hover:bg-primary/90 text-white active:scale-[0.98] transition-all duration-200"
             >
               Download
             </Button>
