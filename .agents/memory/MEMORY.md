@@ -1,3 +1,4 @@
 - [react-vite font @import ordering](react-vite-css-imports.md) — Google Fonts @import must be line 1 of index.css, before @import "tailwindcss", or it silently fails.
 - [Expo web e2e testing limitation](expo-web-testing-harness.md) — runTest cannot reach Expo dev domains; verify via bundle + tsc + screenshot tool instead.
 - [Jarida patient-answers source fidelity](jarida-patient-answers-source.md) — patient-answers.ts is generated verbatim from a template-based .docx; repeated/loose self-care text is faithful to source, not a bug — don't fabricate medical text.
+- [Push to external GitHub remote](git-push-external-remote.md) — Replit blocks `git remote add` (main AND task agents); push straight to the URL with `git push <url> HEAD:main` + a credential helper reading $GITHUB_TOKEN.
